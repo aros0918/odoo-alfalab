@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- QWeb Reports -->
+
+        <record id="account_move_form_inherit_print_invoice" model="ir.ui.view">
+            <field name="name">account.move.inherit.print.invoice.form</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_out_invoice_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_register_payment']" position="after">
+                    <button name="print_invoice_excel_report" string="PRINT INVOICES" type="object" class="oe_highlight" />
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

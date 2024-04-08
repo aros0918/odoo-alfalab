@@ -1,0 +1,2 @@
+.envrc filter=git-crypt diff=git-crypt
+ssl/** filter=git-crypt diff=git-crypt

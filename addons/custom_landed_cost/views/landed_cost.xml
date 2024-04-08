@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_inherited_landed_cost" model="ir.ui.view">
+            <field name="name">view.inherited.landed.cost</field>
+            <field name="model">stock.landed.cost</field>
+            <field name="inherit_id" ref="stock_landed_costs.view_stock_landed_cost_form"/>
+            <field name="arch" type="xml">
+ 	           <field name="picking_ids" position="replace">
+ 	              <field name="picking_ids" widget="many2many_tags" 
+                             options="{'no_create_edit': True}" attrs="{'invisible': [('target_model', '!=', 'picking')]}"
+                          domain="[('company_id', '=', company_id), ('move_ids.stock_valuation_layer_ids', '!=', False)]" context="{'display':'yes'}"/>
+
+ 	           </field>
+             </field>
+        </record>
+    </data>
+</odoo>

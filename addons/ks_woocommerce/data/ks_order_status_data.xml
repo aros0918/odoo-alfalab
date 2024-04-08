@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data noupdate="0">
+        <record id="ks_woo_order_status_1" model="ks.woo.order.status">
+            <field name="status">on-hold</field>
+            <field name="name">On Hold</field>
+        </record>
+         <record id="ks_woo_order_status_2" model="ks.woo.order.status">
+            <field name="status">processing</field>
+            <field name="name">Processing</field>
+        </record>
+         <record id="ks_woo_order_status_3" model="ks.woo.order.status">
+            <field name="status">completed</field>
+            <field name="name">Completed</field>
+        </record>
+<!--         <record id="ks_woo_order_status_4" model="ks.woo.order.status">-->
+<!--            <field name="status">refunded</field>-->
+<!--            <field name="name">Refunded</field>-->
+<!--        </record>-->
+         <record id="ks_woo_order_status_5" model="ks.woo.order.status">
+            <field name="status">pending</field>
+            <field name="name">Pending</field>
+        </record>
+        <record id="ks_woo_order_status_6" model="ks.woo.order.status">
+            <field name="status">failed</field>
+            <field name="name">Failed</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <div t-name="Graph_template">
+        <div class="ks_graph_container">
+            <div class="ks_header">
+                <div class="m-auto">
+                    <h3 class="ks_header_part"></h3>
+                </div>
+                <div style="position: absolute; right: 0;">
+                    <span>
+                        <button class="btn btn-primary" id="ks_line_chart"><i class="fa fa-line-chart"/></button>
+                        <button class="btn btn-primary" id="ks_bar_chart"><i class="fa fa-bar-chart"/></button>
+                    </span>
+                </div>
+            </div>
+            <div class="ks_chart_container" style="width: 100%; height: 100%">
+
+            </div>
+        </div>
+    </div>
+</templates>

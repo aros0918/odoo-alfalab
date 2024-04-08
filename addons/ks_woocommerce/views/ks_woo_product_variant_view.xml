@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="ks_woo_product_template_view_forms" model="ir.ui.view">
+        <field name="name">ks.woo.product.variant.view.form</field>
+        <field name="model">ks.woo.product.variant</field>
+        <field name="arch" type="xml">
+            <form create="false">
+                <header>
+                    <!--                    <button name="update_record_data_in_odoo" string="Update Data" type="object"-->
+                    <!--                            class="oe_highlight" attrs="{'invisible': [('ks_need_update', '=', False)]}"/>-->
+                </header>
+                <sheet>
+                    <div class="alert alert-info" role="alert" style="margin-bottom:0px;">
+                        <h3>Fields and their uses :-</h3>
+                        <ul>
+                            <li>
+                                <b>Odoo Product Variant</b>
+                                : Displays Odoo Linked Product Variant Name
+                            </li>
+                            <li>
+                                <b>Woo Product Template</b>
+                                : Displays WooCommerce Product Template Name
+                            </li>
+                            <li>
+                                <b>Record ID</b>
+                                : Displays Variant WooCommerce ID
+                            </li>
+                            <li>
+                                <b>Instance</b>
+                                : Displays WooCommerce Instance Name
+                            </li>
+                            <li>
+                                <b>Date Created</b>
+                                : Displays date of creation
+                            </li>
+                            <li>
+                                <b>Date Updated</b>
+                                : Displays date of updation
+                            </li>
+                            <li>
+                                <b>Variant Active</b>
+                                : Enables/Disables the variant
+                            </li>
+                            <li>
+                                <b>Woo Regular Price</b>
+                                : Displays WooCommerce Regular Price
+                            </li>
+                            <li>
+                                <b>Woo Sale Price</b>
+                                : Displays WooCommerce Sale Price
+                            </li>
+                        </ul>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="ks_woo_variant_id"/>
+                            <field name="ks_wc_instance"/>
+                            <field name="ks_product_variant"/>
+                            <field name="ks_wc_product_tmpl_id"/>
+                        </group>
+                        <group>
+                            <field name="ks_date_created"/>
+                            <field name="ks_date_updated"/>
+                            <field name="ks_active"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="ks_length"/>
+                            <field name="ks_width"/>
+                            <field name="ks_height"/>
+                            <field name="ks_weight"/>
+                            <field name="ks_default_code"/>
+                        </group>
+                        <group name="group_pricing">
+                            <label for="ks_woo_regular_price"/>
+                            <div title="Regular Pricelist" name="regular pricing">
+                                <field name="ks_woo_rp_pricelist" invisible="1"/>
+                                <field name="ks_woo_regular_price" readonly="1"/>
+                                <button name="open_regular_pricelist_rules_data" icon="fa-arrow-right" type="object"
+                                        class="oe_inline"/>
+
+                            </div>
+                            <label for="ks_woo_sale_price"/>
+                            <div title="Sale Pricelist" name="sale pricing">
+                                <field name="ks_woo_sp_pricelist" invisible="1"/>
+                                <field name="ks_woo_sale_price" readonly="1"/>
+                                <button name="open_sale_pricelist_rules_data" icon="fa-arrow-right" type="object"
+                                        class="oe_inline"/>
+                            </div>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Images">
+                            <field name="ks_wc_image_ids"
+                                   context="{'default_ks_name': ks_product_variant}"
+                                   mode="kanban" options="{'create_text':'Add a Media'}" nolabel="1"/>
+                        </page>
+                        <page string="Description">
+                            <field name="ks_woo_description"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="ks_woo_product_variant_view_tree" model="ir.ui.view">
+        <field name="name">ks.woo.product.template.view.tree</field>
+        <field name="model">ks.woo.product.variant</field>
+        <field name="arch" type="xml">
+            <tree create="false" edit="false" decoration-info="ks_mapped==True">
+                <field name="ks_woo_variant_id"/>
+                <field name="ks_product_variant"/>
+                <field name="ks_wc_instance"/>
+                <!--                <field name="ks_company_type"/>-->
+                <!--                <field name="ks_company_id"/>-->
+                <!--                <field name="ks_"/>-->
+                <field name="ks_date_created"/>
+                <field name="ks_date_updated"/>
+                <field name="ks_active"/>
+                <field name="ks_mapped" invisible="1"/>
+                <!--                <field name="ks_sync_states"/>-->
+            </tree>
+        </field>
+    </record>
+
+    <record id="ks_woo_product_variant_view_search" model="ir.ui.view">
+        <field name="name">Product Template Search</field>
+        <field name="model">ks.woo.product.variant</field>
+        <field name="arch" type="xml">
+            <search string="Product Variant Search">
+                <!--                <field name="ks_name" string="Product Variant"/>-->
+                <field name="ks_woo_variant_id" string="Woo Id"/>
+                <field name="ks_wc_instance" string="Woo Instance"
+                       filter_domain="[('ks_wc_instance','ilike',self)]"/>
+                <separator/>
+                <filter string="Today Created Woo Product Variant" name="woo_created_today"
+                        domain="[('ks_date_created','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0))), ('ks_date_created','&lt;=', datetime.datetime.combine(context_today(), datetime.time(23,59,59)))]"/>
+                <filter string="Today Updated Woo Product Variant" name="woo_created_today"
+                        domain="[('ks_date_updated','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0))), ('ks_date_updated','&lt;=', datetime.datetime.combine(context_today(), datetime.time(23,59,59)))]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="groupby_instance" string="Woo Instance"
+                            context="{'group_by':'ks_wc_instance'}"/>
+                    <filter name="groupby_main_model" string="Odoo Model"
+                            context="{'group_by':'ks_product_variant'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_ks_woo_product_variants_">
+        <field name="name">WooCommerce Product Variant</field>
+        <field name="res_model">ks.woo.product.variant</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('ks_wc_product_tmpl_id.ks_woo_product_type', '!=', "simple")]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                **All the Synced WooCommerce Product Variant will appear here.
+            </p>
+        </field>
+    </record>
+</odoo>

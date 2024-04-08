@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="ks_map_product_action_server" model="ir.actions.server">
+        <field name="name">Map Existing Records</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="product.model_product_template"/>
+        <field name="binding_model_id" ref="product.model_product_template"/>
+        <field name="state">code</field>
+        <field name="code">
+            action=model.open_mapper()
+        </field>
+    </record>
+    <record id="ks_action_pull_product" model="ir.actions.server">
+        <field name="name">Pull product from woocommerce</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="product.model_product_template"/>
+        <field name="binding_model_id" ref="product.model_product_template"/>
+        <field name="state">code</field>
+        <field name="code">
+            action=model.ks_pull_from_woocommerce()
+        </field>
+    </record>
+
+    <record id="s_action_ks_export_product_template" model="ir.actions.act_window">
+        <field name="name">Push Product to woocommerce</field>
+        <field name="res_model">ks.woo.update.product.configuration</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="ks_woo_update_product_configuration_form_view"/>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="product.model_product_template"/>
+        <field name="binding_view_types">form,list</field>
+    </record>
+
+    <record id="ks_woo_product_template_notebook" model="ir.ui.view">
+        <field name="name">ks.woo.product.template.view.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="priority">60</field>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                <button name="action_woo_layer_templates" title="Woocommerce Products" type="object"
+                        class="oe_stat_button" icon="fa-server icon">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_text">WooCommerce</span>
+                        <span class="o_stat_text">Products</span>
+                    </div>
+                </button>
+            </xpath>
+            <xpath expr="/form/*" position="before">
+                <header>
+                    <button name="ks_push_to_woocommerce" type="object" class="oe_highlight"
+                            string="Push to Woocommerce" context="{'push_to_woo':True}"/>
+                    <button name="ks_pull_from_woocommerce" type="object" class="oe_highlight"
+                            string="Pull from Woocommerce" context="{'pull_from_woo':True}"/>
+                </header>
+            </xpath>
+            <xpath expr="//field[@name='invoice_policy']" position="after">
+<!--                <field name="ks_woo_sku" readonly="1"/>-->
+            </xpath>
+            <xpath expr="//page[@name='general_information']" position="inside">
+                <group class="ks-col-message">
+                    <div class="alert alert-info" role="alert" style="margin-bottom:0px;">
+                        <h3>Note :-</h3>
+                        <ul>
+                            <li>
+                                Woocommerce SKU field is used for while mapping imported products only. Main Product template's SKU will be set here as well. <br/>
+
+                            </li>
+                        </ul>
+                    </div>
+                </group>
+
+            </xpath>
+        </field>
+    </record>
+    <record id="ks_woo_product_template_notebook_form" model="ir.ui.view">
+        <field name="name">ks.woo.product.template.view.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="ks_base_connector.ks_product_form_view_common_product_template_image"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='images']/group[1]" position="before">
+                <div class="alert alert-info" role="alert" style="margin-bottom:0px;">
+                    <h3>Note :-</h3>
+                    <ul>
+                        <li>
+                            For multiple databases please add "server_wide_modules = web,ks_woocommerce" into your
+                            odoo-config file.
+                        </li>
+                    </ul>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <!--    <record id="ks_hide_sync_button_from_variant" model="ir.ui.view">-->
+    <!--        <field name="name">ks.woo.hide.product.variant.sync.button</field>-->
+    <!--        <field name="model">product.product</field>-->
+    <!--        <field name="inherit_id" ref="product.product_normal_form_view"/>-->
+    <!--        <field name="priority">59</field>-->
+    <!--        <field name="arch" type="xml">-->
+    <!--            <xpath expr="//button[@name = 'ks_push_to_woocommerce']" position="attributes">-->
+    <!--                <attribute name="invisible">True</attribute>-->
+    <!--            </xpath>-->
+    <!--        </field>-->
+    <!--    </record>-->
+</odoo>

@@ -1,0 +1,35 @@
+version: "3.8"
+services:
+  odoo-db-dev:
+    image: postgres:15
+    shm_size: "2gb"
+    container_name: odoo-db-dev
+    restart: always
+    volumes:
+      - ./data/db-dev:/var/lib/postgresql/data
+    # ports:
+    #   - 5432:5432
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: odoo
+
+  odoo-web-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.odoo
+    container_name: odoo-web-dev
+    restart: always
+    volumes:
+      - ./data/odoo-dev:/var/lib/odoo
+      - ./dev/addons:/mnt/extra-addons
+    depends_on:
+      - odoo-db-dev
+    ports:
+      - 8169:8069
+      - 8172:8072
+    environment:
+      - HOST=odoo-db-dev
+      - PORT=5432
+      - USER=${POSTGRES_USER}
+      - PASSWORD=${POSTGRES_PASSWORD}

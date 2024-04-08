@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/css" href="style.css"?>
+<odoo>
+
+    <record id="ks_export_product_template" model="ir.actions.server">
+        <field name="name">Sync Product from woocommerce</field>
+        <field name="model_id" ref="model_ks_woo_product_template"/>
+        <field name="binding_model_id" ref="model_ks_woo_product_template"/>
+        <field name="binding_view_types">form,list</field>
+        <field name="state">code</field>
+        <field name="code">
+            action = records.ks_action_woo_import_product()
+        </field>
+    </record>
+
+    <record id="s_action_ks_export_product_template_configs" model="ir.actions.act_window">
+        <field name="name">Sync Product to woocommerce</field>
+        <field name="res_model">ks.woo.product.configuration</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="ks_woo_product_configuration_form_view"/>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="model_ks_woo_product_template"/>
+        <field name="binding_view_types">form,list</field>
+    </record>
+
+    <record id="ks_woo_product_template_view_form" model="ir.ui.view">
+        <field name="name">ks.woo.product.template.view.form</field>
+        <field name="model">ks.woo.product.template</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div name="button_box" class="oe_button_box">
+                        <button name="action_publish" type="object" class="oe_stat_button" icon="fa-globe icon"
+                                attrs="{'invisible': [('ks_published', '=',False)]}">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Published</span>
+                            </div>
+                        </button>
+                        <button name="action_publish" type="object" class="oe_stat_button" icon="fa-globe icon"
+                                attrs="{'invisible': [('ks_published', '=',True)]}">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Unpublished</span>
+                            </div>
+                        </button>
+                        <button name="action_show_variants" type="object" class="oe_stat_button" icon="fa-sitemap icon"
+                                attrs="{'invisible': [('ks_woo_product_type', '=','simple')]}">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Variants</span>
+                            </div>
+                        </button>
+                       <field name="ks_sync_status" invisible="1"/>
+                        <button name="" disabled="True" class="oe_stat_button"  attrs="{'invisible': [('ks_sync_status', '=', False)]}" icon="fa-check text-success">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">Synchronised</span>
+                                <span class="o_stat_text">With Woo</span>
+                            </div>
+                        </button>
+                        <button name="" disabled="True" class="oe_stat_button"  attrs="{'invisible': [('ks_sync_status', '=', True )]}" icon="fa-times-circle text-danger">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">UnSynchronised</span>
+                                <span class="o_stat_text">With Woo</span>
+                            </div>
+                        </button>
+
+                    </div>
+                    <div class="alert alert-info" role="alert" style="margin-bottom:0px;">
+                                <h3>Fields and their uses :-</h3>
+                                <ul>
+                                    <li>
+                                        <b>Odoo Product Template</b>
+                                        : Displays Odoo Linked Product Template Name
+                                    </li>
+                                    <li>
+                                        <b>Woo Product Type</b>
+                                        : Displays WooCommerce Product Type
+                                    </li>
+                                    <li>
+                                        <b>Woo Product ID</b>
+                                        : Displays WooCommerce ID
+                                    </li>
+                                    <li>
+                                        <b>Instance</b>
+                                        : Displays WooCommerce Instance Name
+                                    </li>
+                                    <li>
+                                        <b>Date Created</b>
+                                        : Displays date of creation
+                                    </li>
+                                    <li>
+                                        <b>Date Updated</b>
+                                        : Displays date of updation
+                                    </li>
+                                    <li>
+                                        <b>Modified On</b>
+                                        : Displays date of modification
+                                    </li>
+                                    <li>
+                                        <b>Last Synced On</b>
+                                        : Displays Last Sync date with WooCommerce
+                                    </li>
+                                    <li>
+                                        <b>Tags</b>
+                                        : Displays WooCommerce Tags
+                                    </li>
+                                    <li>
+                                        <b>Woo Regular Price</b>
+                                        : Displays WooCommerce Regular Price
+                                    </li>
+                                    <li>
+                                        <b>Woo Sale Price</b>
+                                        : Displays WooCommerce Sale Price
+                                    </li>
+                                </ul>
+                            </div>
+                    <group>
+                        <group>
+                            <field name="ks_product_template"/>
+                            <field name="ks_woo_product_type"/>
+                        </group>
+                        <group>
+                            <field name="ks_company_id"/>
+                            <field name="ks_woo_product_id"/>
+                            <field name="ks_published" invisible="1"/>
+                            <field name="ks_wc_instance"/>
+                            <field name="ks_date_created"/>
+                            <field name="ks_date_updated"/>
+                            <field name="ks_sync_date"/>
+                            <field name="ks_last_exported_date"/>
+                        </group>
+                        <group>
+                            <field name="ks_wc_tag_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                    <group attrs="{'invisible':[('ks_woo_product_type','!=','simple')]}">
+                        <group name="group_pricing">
+                            <label for="ks_woo_regular_price"/>
+                            <div title="Regular Pricelist" name="regular pricing" class="o_row">
+                                <field name="ks_woo_rp_pricelist" invisible="1"/>
+                                <field name="ks_woo_regular_price" class="oe_inline"/>
+                                <button name="open_regular_pricelist_rules_data" icon="fa-arrow-right" title="Regular Pricelist" type="object"
+                                        class="oe_inline"/>
+                            </div>
+                        </group>
+                        <group>
+                            <label for="ks_woo_sale_price"/>
+                            <div title="Sale Pricelist" name="sale pricing" class="o_row">
+                                <field name="ks_woo_sp_pricelist" invisible="1"/>
+                                <field name="ks_woo_sale_price" class="oe_inline"/>
+                                <button name="open_sale_pricelist_rules_data" icon="fa-arrow-right" title="Sale Pricelist"  type="object"
+                                        class="oe_inline"/>
+                            </div>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="General">
+                            <group string="Description">
+                                <field name="ks_woo_description" nolabel="1"/>
+                            </group>
+                            <group string="Short Description">
+                                <field name="ks_woo_short_description" nolabel="1"/>
+                            </group>
+                        </page>
+                        <page string="Gallery Images">
+                            <field name="profile_image" invisible="1"/>
+                            <field name="ks_wc_image_ids"
+                                   mode="kanban" options="{'create_text':'Add a Media'}" nolabel="1" class="o_kanban_renderer o_kanban_record"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="ks_woo_product_template_view_tree" model="ir.ui.view">
+        <field name="name">ks.woo.product.template.view.tree</field>
+        <field name="model">ks.woo.product.template</field>
+        <field name="arch" type="xml">
+            <tree create="false" edit="false" decoration-info="ks_mapped==True">
+                <field name="ks_woo_product_id"/>
+                <field name="ks_product_template"/>
+                <field name="ks_wc_instance"/>
+                <field name="ks_company_id"/>
+                <field name="ks_mapped" invisible="1"/>
+                <field name="ks_date_created"/>
+                <field name="ks_date_updated"/>
+                <field name="ks_sync_status" widget="boolean_toggle" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="ks_woo_product_template_view_search" model="ir.ui.view">
+        <field name="name">Product Template Search</field>
+        <field name="model">ks.woo.product.template</field>
+        <field name="arch" type="xml">
+            <search string="Product Template Search">
+                <field name="ks_wc_instance" string="Woo Instance"
+                       filter_domain="[('ks_wc_instance','ilike',self)]"/>
+                <field name="ks_product_template" string="Name"/>
+                <field name="ks_woo_product_id" string="Woo Id"/>
+                <separator/>
+                <filter string="Today Created Woo Products" name="woo_created_today"
+                        domain="[('ks_date_created','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0))), ('ks_date_created','&lt;=', datetime.datetime.combine(context_today(), datetime.time(23,59,59)))]"/>
+                <filter string="Today Updated Woo Products" name="woo_created_today"
+                        domain="[('ks_date_updated','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0))), ('ks_date_updated','&lt;=', datetime.datetime.combine(context_today(), datetime.time(23,59,59)))]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="groupby_instance" string="Woo Instance"
+                            context="{'group_by':'ks_wc_instance'}"/>
+                    <filter name="groupby_main_model" string="Odoo Model"
+                            context="{'group_by':'ks_product_template'}"/>
+<!--                    <filter string="Update Action Needed" name="ks_need_update"-->
+<!--                            domain="[('ks_need_update', '=', True)]"/>-->
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_ks_woo_product_template_">
+        <field name="name">WooCommerce Product Template</field>
+        <field name="res_model">ks.woo.product.template</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                **All the Synced WooCommerce Product will appear here.
+            </p>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,10 @@
+.o_kanban_renderer.o_kanban_ungrouped .o_kanban_record {
+    width: var(--KanbanRecord-width) !important;
+    margin: calc(var(--KanbanRecord-margin-v) * 0.5) var(--KanbanRecord-margin-h) !important;
+    max-width: var(--KanbanRecord-width) !important;
+}
+.o_kanban_renderer .o_kanban_record > div:not(.o_dropdown_kanban) {
+    padding: var(--KanbanRecord-padding-v) var(--KanbanRecord-padding-h);
+    width: 100% !important;
+    height: 100% !important;
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="ks_woocommerce_ks_report_id" model="ir.actions.report">
+            <field name="name">WooCommerce Report</field>
+            <field name="model">ks.woo.email.report</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">ks_woocommerce.ks_woo_report_sale</field>
+            <field name="report_file">ks_woocommerce.ks_woo_report</field>
+            <field name="binding_model_id" ref="model_ks_woo_email_report"/>
+            <field name="binding_type">report</field>
+        </record>
+
+    <record id="ks_woocommerce_inst_sales_report_id" model="ir.actions.report">
+            <field name="name">WooCommerce Sales Report</field>
+            <field name="model">ks.sales.print.report.wizard</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">ks_woocommerce.ks_inst_report_sale</field>
+    </record>
+</odoo>

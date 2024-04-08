@@ -1,0 +1,11 @@
+<odoo>
+    <data>
+        <record id="ks_seq_wocommerce_instance" model="ir.sequence">
+            <field name="name">Instance ID</field>
+            <field name="code">ks.woocommerce.instances</field>
+            <field name="prefix">WC</field>
+            <field name="padding">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

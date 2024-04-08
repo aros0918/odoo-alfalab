@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--Server Action for Exporting or Updating Customers from Odoo to WooCommerce-->
+    <record id="s_action_ks_export_customer" model="ir.actions.server">
+        <field name="name">Sync Customer from Woocommerce</field>
+        <field name="model_id" ref="model_ks_woo_partner"/>
+        <field name="binding_model_id" ref="model_ks_woo_partner"/>
+        <field name="binding_view_types">form,list</field>
+        <field name="state">code</field>
+        <field name="code">
+            action = records.ks_woo_import_customers()
+        </field>
+    </record>
+    <record id="s_action_ks_update_customer" model="ir.actions.server">
+        <field name="name">Sync Customer to Woocommerce</field>
+        <field name="model_id" ref="model_ks_woo_partner"/>
+        <field name="binding_model_id" ref="model_ks_woo_partner"/>
+        <field name="binding_view_types">form,list</field>
+        <field name="state">code</field>
+        <field name="code">
+            action = records.ks_woo_export_customers()
+        </field>
+    </record>
+
+    <record id="ks_woo_partner_view_form" model="ir.ui.view">
+        <field name="name">ks.woo.partner.view.form</field>
+        <field name="model">ks.woo.partner</field>
+        <field name="arch" type="xml">
+            <form create="false" edit="false">
+                <!--                <header>-->
+                <!--                    <button name="update_record_data_in_odoo" string="Update Data" type="object"-->
+                <!--                            class="oe_highlight" attrs="{'invisible': [('ks_need_update', '=', False)]}"/>-->
+                <!--                </header>-->
+                <sheet>
+                    <div name="button_box" class="oe_button_box">
+                        <field name="ks_sync_status" invisible="1"/>
+                        <button name="" class="oe_stat_button" disabled="True"
+                                attrs="{'invisible': [('ks_sync_status', '=', False)]}" icon="fa-check text-success">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">Synchronised</span>
+                                <span class="o_stat_text">With Woo</span>
+                            </div>
+                        </button>
+                        <button name="" class="oe_stat_button" disabled="True"
+                                attrs="{'invisible': [('ks_sync_status', '=', True )]}" icon="fa-times-circle text-danger">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">UnSynchronised</span>
+                                <span class="o_stat_text">With Woo</span>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="alert alert-info" role="alert" style="margin-bottom:0px;">
+                        <h3>Fields and their uses :-</h3>
+                        <ul>
+                            <li>
+                                <b>Company</b>
+                                : Displays Company Name
+                            </li>
+                            <li>
+                                <b>Odoo Partner</b>
+                                : Displays Odoo related record name
+                            </li>
+                            <li>
+                                <b>Woo Customer ID</b>
+                                : Displays WooCommerce Customer ID
+                            </li>
+                            <li>
+                                <b>Instance</b>
+                                : Displays WooCommerce Instance Name
+                            </li>
+                            <li>
+                                <b>Date Created</b>
+                                : Displays date of creation
+                            </li>
+                            <li>
+                                <b>Date Updated</b>
+                                : Displays date of updation
+                            </li>
+                            <li>
+                                <b>Modified On</b>
+                                : Displays date of modification
+                            </li>
+                            <li>
+                                <b>Last Synced On</b>
+                                : Displays Last Sync date with WooCommerce
+                            </li>
+                        </ul>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="ks_company_id"/>
+                            <field name="ks_res_partner"/>
+                        </group>
+                        <group>
+                            <field name="ks_woo_partner_id"/>
+                            <field name="ks_wc_instance"/>
+                            <field name="ks_date_created"/>
+                            <field name="ks_date_updated"/>
+                            <field name="ks_sync_date"/>
+                            <field name="ks_last_exported_date"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="ks_woo_partner_view_tree" model="ir.ui.view">
+        <field name="name">ks.woo.partner.view.tree</field>
+        <field name="model">ks.woo.partner</field>
+        <field name="arch" type="xml">
+            <tree create="false" edit="false" decoration-info="ks_mapped==True">
+                <field name="ks_woo_partner_id"/>
+                <field name="ks_res_partner"/>
+                <field name="ks_wc_instance"/>
+                <field name="ks_mapped" invisible="1"/>
+                <field name="ks_company_id"/>
+                <field name="ks_date_created"/>
+                <field name="ks_date_updated"/>
+                <field name="ks_sync_status" widget="boolean_toggle" readonly="1"/>
+                <!--                <field name="ks_sync_states" invisible="1"/>-->
+                <!--                <field name="ks_need_update" invisible="1"/>-->
+                <!--                <button name="update_record_data_in_odoo" string="Update Data" type="object"-->
+                <!--                        class="oe_highlight" attrs="{'invisible': [('ks_need_update', '=', False)]}"/>-->
+            </tree>
+        </field>
+    </record>
+
+    <!--    <record id="ks_form_mapped_customer_addresses" model="ir.ui.view">-->
+    <!--        <field name="name">ks.res.partner.address.form</field>-->
+    <!--        <field name="model">ks.res.partner.address</field>-->
+    <!--        <field name="arch" type="xml">-->
+    <!--            <form create="false" edit="false">-->
+    <!--                <sheet>-->
+    <!--                    <group>-->
+    <!--                        <group>-->
+    <!--                            <field name="ks_wc_instance"/>-->
+    <!--                            <field name="ks_odoo_partner_id"/>-->
+    <!--                        </group>-->
+    <!--                        <group>-->
+    <!--                            <field name="ks_type"/>-->
+    <!--                        </group>-->
+    <!--                    </group>-->
+    <!--                    <group>-->
+    <!--                        <field name="ks_name"/>-->
+    <!--                        <field name="ks_first_name"/>-->
+    <!--                        <field name="ks_last_name"/>-->
+    <!--                        <field name="ks_email"/>-->
+    <!--                        <field name="ks_phone"/>-->
+    <!--                        <field name="ks_street"/>-->
+    <!--                        <field name="ks_street2"/>-->
+    <!--                        <field name="ks_city"/>-->
+    <!--                        <field name="ks_zip"/>-->
+    <!--                        <field name="ks_state_id"/>-->
+    <!--                        <field name="ks_country_id"/>-->
+    <!--                    </group>-->
+    <!--                </sheet>-->
+    <!--            </form>-->
+    <!--        </field>-->
+    <!--    </record>-->
+
+    <!--Search View for WooCommerce Customer-->
+    <record id="ks_woo_partner_view_search" model="ir.ui.view">
+        <field name="name">ks.woo.partner.view.search</field>
+        <field name="model">ks.woo.partner</field>
+        <field name="arch" type="xml">
+            <search>
+                <!--                <field name="ks_username" string="WooCommerce Username"-->
+                <!--                       filter_domain="[('ks_woo_username','ilike',self)]"/>-->
+                <field name="ks_woo_partner_id" string="WooCommerce Id"
+                       filter_domain="[('ks_woo_partner_id','ilike',self)]"/>
+                <field name="ks_res_partner" string="Name"/>
+
+                <field name="ks_wc_instance" string="Woo Instance"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter string="Woo Instance Id" name="ks_wc_instance" context="{'group_by':'ks_wc_instance'}"/>
+                    <filter string="Odoo Partner" name="ks_res_partner" context="{'group_by':'ks_res_partner'}"/>
+                    <filter string="Odoo Model" name="main_model_group" context="{'group_by':'ks_res_partner'}"/>
+                    <filter string="Today Created Customers" name="ks_date_created"
+                            domain="[('ks_date_created', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 00:00:00')),
+                                 ('ks_date_created', '&lt;=',datetime.datetime.now().strftime('%Y-%m-%d 23:23:59'))]"/>
+                    <filter string="Today Updated Customers" name="ks_date_updated"
+                            domain="[('ks_date_updated', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 00:00:00')),
+                                 ('ks_date_updated', '&lt;=',datetime.datetime.now().strftime('%Y-%m-%d 23:23:59'))]"/>
+                    <!--                    <filter string="Update Action Needed" name="ks_need_update"-->
+                    <!--                            domain="[('ks_need_update', '=', True)]"/>-->
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_ks_woo_partner">
+        <field name="name">WooCommerce Customers</field>
+        <field name="res_model">ks.woo.partner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                **All the Synced WooCommerce Customers will appear here.
+            </p>
+        </field>
+    </record>
+</odoo>

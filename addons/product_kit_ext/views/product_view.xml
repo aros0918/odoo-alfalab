@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_kit_product_template_form_view" model="ir.ui.view">
+        <field name="name">product.template.common.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <div name="options" position="inside">
+                <div attrs="{'invisible': [('type', '=', 'service')]}">
+                    <field name="is_kit"/>
+                    <label for="is_kit"/>
+                </div>
+            </div>
+            <page name="purchase" position="after">
+                <page name="kit" string="Sub Products" attrs="{'invisible': ['|', ('is_kit', '=', False), ('type', '=', 'service')]}">
+                    <field name="sub_product_line_ids" nolabel="1" attrs="{'required': [('is_kit', '=', True)]}">
+                        <tree string="Sub Products lines" editable="bottom">
+                            <field name="product_id" required="1" context="{'default_is_kit': False}" domain="[('is_kit', '=', False), ('type', '!=', 'service')]"/>
+                            <field name="standard_price" sum="Total"/>
+                            <field name="lst_price" sum="Total"/>
+                            <field name="qty_available"/>
+                            <field name="quantity" required="1"/>
+                        </tree>
+                    </field>
+                </page>
+            </page>
+        </field>
+    </record>
+
+    <record id="sub_product_tree_view" model="ir.ui.view">
+        <field name="name">sub.product.tree</field>
+        <field name="model">sub.product.lines</field>
+        <field name="arch" type="xml">
+            <tree string="Sub Product Values" edit='false'>
+                <field name="product_id"/>
+                <field name="quantity"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="sub_product_action" model="ir.actions.act_window">
+        <field name="name">Sub Products</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sub.product.lines</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="product_template_sub_product_line_form" model="ir.ui.view">
+        <field name="name">product.template.sub.product.line.form</field>
+        <field name="model">sub.product.lines</field>
+        <field name="arch" type="xml">
+            <form string="Sub Product and Values">
+                <sheet>
+                    <group>
+                        <field name="product_id"/>
+                        <field name="quantity"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_product_kit_search_new" model="ir.ui.view">
+        <field name="name">Prooduct Pack</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+            <filter name="consumable" position="after">
+                <filter string="Is Product Kit" name="is_kit" domain="[('is_kit','=',True)]"/>
+            </filter>
+        </field>
+    </record>
+
+    <!-- <menuitem id="sub_products_menu" name="Sub Products" parent="sale.menu_sale_config" action="sub_product_action"/> -->
+
+</odoo>

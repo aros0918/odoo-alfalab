@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+ <record id="ks_map_customers_action_server" model="ir.actions.server">
+        <field name="name">Map Existing Records</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="binding_model_id" ref="base.model_res_partner"/>
+        <field name="state">code</field>
+        <field name="code">
+            action=model.open_mapper()
+        </field>
+    </record>
+    <record id="ks_action_push_partner" model="ir.actions.server">
+        <field name="name">Push partner to woocommerce</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="binding_model_id" ref="base.model_res_partner"/>
+        <field name="state">code</field>
+        <field name="code">
+            action=model.ks_push_to_woocommerce()
+        </field>
+    </record>
+
+    <record id="ks_action_pull_partner" model="ir.actions.server">
+        <field name="name">Pull partner from woocommerce</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="binding_model_id" ref="base.model_res_partner"/>
+        <field name="state">code</field>
+        <field name="code">
+            action=model.ks_pull_from_woocommerce()
+        </field>
+    </record>
+
+    <!-- Form view for  Customers-->
+    <record id="ks_woo_res_partner_view_form" model="ir.ui.view">
+        <field name="name">ks.woo.res.partner.view.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                <button name="action_woo_layer_customers" title = "WooCommerce Customers" type="object" class="oe_stat_button" icon="fa-server icon">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_text">WooCommerce</span>
+                        <span class="o_stat_text">Customers</span>
+                    </div>
+                </button>
+
+            </xpath>
+            <xpath expr="/form/*" position="before">
+                <header>
+                    <button name="ks_push_to_woocommerce" type="object" class="oe_highlight"
+                            string="Push to Woocommerce" context="{'push_to_woo':True}"/>
+                    <button name="ks_pull_from_woocommerce" type="object" class="oe_highlight"
+                            string="Pull from Woocommerce" context="{'pull_from_woo':True}"/>
+                </header>
+            </xpath>
+            <xpath expr="//field[@name='child_ids']" position="before">
+                <div class="alert alert-danger" role="alert" groups="ks_woocommerce.ks_woocommerce_group">
+                    <p>
+                        <b>Woocommerce Connector Warning</b> :- Email field is mandatory to fill while exporting the customer.
+                    </p>
+                    <p>
+                        <b>Woocommerce Connector Info</b> :- If child addresses are added, Then the phone number of child addresses is considered as Phone no. of Woocommerce Customer.
+                    </p>
+                </div>
+            </xpath>
+            <!--            <xpath expr="//field[@name='company_type']" position="after">-->
+            <!--&lt;!&ndash;                <button name="ks_get_partner_data_format" string="Check Partner Create" type="object" class="oe_highlight"/>&ndash;&gt;-->
+            <!--            </xpath>-->
+            <!--            &lt;!&ndash;            <button name="ks_get_partner_data_format" string="Ok" type="object" class="oe_highlight"/>&ndash;&gt;-->
+            <!--            <xpath expr="//page[@name='internal_notes']" position="after">-->
+            <!--            </xpath>-->
+        </field>
+    </record>
+
+
+    <!--Window Action for WooCommerce Customers-->
+    <record model="ir.actions.act_window" id="action_woo_res_partner">
+        <field name="name">Customers</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                **All the prepared Customers will appear here.
+            </p>
+        </field>
+    </record>
+
+</odoo>

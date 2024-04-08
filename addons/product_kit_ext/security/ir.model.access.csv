@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sub_product_lines_salesman,sub.product.lines salesman,model_sub_product_lines,sales_team.group_sale_salesman,1,0,0,0
+access_sub_product_lines_manager,sub.product.lines manager,model_sub_product_lines,sales_team.group_sale_manager,1,1,1,1
+access_sub_product_lines_saleman_all_leads,sub.product.lines saleman all leads,model_sub_product_lines,sales_team.group_sale_salesman_all_leads,1,1,1,0

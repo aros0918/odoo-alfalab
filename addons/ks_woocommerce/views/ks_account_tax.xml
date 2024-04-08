@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--Window Action for WooCommerce Taxes-->
+    <record model="ir.actions.act_window" id="action_woocommerce_taxes">
+        <field name="name">WooCommerce Taxes</field>
+        <field name="res_model">account.tax</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('ks_wc_instance', '!=', False)]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                **All the WooCommerce Tax will appear here.
+            </p>
+        </field>
+    </record>
+
+    <record id="view_tax_form_extend" model="ir.ui.view">
+        <field name="name">account.tax.form.extended</field>
+        <field name="model">account.tax</field>
+        <field name="inherit_id" ref="account.view_tax_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group" position="before">
+                <div class="alert alert-info" role="alert" style="margin-bottom:0px;">
+                                <h3>Fields and their uses :-</h3>
+                                <ul>
+                                    <li>
+                                        <b>Woo ID</b>
+                                        : Displays WooCommerce ID
+                                    </li>
+                                    <li>
+                                        <b>Instance</b>
+                                        : Displays WooCommerce Instance Name
+                                    </li>
+                                </ul>
+                            </div>
+            </xpath>
+            <xpath expr="//field[@name='active']" position="after">
+                <field name="ks_woo_id" attrs="{'invisible': [('ks_wc_instance', '=', False)]}"/>
+                <field name="ks_wc_instance" attrs="{'invisible': [('ks_wc_instance', '=', False)]}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,118 @@
+* {
+  font-family: "DM Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (min-width: 992px) {
+  .ks-ug .view-100vh {
+    height: 100vh;
+    overflow: auto;
+  }
+}
+.ks-ug-menus .ks-logo-small {
+  width: 30px;
+}
+@media (max-width: 991px) {
+  .ks-ug-menus .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    left: 0;
+    z-index: 1;
+    padding: 1rem !important;
+  }
+}
+@media (max-width: 991px) {
+  .ks-ug-menus .ks-logo-container {
+    margin-top: 60px;
+  }
+}
+.ks-ug-main-link {
+  padding: 5px 8px;
+  transition: 0.2s ease-in-out;
+  border-radius: 8px;
+}
+.ks-ug-main-link:hover {
+  background: #f9ebd2;
+}
+.ks-ug-main-link a {
+  color: black;
+  font-weight: bold;
+}
+.ks-ug-main-link a:hover {
+  text-decoration: none;
+}
+.ks-ug-main-link.active {
+  background: #f9ebd2;
+}
+.ks-ug-collaspe-link {
+  padding: 5px;
+}
+.ks-ug-collaspe-link > a {
+  font-weight: bold;
+}
+.ks-ug-collaspe-link > a[aria-expanded=true] .ks-collapse-down {
+  transform: rotate(180deg);
+}
+.ks-ug-collaspe-link .ks-collapse-down {
+  width: 10px;
+  height: 24px;
+  transition: 0.2s ease-in-out;
+}
+.ks-ug-search-img {
+  width: 15px;
+  margin-top: 6px;
+  margin-left: 6px;
+  opacity: 0.5;
+}
+.ks-ug-input {
+  border-radius: 5px;
+}
+.ks-ug-input:focus {
+  outline: none;
+}
+.ks-ug-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+.ks-ug-scroll::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+.ks-ug-scroll::-webkit-scrollbar-thumb {
+  background-color: #fd7e14;
+  outline: 1px solid slategrey;
+}
+.ks-ug-logo-full {
+  height: 50px;
+}
+.ks-ug-content {
+  scroll-behavior: smooth;
+}
+.ks-ug-content-heading {
+  box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.12);
+}
+
+.cursor-poniter {
+  cursor: pointer;
+}
+
+.ks-right-arrow {
+  width: 15px;
+}
+
+section.border-bottom {
+  border-bottom: 3px solid #fd7e14 !important;
+}
+
+.ks-shadow-none {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+@media (max-width: 990px) {
+  section {
+    padding-top: 100px !important;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

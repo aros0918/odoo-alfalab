@@ -1,0 +1,820 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="ks_woo_connector_instance_view_form" model="ir.ui.view">
+        <field name="name">ks.woo.connector.instance.view.form</field>
+        <field name="model">ks.woo.connector.instance</field>
+        <field name="arch" type="xml">
+            <form duplicate="0">
+                <header>
+                    <field name="ks_instance_state" widget="statusbar" nolabel="1" readonly="1"/>
+                    <button name="ks_woo_connect_to_instance" string="Connect Instance" type="object"
+                            attrs="{'invisible': [('ks_instance_state', 'in', ['connected', 'active'])]}"
+                            class="oe_highlight"/>
+                    <button name="ks_woo_activate_instance" string="Activate Instance" type="object"
+                            attrs="{'invisible': [('ks_instance_state', 'in', ['active', 'draft', 'deactivate'])]}"
+                            class="oe_highlight"/>
+                    <button name="ks_woo_deactivate_instance" string="Deactivate Instance" type="object"
+                            attrs="{'invisible': [('ks_instance_state', 'in', ['connected', 'draft', 'deactivate'])]}"
+                            class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <div name="button_box" class="oe_button_box">
+                        <button name="action_reset_credentials" type="object" class="oe_stat_button" icon="fa-undo icon"
+                                attrs="{'invisible':[('ks_instance_state','in',['draft'])]}">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Reset</span>
+                                <span class="o_stat_text">Credentials</span>
+                            </div>
+                        </button>
+                        <button name="action_all_pricelists" type="object" class="oe_stat_button" icon="fa-money icon">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Price lists</span>
+                            </div>
+                        </button>
+                        <button name="action_all_crons" type="object" class="oe_stat_button" icon="fa-cog icon"
+                                groups="ks_woocommerce.ks_woocommerce_group,base.group_system">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Configure</span>
+                                <span class="o_stat_text">Schedulers</span>
+                            </div>
+                        </button>
+                        <button name="action_active_crons" type="object" class="oe_stat_button" icon="fa-spinner  icon"
+                                groups="ks_woocommerce.ks_woocommerce_group,base.group_system">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Active</span>
+                                <span class="o_stat_text">Schedulers</span>
+                            </div>
+                        </button>
+
+                    </div>
+
+                    <widget name="web_ribbon" title="Activated" bg_color="bg-success"
+                            attrs="{'invisible': [('ks_instance_state', '!=', 'active')]}"/>
+                    <widget name="web_ribbon" title="Deactivated" bg_color="bg-danger"
+                            attrs="{'invisible': [('ks_instance_state', '!=', 'deactivate')]}"/>
+                    <widget name="web_ribbon" title="Connected" bg_color="bg-warning"
+                            attrs="{'invisible': [('ks_instance_state', '!=', 'connected')]}"/>
+
+                    <div class="alert alert-info" role="alert" style="margin-bottom:0px;">
+                        <h3>Fields and their uses :-</h3>
+                        <ul name="field_listing">
+                            <li>
+                                <b>Connector Instance Name</b>
+                                : Displays WooCommerce Instance Name
+                            </li>
+                            <li>
+                                <b>Company</b>
+                                : Shows the name of the company
+                            </li>
+                            <li>
+                                <b>Require Meta Mapping</b>
+                                : If you turn this on, you can initiate the excellent meta mapping feature
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="oe_title" id="title">
+                        <label for="ks_instance_name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="ks_instance_name" placeholder="Instance Name" style="width: 150%;"/>
+                        </h1>
+                    </div>
+                    <group name="ks_instance_info">
+                        <field name="ks_company_id"/>
+                        <field name="ks_want_maps" widget="boolean_toggle"/>
+                        <field name="ks_dashboard_id" invisible='1'/>
+                    </group>
+                    <notebook>
+                        <page name="authentication" string="Authentication">
+                            <div class="alert alert-info" role="alert" style="margin-bottom:0px;">
+                                <h3>Fields and their uses :-</h3>
+                                <ul>
+                                    <li>
+                                        <b>Store URL</b>
+                                        : Displays the WooCommerce Store URL
+                                    </li>
+                                    <li>
+                                        <b>Customer Key</b>
+                                        : Customer Key of the WooCommerce, not visible by default
+                                    </li>
+                                    <li>
+                                        <b>Customer Secret</b>
+                                        : Customer Secret of the WooCommerce, not visible by default
+                                    </li>
+                                    <li>
+                                        <b>WooCommerce Version</b>
+                                        : It displays the WooCommerce version being used
+                                    </li>
+                                    <li>
+                                        <b>Verify SSL</b>
+                                        : Checkbox indicator for SSL Verification
+                                    </li>
+                                    <li>
+                                        <b>Authorization</b>
+                                        : Checkbox indicator for Authorization
+                                    </li>
+                                </ul>
+                            </div>
+                            <group name="instance_info">
+                                <group name="instance_auth_info">
+                                    <field name="ks_store_url"
+                                           attrs="{'readonly': [('ks_instance_state', '!=', 'draft')]}"/>
+                                    <field name="ks_customer_key" password="True"
+                                           attrs="{'readonly': [('ks_instance_state', '!=', 'draft')]}"/>
+                                    <field name="ks_customer_secret" password="True"
+                                           attrs="{'readonly': [('ks_instance_state', '!=', 'draft')]}"/>
+                                </group>
+                                <group name="instance_version_info">
+                                    <field name="ks_version"/>
+                                    <field name="ks_verify_ssl"/>
+                                    <field name="ks_auth"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="general" string="General Information">
+                            <div class="alert alert-info" role="alert" style="margin-bottom:0px;">
+                                <h3>Fields and their uses :-</h3>
+                                <ul>
+                                    <li>
+                                        <b>Warehouse</b>
+                                        : Shows the location of the warehouse
+                                    </li>
+                                    <li>
+                                        <b>Multi-Currency Option</b>
+                                        : Checkbox indicator for multi-currency feature
+                                    </li>
+                                    <li>
+                                        <b>Main Currency</b>
+                                        : Shows the main currency in use
+                                    </li>
+                                    <li>
+                                        <b>Multi-Currency</b>
+                                        : Shows the other currencies selected
+                                    </li>
+                                </ul>
+                                <h3>Note :-</h3>
+                                <ul>
+                                    <li>
+                                        For saving the product name as translated term in another language, SKU Must be present in product data.
+                                    </li>
+                                    <li>
+                                        Generating Translated Term For new Odoo Product(new Terms), is a Odoo default process and isn't modified by the connector.
+                                    </li>
+                                </ul>
+                            </div>
+                            <group>
+                                <group name="basic">
+                                    <field name="ks_warehouse"
+                                           attrs="{'required':[('ks_instance_state', '!=', 'draft')] }"/>
+                                    <field name="ks_location_id" domain="" attrs="{'readonly':[('ks_warehouse','=',False)],
+                                                                         'required':[('ks_instance_state', '!=', 'draft')]}"/>
+<!--                                    <field name="ks_language"/>-->
+                                </group>
+                                <group name="currency">
+                                    <field name="ks_multi_currency_option"/>
+                                    <field name="ks_woo_currency" options="{'no_create': True}"
+                                           attrs="{'required':[('ks_instance_state', '!=', 'draft')]}"/>
+                                    <field name="ks_woo_multi_currency" options="{'no_create': True}"
+                                           widget="many2many_tags"
+                                           attrs="{'required':[('ks_multi_currency_option', '!=', False), ('ks_instance_state', '!=', 'draft') ],
+                                               'invisible':[('ks_multi_currency_option','=',False)]}"/>
+
+                                </group>
+                            </group>
+                        </page>
+                        <page name="product" string="Product Information">
+                            <div class="alert alert-info" role="alert" style="margin-bottom:0px;">
+                                <h3>Fields and their uses :-</h3>
+                                <ul>
+                                    <li>
+                                        <b>Woo Sync/Import Images?</b>
+                                        : Checkbox to enable import of Images of products on syncing
+                                    </li>
+                                    <li>
+                                        <b>Export Variation Images</b>
+                                        : Checkbox to enable export of Images of Variant products
+                                    </li>
+                                    <li>
+                                        <b>Woo Sync/Import Price?</b>
+                                        : Checkbox to enable import of Price of product on syncing
+                                    </li>
+                                    <li>
+                                        <b>Import Including Draft product?</b>
+                                        : Enable/Disable Import Draft(Unpublished) Products
+                                    </li>
+                                    <li>
+                                        <b>Woo Import/Update Category Name?</b>
+                                        : Enable/Disable Import/Update categories Name from Woo
+                                    </li>
+                                </ul>
+                            </div>
+                            <group>
+                                <group>
+                                    <field name="ks_sync_images"/>
+                                    <field name="ks_sync_price"/>
+                                    <field name="ks_update_mapped_category"/>
+                                </group>
+                                <group>
+                                    <field name="ks_weight_unit" invisible="True"/>
+                                    <field name="ks_export_image_variation"/>
+                                    <field name="ks_sync_unpublished_product"/>
+                                    <field name="ks_woo_auto_stock_import"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="payment" string="Payment Information">
+                            <div class="alert alert-info" role="alert" style="margin-bottom:0px;">
+                                <h3>Fields and their uses :-</h3>
+                                <ul>
+                                    <li>
+                                        <b>Regular Main Pricelist</b>
+                                        : Manages regular sale price of the product from WooCommerce instance.
+                                    </li>
+                                    <li>
+                                        <b>OnSale Main Pricelist</b>
+                                        : Manages on sale price/discounted price of the product from WooCommerce
+                                        instance.
+                                    </li>
+                                    <li>
+                                        <b>Payment Term</b>
+                                        : Shows the payment term/mechanism
+                                    </li>
+                                </ul>
+                            </div>
+                            <group>
+                                <group name="pricelist_info">
+                                    <field name="ks_woo_regular_pricelist"/>
+                                    <field name="ks_woo_sale_pricelist"/>
+                                </group>
+                                <group name="pymnt_term_info">
+                                    <field name="ks_payment_term_id"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="order" string="Order Information">
+                            <div class="alert alert-info" role="alert" style="margin-bottom:0px;">
+                                <h3>Fields and their uses :-</h3>
+                                <ul>
+                                    <li>
+                                        <b>Auto Order Status Update to Woo</b>
+                                        : Enables/disables - automatically order status synchronisation with WooCommerce
+                                    </li>
+                                    <li>
+                                        <b>Default Order Prefix</b>
+                                        : Enables/disables - default order prefix of the Odoo
+                                    </li>
+                                    <li>
+                                        <b>Order Prefix</b>
+                                        : Prefix added on orders imported from woo to odoo is shown here
+                                    </li>
+                                    <li>
+                                        <b>Order Status</b>
+                                        : Shows the configuration of the imported order status
+                                    </li>
+                                    <li>
+                                        <b>Sales Team</b>
+                                        : Shows the location of the sales team
+                                    </li>
+                                    <li>
+                                        <b>Sales Person</b>
+                                        : Displays the name of the sales person
+                                    </li>
+                                    <li>
+                                        <b>Import Orders Through</b>
+                                        : Shows the status of orders imported portal
+                                    </li>
+                                    <li>
+                                        <b>Date Before</b>
+                                        : Set the date, before which the orders are to be imported via WooCommerce Auto
+                                        Order Import from Woo to Odoo Scheduler.
+                                    </li>
+                                    <li>
+                                        <b>Date After</b>
+                                        : Set the date, after which the orders are to be imported via WooCommerce Auto
+                                        Order Import from Woo to Odoo Scheduler.
+                                    </li>
+                                    <li>
+                                        <b>Actual/Guest customer</b>
+                                        : Enables/disables - Creation of Actual customer out Order's Guest Customer
+                                    </li>
+                                    <li>
+                                        <b>Sale Workflow Configurations</b>
+                                        : Shows the flow of the order when imported to the odoo
+                                    </li>
+                                    <li>
+                                        <b>Emails Configurations</b>
+                                        : Sends a monthly sales report to the email-ids provided in it.
+                                    </li>
+                                </ul>
+                            </div>
+                            <group>
+                                <group>
+                                    <field name="ks_auto_order_status_update_to_woo" widget="boolean_toggle"/>
+                                    <field name="ks_auto_order_date_update_to_created_date" widget="boolean_toggle"/>
+                                    <field name="ks_default_order_prefix" widget="boolean_toggle"/>
+                                    <field name="ks_custom_order_prefix"
+                                           attrs="{'invisible':[('ks_default_order_prefix', '=', True)], 'required':[('ks_default_order_prefix', '=', False)] }"/>
+                                    <field name="ks_order_status"
+                                           options="{'no_open':True,'no_create':1,'no_create_edit':1}"
+                                           widget="many2many_tags"/>
+                                </group>
+                                <group>
+                                    <field name="ks_sales_team"
+                                           attrs="{'required':[('ks_instance_state', '!=', 'draft')] }"/>
+                                    <field name="ks_sales_person"
+                                           attrs="{'required':[('ks_instance_state', '!=', 'draft')] }"/>
+                                    <field name="ks_order_import_type"
+                                           attrs="{'invisible':[('ks_order_status', '=', 'False')] }"/>
+                                    <field name="ks_order_date_before"/>
+                                    <field name="ks_order_date_after"/>
+                                </group>
+                            </group>
+                            <group string="Customer">
+                                <group>
+                                    <field name="ks_customer_address"/>
+                                    <field name="ks_customer_company_type" widget="boolean_toggle"/>
+                                    <field name="ks_import_customer_images"/>
+                                </group>
+                                <group>
+                                    <field name="ks_is_named_guest_customer"/>
+                                    <field name="ks_automatic_reverse_workflow" widget="boolean_toggle"/>
+                                </group>
+                            </group>
+                            <group string="Sale Workflow Configurations" class="ks-col-message"
+                                   attrs="{'invisible':[('ks_order_import_type', '=', False)]}">
+                                <field name="ks_sale_workflow_ids" nolabel="1" context="{'instance':active_id}">
+                                    <tree editable="bottom">
+                                        <field name="ks_sale_workflow_id" required="1"/>
+                                        <field name="ks_wc_instance" invisible="1"/>
+                                        <field name="ks_order_import_type" invisible="1"/>
+                                        <field name="ks_woo_payment_id"
+                                               options="{'no_open':True,'no_create':1,'no_create_edit':1}"
+                                               attrs="{'invisible':[('ks_order_import_type', '!=', 'payment_gateway')],
+                                                       'required': [('ks_order_import_type', '=', 'payment_gateway')]}"/>
+                                        <field name="ks_woo_order_status"
+                                               widget="many2many_tags"
+                                               options="{'no_open':True,'no_create':1,'no_create_edit':1}"
+                                               attrs="{'invisible':[('ks_order_import_type', '!=', 'status')],
+                                                       'required': [('ks_order_import_type', '=', 'status')]}"/>
+                                    </tree>
+                                </field>
+                            </group>
+                            <group name="email" string="Emails Configurations" class="ks-col-message">
+                                <field name="ks_email_ids" widget="one2many" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="email" nolabel="1"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                        <page name="tax" string="Tax Information">
+                            <div class="alert alert-info" role="alert" style="margin-bottom:0px;">
+                                <h3>Fields and their uses :-</h3>
+                                <ul>
+                                    <li>
+                                        <b>Invoice TAX Account</b>
+                                        : Show the tax account which will be used for invoice tax default account
+                                    </li>
+                                    <li>
+                                        <b>Credit Note TAX Account</b>
+                                        : Show the tax account which will be used for Credit Note/Refund tax default
+                                        account
+                                    </li>
+                                </ul>
+                            </div>
+                            <group>
+                                <group>
+                                    <field name="ks_invoice_tax_account"
+                                           options="{'no_create': True}"/>
+                                </group>
+                                <group>
+                                    <field name="ks_credit_tax_account"
+                                           options="{'no_create': True}"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="stock" string="Stock Information">
+                            <div class="alert alert-info" role="alert" style="margin-bottom:0px;">
+                                <h3>Fields and their uses :-</h3>
+                                <ul>
+                                    <li>
+                                        <b>Auto Stock Update to Woo</b>
+                                        : Enables/disables - automatically stock synchronisation with WooCommerce
+                                    </li>
+                                    <li>
+                                        <b>Stock Field Type</b>
+                                        : Show the stock type which will be used to update on WooCommerce
+                                    </li>
+                                </ul>
+                            </div>
+                            <group>
+                                <field name="ks_auto_stock_sync_to_woo" widget="boolean_toggle"/>
+                                <field name="ks_stock_field_type"
+                                       attrs="{'required':[('ks_instance_state', '!=', 'draft')] }"/>
+                            </group>
+                        </page>
+                        <page name="webhooks_conf" string="Webhooks Configuration">
+                            <div class="alert alert-info" role="alert" style="margin-bottom:0px;">
+                                <h3>Fields and their uses :-</h3>
+                                <ul>
+                                    <li>
+                                        <b>Webhooks</b>
+                                        : Shows all the webhooks which are configured
+                                    </li>
+                                    <li>
+                                        <b>NOTE</b>
+                                        : Single webhook to be configured per topic.
+                                    </li>
+                                </ul>
+                            </div>
+                            <div name="webhook_refresh_button" style="padding-right: 46px; padding-top: 10px;">
+                                <button name="ks_sync_webhooks" string="Refresh" type="object" icon="fa-refresh"
+                                        style="float: right;"
+                                />
+                            </div>
+                            <group name="webhooks_conf" class="ks-col-message">
+                                <field name="ks_webhook_conf" nolabel="1">
+                                    <tree decoration-success="status=='active'" decoration-danger="status=='disabled'">
+                                        <field name="name"/>
+                                        <field name="operations"/>
+                                        <field name="status"/>
+                                        <field name="base_url"/>
+                                        <field name="ks_woo_id"/>
+                                        <field name="ks_instance_id"/>
+                                        <button name="params_update" string="Toggle Status"
+                                                type="object"
+                                                class="btn-primary" attrs="{'invisible':[('ks_woo_id', '=', False)]}"/>
+                                        <button name="params_sync" string="Sync"
+                                                type="object"
+                                                class="btn-primary" attrs="{'invisible':[('ks_woo_id', '!=', False)]}"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                        <page name="meta_maps" string="Meta Mappings"
+                              attrs="{'invisible':[('ks_want_maps', '=', False)]}">
+                            <field name="ks_meta_mapping_ids" widget="one2many">
+                                <tree editable="bottom">
+                                    <field name="ks_model_id"/>
+                                    <field name="ks_key"/>
+                                    <field name="ks_fields"/>
+                                    <field name="ks_active" widget="boolean_toggle"/>
+                                </tree>
+                            </field>
+
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="ks_woo_connector_instance_view_tree" model="ir.ui.view">
+        <field name="name">ks.woo.connector.instance.view.tree</field>
+        <field name="model">ks.woo.connector.instance</field>
+        <field name="arch" type="xml">
+            <tree string="Base Connector Instance">
+                <field name="ks_instance_name"/>
+                <field name="ks_company_id"/>
+                <field name="ks_instance_state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="ks_woo_connector_instance_view_kanban" model="ir.ui.view">
+        <field name="name">WooCommerce Dashboard</field>
+        <field name="model">ks.woo.connector.instance</field>
+        <field name="arch" type="xml">
+            <kanban class="oe_background_grey o_kanban_dashboard o_account_kanban">
+                <field name="ks_instance_name"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="o_kanban_record woo-box-width">
+                            <div class="woo-header-box">
+                                <img src="/ks_woocommerce/static/src/img/woocommerce-logo.png" alt="WooCommerce"
+                                     class="ks_woo_img"/>
+                                <t t-value="record.ks_instance_name" t-set="dashboard"/>
+                                <t t-call="WooTop"/>
+                            </div>
+                            <div class="container o_kanban_card_content w-100">
+                                <div class="row">
+                                    <t t-if="ks_instance_name != '' || ks_instance_name != ''">
+                                        <div class="col-9 o_kanban_primary_left dashboard_inner_section woo-inner-box h-unset">
+                                            <button name="open_specific_operation_form_action"
+                                                    class="btn btn-primary py-2 px-4 px-md-3 mr-md-2 mb-3 mb-md-0 d-inline-block c-width"
+                                                    type="object"
+                                                    string="Operation">
+                                                <span>Specific Operation</span>
+                                            </button>
+                                            <button name="open_multiple_operation_form_action"
+                                                    class="btn btn-primary py-2 px-4 px-md-3 ml-md-2 d-inline-block c-width"
+                                                    type="object" string="Operation">
+                                                <span>Multiple Operation</span>
+                                            </button>
+                                        </div>
+                                        <div class="dashboard_inner_section_label h-unset col-3">
+                                            <div>
+                                                <a type="object" name="ks_open_woo_configuration">
+                                                    Configuration
+                                                </a>
+                                            </div>
+                                            <div class="">
+                                                <a name="ks_open_instance_logs" type="object">
+                                                    Logs
+                                                </a>
+                                            </div>
+
+                                        </div>
+                                        <div class="o_kanban_primary_right dashboard_card_manager woo-footer-box">
+                                            <div class="o_kanban_card_manage_section o_kanban_manage_view d-flex justify-content-between dashboard_card_manager">
+                                                <div class="dashboard_footer">
+                                                    <a name="ks_open_woo_orders" type="object">ORDERS</a>
+                                                    <span class="woo-record-count"
+                                                          t-att-title="record.ks_orders_count.raw_value">
+                                                        <field name="ks_orders_count"/>
+                                                    </span>
+                                                </div>
+                                                <div class="dashboard_footer">
+                                                    <a name="ks_open_woo_products" type="object">PRODUCTS</a>
+                                                    <span class="woo-record-count"
+                                                          t-att-title="record.ks_products_count.raw_value">
+                                                        <field name="ks_products_count"/>
+                                                    </span>
+                                                </div>
+                                                <div class="color-margin-top-new dashboard_footer">
+                                                    <a name="ks_open_woo_coupons" type="object">COUPONS</a>
+                                                    <span class="woo-record-count"
+                                                          t-att-title="record.ks_coupons_count.raw_value">
+                                                        <field name="ks_coupons_count"/>
+                                                    </span>
+                                                </div>
+                                                <div class="dashboard_footer">
+                                                    <a name="ks_open_woo_customers" type="object">CUSTOMERS</a>
+                                                    <span class="woo-record-count"
+                                                          t-att-title="record.ks_customers_count.raw_value">
+                                                        <field name="ks_customers_count"/>
+                                                    </span>
+                                                </div>
+                                                <div class="dashboard_footer">
+                                                    <div class="o_kanban_manage_button_section">
+                                                        <a class="dropdown-toggle o-no-caret btn"
+                                                           role="button"
+                                                           data-toggle="dropdown"
+                                                           data-display="static" href="#" aria-label="Dropdown menu"
+                                                           title="Dropdown menu">
+                                                            <span class="fa fa-chevron-down"/>
+                                                        </a>
+                                                        <div class="container o_kanban_card_manage_pane o_dropdown_kanban dropdown ks_main_container">
+                                                            <div class="o_kanban_card_manage_pane "
+                                                                 role="menu">
+                                                                <div class="row">
+                                                                    <div class="col-6 o_kanban_card_manage_section o_kanban_manage_view">
+                                                                        <div role="menuitem"
+                                                                             class="o_kanban_card_manage_title">
+                                                                            <span style="font-size:15px;">
+                                                                                <b>
+                                                                                    <u>Products</u>
+                                                                                </b>
+                                                                            </span>
+                                                                        </div>
+                                                                        <div role="menuitem"
+                                                                             class="d-flex ks-karban-menu">
+                                                                            <a name="open_exported" type="object">
+                                                                                Exported
+                                                                            </a>
+                                                                            <span class="woo-record-count"
+                                                                                  t-att-title="record.ks_exported_counts.raw_value">
+                                                                                <field name="ks_exported_counts"/>
+                                                                            </span>
+                                                                        </div>
+                                                                        <div role="menuitem"
+                                                                             class="d-flex ks-karban-menu">
+                                                                            <a name="open_ready_to_export"
+                                                                               type="object">Ready to
+                                                                                Export
+                                                                            </a>
+                                                                            <span class="woo-record-count"
+                                                                                  t-att-title="record.ks_ready_exported_counts.raw_value">
+                                                                                <field name="ks_ready_exported_counts"/>
+                                                                            </span>
+                                                                        </div>
+                                                                        <div role="menuitem"
+                                                                             class="d-flex ks-karban-menu">
+                                                                            <a name="open_published" type="object">
+                                                                                Published
+                                                                            </a>
+                                                                            <span class="woo-record-count"
+                                                                                  t-att-title="record.ks_published_counts.raw_value">
+                                                                                <field name="ks_published_counts"/>
+                                                                            </span>
+                                                                        </div>
+                                                                        <div role="menuitem"
+                                                                             class="d-flex ks-karban-menu">
+                                                                            <a name="open_unpublished" type="object">
+                                                                                Unpublished
+                                                                            </a>
+                                                                            <span class="woo-record-count"
+                                                                                  t-att-title="record.ks_unpublished_counts.raw_value">
+                                                                                <field name="ks_unpublished_counts"/>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-6 o_kanban_card_manage_section o_kanban_manage_new">
+                                                                        <div role="menuitem"
+                                                                             class="o_kanban_card_manage_title">
+                                                                            <span style="font-size:15px;">
+                                                                                <b>
+                                                                                    <u>Sales</u>
+                                                                                </b>
+                                                                            </span>
+                                                                        </div>
+                                                                        <div role="menuitem"
+                                                                             class="d-flex ks-karban-menu">
+                                                                            <a name="open_quotations" type="object">
+                                                                                Quotations
+                                                                            </a>
+                                                                            <span class="woo-record-count"
+                                                                                  t-att-title="record.ks_quotation_counts.raw_value">
+                                                                                <field name="ks_quotation_counts"/>
+                                                                            </span>
+                                                                        </div>
+                                                                        <div role="menuitem"
+                                                                             class="d-flex ks-karban-menu">
+                                                                            <a name="open_orders" type="object">Sales
+                                                                                Order
+                                                                            </a>
+                                                                            <span class="woo-record-count"
+                                                                                  t-att-title="record.ks_orders_counts.raw_value">
+                                                                                <field name="ks_orders_counts"/>
+                                                                            </span>
+                                                                        </div>
+                                                                        <div role="menuitem"
+                                                                             class="d-flex ks-karban-menu">
+                                                                            <a name="open_sales_analysis" type="object">
+                                                                                Sales
+                                                                                Analysis
+                                                                            </a>
+                                                                        </div>
+                                                                        <div role="menuitem"
+                                                                             class="d-flex ks-karban-menu">
+                                                                            <a name="open_payment_method" type="object">
+                                                                                Payment
+                                                                                Gateway
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-6 o_kanban_card_manage_section o_kanban_manage_delivery">
+                                                                        <div role="menuitem"
+                                                                             class="o_kanban_card_manage_title">
+                                                                            <span style="font-size:15px;">
+                                                                                <b>
+                                                                                    <u>Delivery</u>
+                                                                                </b>
+                                                                            </span>
+                                                                        </div>
+                                                                        <div role="menuitem"
+                                                                             class="d-flex ks-karban-menu">
+                                                                            <a name="open_waiting_available"
+                                                                               type="object">
+                                                                                Waiting Available
+                                                                            </a>
+                                                                            <span class="woo-record-count"
+                                                                                  t-att-title="record.ks_waiting_available_count.raw_value">
+                                                                                <field name="ks_waiting_available_count"/>
+                                                                            </span>
+                                                                        </div>
+                                                                        <div role="menuitem"
+                                                                             class="d-flex ks-karban-menu">
+                                                                            <a name="open_partially_available"
+                                                                               type="object">
+                                                                                Partially Available
+                                                                            </a>
+                                                                            <span class="woo-record-count"
+                                                                                  t-att-title="record.ks_partially_available_count.raw_value">
+                                                                                <field name="ks_partially_available_count"/>
+                                                                            </span>
+                                                                        </div>
+                                                                        <div role="menuitem"
+                                                                             class="d-flex ks-karban-menu">
+                                                                            <a name="open_ready_transfer" type="object">
+                                                                                Ready to Transfer
+                                                                            </a>
+                                                                            <span class="woo-record-count"
+                                                                                  t-att-title="record.ks_ready_transfer_count.raw_value">
+                                                                                <field name="ks_ready_transfer_count"/>
+                                                                            </span>
+                                                                        </div>
+                                                                        <div role="menuitem"
+                                                                             class="d-flex ks-karban-menu">
+                                                                            <a name="open_transferred" type="object">
+                                                                                Transferred
+                                                                            </a>
+                                                                            <span class="woo-record-count"
+                                                                                  t-att-title="record.ks_transferred_count.raw_value">
+                                                                                <field name="ks_transferred_count"/>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-6 o_kanban_card_manage_section o_kanban_manage_invoice">
+                                                                        <div role="menuitem"
+                                                                             class="o_kanban_card_manage_title">
+                                                                            <span style="font-size:15px;">
+                                                                                <b>
+                                                                                    <u>Invoices</u>
+                                                                                </b>
+                                                                            </span>
+                                                                        </div>
+                                                                        <div role="menuitem"
+                                                                             class="d-flex ks-karban-menu">
+                                                                            <a name="open_invoice" type="object">Open
+                                                                            </a>
+                                                                            <span class="woo-record-count"
+                                                                                  t-att-title="record.ks_open_count.raw_value">
+                                                                                <field name="ks_open_count"/>
+                                                                            </span>
+                                                                        </div>
+                                                                        <div role="menuitem"
+                                                                             class="d-flex ks-karban-menu">
+                                                                            <a name="open_paid_invoice" type="object">
+                                                                                Paid
+                                                                            </a>
+                                                                            <span class="woo-record-count"
+                                                                                  t-att-title="record.ks_paid_count.raw_value">
+                                                                                <field name="ks_paid_count"/>
+                                                                            </span>
+                                                                        </div>
+                                                                        <div role="menuitem"
+                                                                             class="d-flex ks-karban-menu">
+                                                                            <a name="open_refund_invoice" type="object">
+                                                                                Refunds
+                                                                            </a>
+                                                                            <span class="woo-record-count"
+                                                                                  t-att-title="record.ks_refund_count.raw_value">
+                                                                                <field name="ks_refund_count"/>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                    <t t-name="WooTop">
+                        <div t-attf-class="o_kanban_card_header">
+                            <div class="o_kanban_card_header_title">
+                                <div class="o_primary ks_instance_name_style" t-att-title="dashboard.title">
+                                    <div>
+                                        <h3>
+                                            <span class="text-truncate d-block">
+                                                <field name="ks_instance_name"/>
+                                            </span>
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="ks_woo_connector_search_view" model="ir.ui.view">
+        <field name="name">Connector Instance Search</field>
+        <field name="model">ks.woo.connector.instance</field>
+        <field name="arch" type="xml">
+            <search string="Connector Search">
+                <field name="ks_instance_name" string="Instance"/>
+                <field name="ks_instance_state"/>
+                <group expand="0" string="Group By">
+                    <filter string="Woo Instance Status" name="ks_wc_instance"
+                            context="{'group_by':'ks_instance_state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_ks_woo_connector_instance">
+        <field name="name">WooCommerce Instances</field>
+        <field name="res_model">ks.woo.connector.instance</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Click here to create a new WooCommerce Instance.
+            </p>
+            <p>
+                Create any WooCommerce stores as Instance in Odoo and Perform all the syncing operations on
+                the basis of this WooCommerce Instance.
+            </p>
+        </field>
+    </record>
+
+</odoo>

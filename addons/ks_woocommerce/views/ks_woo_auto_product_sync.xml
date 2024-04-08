@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="ks_woo_auto_product_sync_form" model="ir.ui.view">
+        <field name="name">ks.auto.product.sync</field>
+        <field name="model">ks.woo.auto.product.syncing.configuration</field>
+        <field name="arch" type="xml">
+            <form string="Auto Product Sync Configuration">
+                <sheet>
+                    <div class="alert alert-info" role="alert" style="margin-bottom:0px;">
+                        <h3>Fields and their uses :-</h3>
+                        <ul>
+                            <li>
+                                <b>Woo Instance</b>
+                                : Displays Woo Instance Name, Single configuration must be choosen for each instance.
+                            </li>
+                            <li>
+                                <b>Product Auto Sync</b>
+                                : Turn on Cron for Auto Sync.
+                            </li>
+                            <li>
+                                <b>Sync with</b>
+                                : Sync with option Product or Name.
+                            </li>
+<!--                            <li>-->
+<!--                                <b>Woo Field</b>-->
+<!--                                : Name of the Woo field for Syncing.-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <b>Odoo Field</b>-->
+<!--                                : Name of the Odoo field for Syncing.-->
+<!--                            </li>-->
+                        </ul>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="ks_product_auto_syncing"/>
+                            <field name="ks_auto_sync_with" attrs="{'invisible':[('ks_product_auto_syncing','=',False)], 'required': [('ks_product_auto_syncing', '=', True)]}"/>
+<!--                            <field name="ks_woo_fields" attrs="{'invisible':['|','|',('ks_product_auto_syncing','=',False),('ks_auto_sync_with','=','name'), ('ks_auto_sync_with','=',False)], 'required': [('ks_auto_sync_with', '=', 'code')]}"/>-->
+                        </group>
+                        <group>
+                            <field name="ks_woo_instance_id"/>
+<!--                            <field name="ks_odoo_field" attrs="{'invisible':['|','|',('ks_product_auto_syncing','=',False),('ks_auto_sync_with','=',False),('ks_auto_sync_with','=','name')], 'required': [('ks_auto_sync_with', '=', 'code')]}"/>-->
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="ks_woo_auto_product_sync_tree" model="ir.ui.view">
+            <field name="name">ks.auto.product.sync</field>
+            <field name="model">ks.woo.auto.product.syncing.configuration</field>
+            <field name="arch" type="xml">
+                <tree string="Auto Product Sync Configuration">
+                    <field name="name"/>
+                    <field name="ks_woo_instance_id"/>
+                    <field name="ks_product_auto_syncing"/>
+                </tree>
+            </field>
+        </record>
+
+    <record id="ks_product_auto_sync_action" model="ir.actions.act_window">
+        <field name="name">Product Auto Sync</field>
+        <field name="res_model">ks.woo.auto.product.syncing.configuration</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create auto product syncing configuration here
+            </p>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,288 @@
+.o_woo_dashboard_kanban, .ks_kanban_sec, .ks_kanban_slider_main{
+    height: 100%;
+}
+
+.ks_kanban_main{
+    height: calc(100% - 3px);
+}
+
+.ks_kanban_main.o_kanban_record{
+    background: transparent;
+    border-color: transparent;
+    margin: 0 !important;
+    width: 100% !important;
+}
+
+.ks_kanban_slider_main .ks_kanban_slider{
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+    height: 100%;
+}
+
+.ks_kanban_slider_main .ks_kanban_slider .ks_div_button{
+    max-width: calc(50% - 16px);
+    flex: 0 0 calc(50% - 16px);
+    margin: 0 8px 16px 8px;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    background: #fff;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    overflow: hidden;
+}
+.ks_kanban_slider_main .ks_kanban_slider .ks_div_button.w-100{
+    flex: 0 0 calc(100% - 16px);
+    max-width: calc(100% - 16px);
+    margin-right: 10px
+ }
+
+.ks_kanban_slider_main .ks_kanban_slider .ks_div_button:hover{
+    box-shadow: 0 7px 12px rgba(0,0,0,0.20), 0 5px 5px rgba(0,0,0,0.18);
+}
+
+.ks_kanban_slider_main .ks_kanban_slider .ks_div_button .ks_div_icon{
+    width: 60px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #dfdfdf;
+}
+
+.ks_kanban_slider_main .ks_kanban_slider .ks_div_button .ks_div_icon .fa{
+    font-size: 18px;
+    padding: 8px 5px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ks_kanban_slider_main .ks_kanban_slider .ks_div_button .ks_div_icon .fa.fa-truck,
+.ks_kanban_slider_main .ks_kanban_slider .ks_div_button .ks_div_icon .fa.fa-shopping-bag{
+     background: #f88781;
+     color: #fff;
+}
+.ks_kanban_slider_main .ks_kanban_slider .ks_div_button .ks_div_icon .fa.fa-star-o,
+.ks_kanban_slider_main .ks_kanban_slider .ks_div_button .ks_div_icon .fa.fa-star{
+     background: #ff9800;
+     color: #fff;
+}
+
+.ks_kanban_slider_main .ks_kanban_slider .ks_div_button .ks_div_icon .fa.fa-ticket,
+.ks_kanban_slider_main .ks_kanban_slider .ks_div_button .ks_div_icon .fa.fa-tags{
+     background: #71b3e3;
+     color: #fff;
+}
+.ks_kanban_slider_main .ks_kanban_slider .ks_div_button .ks_div_icon .fa.fa-user,
+.ks_kanban_slider_main .ks_kanban_slider .ks_div_button .ks_div_icon .fa.fa-list-alt{
+    background: #4CAF50;
+    color: #fff;
+}
+.ks_kanban_slider_main .ks_kanban_slider .ks_div_button .ks_div_icon .fa.fa-code-fork{
+    background: #009688;
+    color: #fff;
+}
+.ks_kanban_slider_main .ks_kanban_slider .ks_div_button .ks_div_icon .fa.fa-file-text-o,
+.ks_kanban_slider_main .ks_kanban_slider .ks_div_button .ks_div_icon .fa.fa-wordpress{
+    background: #9C27B0;
+    color: #fff;
+}
+.ks_kanban_slider_main .ks_kanban_slider .ks_div_button .ks_div_icon .fa.fa-money,
+.ks_kanban_slider_main .ks_kanban_slider .ks_div_button .ks_div_icon .fa.fa-shopping-cart{
+    background: #607D8B;
+    color: #fff;
+}
+
+
+
+.ks_kanban_slider_main .ks_kanban_slider .ks_div_button  .ks_div_cont{
+    padding: 8px 3px 8px 8px;
+    max-width: calc(100% - 60px);
+    width: 100%;
+}
+.ks_div_cont{
+    background-color:white;
+   text-align: center;
+   border:None;
+   font-size: 15px;
+}
+.ks_div_count {
+    font-size: 20px;
+    line-height: 27px;
+}
+p.ks_title{
+    margin-bottom: 0px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    display: block;
+    color: #5f5e97;
+}
+
+.ks_woo_img{
+    width: 30%;
+}
+
+.ks_name_style{
+    color: #7b7bad !important;
+    margin: 5px;
+    }
+
+.px-0 {
+    padding: 0  !important;
+}
+
+.instance_dashboard{
+    width: 47%;
+    min-height: 205px;
+    background: #f0f8ff;
+}
+
+.dashboard_content{
+    max-width: unset;
+    padding: 0;
+}
+
+.dashboard_inner_section{
+    height: 90px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+}
+
+.dashboard_inner_section_label{
+    height: 90px;
+    align-items: center;
+    vertical-align: center;
+}
+
+.dashboard_card_manager{
+    width: 100%;
+}
+
+.dashboard_counts{
+    max-width: 112px;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.woo-inner-box {
+    display: block;
+}
+.woo-footer-box {
+    font-weight: 600;
+    margin-top: 15px;
+}
+.dashboard_footer {
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 18px;
+    padding-right: 15px !important;
+    width: 20%;
+    text-align: center;
+    padding: 5px 5px;
+    vertical-align: m;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+ }
+.o_kanban_view.o_kanban_dashboard.o_account_kanban.o_kanban_ungrouped .woo-box-width {
+    max-width: 620px !important;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+}
+.woo-header-box {
+    background: #e2e2e2;
+    padding: 1px 16px;
+    margin-bottom: 15px;
+}
+.h-unset {
+    height: unset;
+}
+.woo-record-count {
+    /*max-width: 62px;
+    overflow: hidden;
+    text-overflow: ellipsis;*/
+    font-weight: 400;
+    color: #444444;
+}
+
+.o_kanban_view.o_kanban_dashboard .o_kanban_record .o_kanban_card_manage_pane.container.ks_main_container{
+    max-width: 100%;
+    right: 0;
+}
+
+.o_kanban_view.o_kanban_dashboard .o_kanban_record .o_kanban_card_manage_pane.container.ks_main_container .dropdown-menu{
+    right: 0;
+    padding: 0;
+    }
+
+.ks-karban-menu{
+   padding-left: 3px !important;
+}
+.ks-karban-menu:hover{
+    background-color: #dee2e6;
+    color: #212529;
+}
+.ks_exported_counts{
+background-color: #d5d2d2;
+border-color: #c8c6c6;
+margin: 0 !important;
+border-radius: 5px;
+width: 26px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}
+.ks_exported_counts:hover{
+background-color: #d5d2d2 !important;
+border-color: #c8c6c6 !important;
+}
+
+.o_kanban_view.o_kanban_dashboard .o_kanban_record .o_kanban_card_manage_pane.container.ks_main_container .dropdown-menu {
+    right: 0;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.woo-record-count {
+    /*max-width: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;*/
+    font-weight: 400;
+    color: #444444;
+    /*width: 20px;*/
+}
+
+.o_kanban_view.o_kanban_dashboard .o_kanban_record .o_kanban_card_manage_pane.container div[class*="col-"] > div:not(.o_kanban_card_manage_title) > a {
+    margin: auto auto auto -5px;
+    padding: 3px 5px;
+    display: block;
+    background-color: white;
+}
+
+.o_kanban_view.o_kanban_dashboard .o_kanban_record .o_kanban_card_manage_pane.container div[class*="col-"] {
+    flex: 1 1 33.33333333%;
+    padding-left: 20px;
+    padding-right: 0px;
+    max-width: none;
+}
+.o_kanban_view.o_kanban_dashboard.o_account_kanban .o_kanban_record .oe_kanban_action_button{
+    margin-bottom: 0px;
+}
+.ks_note {
+    font-size: 16px !important;
+    padding-left: 15px;
+    background-color: #7c7bad2e;
+    border-left: 6px solid #7c7bad;
+}

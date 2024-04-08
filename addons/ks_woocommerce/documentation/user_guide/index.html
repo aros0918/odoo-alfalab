@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Odoo WooCommerce Connector v14 User Guide</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body>
+  <div class="ks-ug row mx-0">
+    <div class="col-lg-3 ks-ug-scroll view-100vh ks-ug-menus bg-light p-3">
+      <div class="d-flex flex-wrpa align-items-center border-bottom pb-2 mb-2 ks-logo-container">
+<!--        <img src="assets/images/favicon.png" class="mr-3 ks-logo-small" /> -->
+        <span class="font-weight-bold">USER
+          GUIDE</span>
+      </div>
+      <!-- <div class="ks-ug-search position-relative pl-2 pr-3 mb-2">
+          <img src="assets/images/search.svg" class="ks-ug-search-img position-absolute">
+          <input type="text" class="ks-ug-input w-100 border pl-4">
+      </div> -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
+        <button class="navbar-toggler ml-auto ks-shadow-none" type="button" data-toggle="collapse"
+          data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="list-unstyled ks-ug-menus-list">
+            <li class="ks-ug-main-link mb-2">
+              <a class="d-block" href="#user_guide">User Guide</a>
+            </li>
+            <li class="ks-ug-main-link mb-2">
+              <a class="d-block" href="#install">How To Configure WooCommerce Instances?</a>
+            </li>
+            <li class="ks-ug-main-link mb-2">
+              <a class="d-block" href="#sturl">Store URL</a>
+            </li>
+            <li class="ks-ug-main-link mb-2">
+              <a class="d-block" href="#ckcs">Customer Key & Customer Secret</a>
+            </li>
+            <li class="ks-ug-main-link mb-2">
+              <a class="d-block" href="#pointToKnow">Points To Know</a>
+            </li>
+            <li class="ks-ug-main-link mb-2">
+              <a class="d-block" href="#orderInformation">Order Information</a>
+            </li>
+            <li class="ks-ug-main-link mb-2">
+              <a class="d-block" href="#stockInformation">Stock Information</a>
+            </li>
+            <li class="ks-ug-main-link mb-2">
+              <a class="d-block" href="#webhookConfiguration">Webhook Configuration</a>
+            </li>
+            <li class="ks-ug-main-link mb-2">
+              <a class="d-block" href="#taxInformation">Tax Information</a>
+            </li>
+            <li class="ks-ug-main-link mb-2">
+              <a class="d-block" href="#metaMapping">Meta Mapping</a>
+            </li>
+            <li class="ks-ug-main-link mb-2">
+              <a class="d-block" href="#dashboard">Dashboard</a>
+            </li>
+            <li class="ks-ug-main-link mb-2">
+              <a class="d-block" href="#priceLists">Price Lists</a>
+            </li>
+            <li class="ks-ug-main-link mb-2">
+              <a class="d-block" href="#configureSchedulers">Configure Schedulers</a>
+            </li>
+            <li class="ks-ug-main-link mb-2">
+              <a class="d-block" href="#multipleOperations">Multiple Operations</a>
+            </li>
+            <li class="ks-ug-main-link mb-2">
+              <a class="d-block" href="#logs">Logs</a>
+            </li>
+            <li class="ks-ug-main-link mb-2">
+              <a class="d-block" href="#reporting">Reporting</a>
+            </li>
+            <li class="ks-ug-main-link mb-2">
+              <a class="d-block" href="#configuration">Configuration</a>
+            </li>
+            <li class="ks-ug-main-link mb-2">
+              <a class="d-block" href="#salesWorkflow">Sales Workflow</a>
+            </li>
+            <li class="ks-ug-main-link mb-2">
+              <a class="d-block" href="#emailConfiguration">Email Configuration</a>
+            </li>
+            <li class="ks-ug-main-link mb-2">
+              <a class="d-block" href="#metaMap">Meta Mapping</a>
+            </li>
+            <li class="ks-ug-main-link mb-2">
+              <a class="d-block" href="#push-pull-WooCommerce">Push To WooCommerce/Pull From WooCommerce</a>
+            </li>
+            <li class="ks-ug-main-link mb-2">
+              <a class="d-block" href="#mapping">Mapping</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+
+    </div>
+    <div class="col-lg-9 ks-ug-scroll view-100vh ks-ug-content px-0">
+      <div class="text-center border-bottom py-2 ks-ug-content-heading">
+        <img src="assets/images/ksolves.png" class="mr-2 ks-ug-logo-full">
+      </div>
+      <div class="px-4 mx-3 pt-3">
+        <section id="user_guide" class="ks-ug-intro py-4 border-bottom">
+          <h4>USER GUIDE</h4>
+          <p>WooCommerce is an open-source eCommerce plugin on WordPress which provides a customizable platform for
+            building your online business.</p>
+        </section>
+        <section id="install" class="border-bottom py-4 mt-4">
+          <h4>How To Configure WooCommerce Instances?</h4>
+          <!-- <p>
+            Once you have bought the theme from the Odoo Apps store, you will notice that you have got two folders. The
+            first one is ‘ks_theme_base’ and the second one is ‘ks_theme_kinetik’.
+          </p> -->
+
+          <!-- <p>
+            Click on “Instance” from the Woocommerce dashboard
+          </p> -->
+          <p class="d-flex align-items-center font-weight-bold">
+            Click on “Instance” from the Woocommerce dashboard
+          </p>
+
+          <div class="text-center mb-3">
+            <img src="assets/images/001.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-center font-weight-bold">Click on the “Create” button on the top left corner. The
+            WooCommerce instance page opens up</p>
+          <div class="text-center mb-3">
+            <img src="assets/images/002.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-center font-weight-bold">Here, the fields of Store URL, Customer Key, and
+            Customer Secret have to be filled.</p>
+          <div class="text-center mb-3">
+            <img src="assets/images/003.png" class="img-fluid border">
+          </div>
+        </section>
+
+        <section id="sturl" class="py-4 mt-4 border-bottom">
+          <h4>Store URL
+          </h4>
+          <p>If you have access to your Wordpress site, then you can easily get your store URL from there.</p>
+          <ul class="m-0 p-0 list-styled">
+            <li class="d-flex align-items-center font-weight-bold">
+              Visit the Wordpress site, and copy the store base URL and paste it in the Store URL field.
+            </li>
+          </ul>
+        </section>
+
+        <section id="ckcs" class="py-4 mt-4 border-bottom">
+          <h4>Customer Key & Customer Secret
+
+          </h4>
+          <p>If you already have the Customer Key & Customer URL, paste them in their respective fields. If not, you can
+            find them in the WooCommerce Settings.
+          </p>
+          <ul class="m-0 p-0 list-styled">
+            <li class="d-flex align-items-center font-weight-bold">
+              Visit the Wordpress site. </li>
+            <li class="d-flex align-items-center font-weight-bold">
+              Click on the WooCommerce button in the left panel and then clock on the “Settings” </li>
+            <li class="d-flex align-items-center font-weight-bold">
+              In the Settings page, click on the “Advanced” button. Then click on the “Rest API” from the Page Setup
+              menu.
+            </li>
+            <li class="d-flex">
+              <div class="text-center my-3">
+                <img src="assets/images/004.png" class="img-fluid border">
+              </div>
+            </li>
+            <li class="d-flex align-items-center font-weight-bold">
+              Click on the “Add Key” button. The Key Details section will open up. Fill in the Description here.
+            </li>
+            <li class="d-flex">
+              <div class="text-center my-3">
+                <img src="assets/images/005.png" class="img-fluid border">
+              </div>
+            </li>
+            <li class="d-flex align-items-center font-weight-bold">
+              Next, set the permission to “Read/Write”
+            </li>
+            <li class="d-flex">
+              <div class="text-center my-3 w-100">
+                <img src="assets/images/006.png" class="img-fluid border w-100">
+              </div>
+            </li>
+            <li class="d-flex align-items-center font-weight-bold">
+              Now, generate the API key.
+            </li>
+            <li class="d-flex">
+              <div class="text-center my-3">
+                <img src="assets/images/007.png" class="img-fluid border">
+              </div>
+            </li>
+            <li class="d-flex align-items-center font-weight-bold">
+              You can now access the Customer Key & Customer Secret.
+            </li>
+            <li class="d-flex align-items-center font-weight-bold">
+              Copy them and paste them in the fields of the WooCommerce instance page.
+            </li>
+          </ul>
+          <p>
+            [Note: You would needto copy the key and secret in your notepad because once you move away from the page,
+            the keys will not be visible anymore]
+          </p>
+          <p>
+            Upon filling the fields of Store URL, Customer Key, and Customer Secret, follow these steps:
+          </p>
+          <p class="d-flex align-items-center font-weight-bold">
+            Step 1 : <span class="font-weight-normal">Fill in the Connector Instance name</span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/008.png" class="img-fluid border">
+          </div>
+
+          <p class="d-flex align-items-center font-weight-bold">
+            Step 2 : <span class="font-weight-normal">Lastly, click on the “Connect Instance” button above. </span>
+          </p>
+
+          <p class="d-flex align-items-center font-weight-bold">
+            Step 3 : <span class="font-weight-normal">A success message will appear if the connection is successful to
+              confirm the process.</span>
+          </p>
+
+          <div class="text-center mb-3">
+            <img src="assets/images/009.png" class="img-fluid border">
+          </div>
+
+          <p>
+            <em>Point X:</em> When the instance has been successfully connected, you have to fill up the required
+            details in General Information, Payment Information, Order Information, Stock Information, and Webhooks
+            Configuration to successfully Sync your data from WooCommerce to odoo.
+          </p>
+
+        </section>
+
+        <section id="pointToKnow" class="py-4 mt-4 border-bottom">
+          <h4>Points To Know</h4>
+          <h5>Dashboard</h5>
+          <p>
+            Inside the Dashboard, the states of all the products, variants, attributes, categories related to the Queue
+            Jobs can be visualized. For instance, if you hover your mouse over the bar in the bar chart, you can see the
+            counts of the tags.
+            <span class="text-success d-block">063- shared on chat</span>
+          </p>
+
+          <div class="text-center mb-3">
+            <img src="assets/images/0010.png" class="img-fluid border">
+          </div>
+
+          <p>
+            In the right panel, there are buttons to display the counts of various domains. For instance, if you are
+            syncing tags, you can see that the counter will be updated in the Tags. If you click on Tags, you will be
+            redirected to the Tag model. Here, you can see the total number of tags, the number of synced tags, etc. If
+            you click on any specific tag, you can see details such as Instance, Date Updated, Date Created, etc. <span
+              class="text-success">-064</span>
+          </p>
+
+        </section>
+
+        <section id="orderInformation" class="py-4 mt-4 border-bottom">
+          <h4>Order Information</h4>
+          <ul>
+            <li>
+              <p>There is a field called “Order Prefix”</p>
+              <p>When you import the sell order from WooCommerce, then the name of that order is Order Prefix.</p>
+            </li>
+            <li>
+              <p>
+                There is a separate field for Auto Order Status Update to Woo
+              </p>
+              <p>
+                It updates the status of the sale order on woocommerce side whenever there is any change in the sale
+                order on the odoo side
+              </p>
+            </li>
+            <li>
+              <p>
+                There is another field called “Order Status”
+              </p>
+              <p>
+                It is basically the order status that you want to fetch from WooCommerce.
+                For example, if you select “On Hold” & “Processing”, then only those orders that are on hold or under
+                process will be imported in the Odoo.
+              </p>
+            </li>
+            <li>
+              <p>
+                There is one more field called “Import Orders Through”
+              </p>
+              <p>
+                We can import orders through various processes/workflow. We can select configurations based on
+                that(status or payment gateway) as per requirement from here. If “Status” is chosen, then the orders
+                will be imported through status. If “Payment Gateway” is chosen, then the orders will be imported
+                through the payment gateway.
+                Based on this field, the AutoWorkflow id (present below) can be attached.
+              </p>
+              <div class="text-center mb-3">
+                <img src="assets/images/0011.png" class="img-fluid border">
+              </div>
+            </li>
+            <li>
+              <p>Emails Configuration</p>
+              <p>
+                The email ids added here will receive an email of the report generated regarding all the sales
+                orders(for this instance), which will be updated every 24 hours.
+              </p>
+              <div class="text-center mb-3">
+                <img src="assets/images/0012.png" class="img-fluid border">
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section id="stockInformation" class="py-4 mt-4 border-bottom">
+          <h4>Stock Information</h4>
+          <p>
+            There is a field for “Stock Field Type” under Stock Information.
+            For example, if you select “Free To Use Quantity”, all the data related to it will be filled.
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0013.png" class="img-fluid border">
+          </div>
+        </section>
+        <section id="webhookConfiguration" class="py-4 mt-4 border-bottom">
+          <h4>Webhook Configuration</h4>
+          <p>
+            Whenever there is a change such as creation/updation in the multiple processes on WooCommerce side, it can
+            be directly reflected in the Odoo side through Webhook. It will eliminate the otherwise lengthy import
+            through operations.
+          </p>
+          <p>
+            Here are the steps to set it up:
+          </p>
+          <ol>
+            <li>
+              There are 8 possible types of operations in Webhooks, that are in-built and provided to people.
+            </li>
+            <li>
+              When you select a certain webhook operation, it automatically captures the URL.
+            </li>
+            <li>
+              The Woocommerce ID gets assigned to it automatically and the instance is attached to it by default
+              whenever the user clicks on the “Sync” button present on it.
+            </li>
+            <li>
+              The Hook Status will change to “Active”. The Webhook will be created on the Wordpress site.
+            </li>
+          </ol>
+          <p>
+            <em><strong>Note:</strong></em> The “Sync” button will change to “Toggle Status” now, and if you click on
+            it, it will change the Hook Status to “Paused”, and one more click will change the status to “Disabled”
+            again.
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0014.png" class="img-fluid border">
+          </div>
+          <p>
+            Now, whenever an order is created, the same order will automatically get synced in Odoo.
+          </p>
+          <ul>
+            <li>Visit the Wordpress site and click on the “Settings”</li>
+            <li>
+              Click On “Advanced” and then “Webhooks” in the page setup menu. In the Webhooks segment, you can see a new
+              order has been created with the id and the webhook name(Order Create) that you had created
+            </li>
+          </ul>
+          <div class="text-center mb-3">
+            <img src="assets/images/0015.png" class="img-fluid border">
+          </div>
+        </section>
+
+        <section id="taxInformation" class="py-4 mt-4 border-bottom">
+          <h4>Tax Information</h4>
+          <p>
+            <strong>Invoice TAX Account</strong>: It displays the tax account which is utilized for invoice tax default
+            account Credit Note TAX Account: It displays the tax account which will be used for Credit Note/Refund tax
+            default account
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0016.png" class="img-fluid border">
+          </div>
+        </section>
+
+        <section id="metaMapping" class="py-4 mt-4 border-bottom">
+          <h4>Meta Mapping</h4>
+          <p class="d-flex align-items-center font-weight-bold">
+            Step 1 : <span class="font-weight-normal">Click on the Instance.</span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0017.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-center font-weight-bold">
+            Step 2 : <span class="font-weight-normal">Switch on the “Require Meta Mapping“ button above</span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0018.png" class="img-fluid border">
+          </div>
+          <p>Enter the Woo Model name.</p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0019.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-center font-weight-bold">
+            Step 3 : <span class="font-weight-normal">Enter the Woo Meta Key.</span>
+          </p>
+          <p class="d-flex align-items-center font-weight-bold">
+            Step 4 : <span class="font-weight-normal">Enter the Meta Mapping Field.</span>
+          </p>
+          <p class="d-flex align-items-center font-weight-bold">
+            Step 3 : <span class="font-weight-normal">Switch on the Active button.</span>
+          </p>
+          <p>
+            You have successfully generated the meta-mapping for the particular instance now and the data will be stored
+            in Tax Id. We have covered more about meta mapping in the later part of the manual.
+          </p>
+          <p>
+            When the WooCommerce instance has been created, there are some other buttons present there.
+          </p>
+        </section>
+
+        <section id="dashboard" class="py-4 mt-4 border-bottom">
+          <h4>Dashboard</h4>
+          <p>
+            Inside the Dashboard, the states of all the products, variants, attributes, categories related to the Queue
+            Jobs can be visualized. For instance, if you hover your mouse over the bar in the bar chart, you can see the
+            counts of the tags.
+            063- shared on chat
+          </p>
+          <p>
+            In the right panel, there are buttons to display the counts of various domains. For instance, if you are
+            syncing tags, you can see that the counter will be updated in the Tags. If you click on Tags, you will be
+            redirected to the Tag model. Here, you can see the total number of tags, the number of synced tags, etc. If
+            you click on any specific tag, you can see details such as Instance, Date Updated, Date Created, etc. -064
+          </p>
+
+        </section>
+        <section id="priceLists" class="py-4 mt-4 border-bottom">
+          <h4>Price Lists</h4>
+          <p>
+            Here, the price list related to the instance will be attached. It will be based on the currency that you
+            have selected. There are two types of price list:
+          </p>
+          <p class="d-flex align-items-center font-weight-bold">
+            Step 1 : <span class="font-weight-normal">Sales Price List</span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0020.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-center font-weight-bold">
+            Step 1 : <span class="font-weight-normal">Regular Price List</span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0021.png" class="img-fluid border">
+          </div>
+          <p>
+            In WooCommerce, each product has its sales price and regular price. The sales price will be added to the
+            Sales Price List and the regular price will be Regular Price List. They will be generated automatically.
+          </p>
+        </section>
+        <section id="configureSchedulers" class="py-4 mt-4 border-bottom">
+          <h4>Configure Schedulers</h4>
+          <p>There are two types of Configure Schedulers:</p>
+          <ol>
+            <li>
+              WooCommerce Auto Order Import From Woo To Odoo
+              <p>It will automatically import orders from WooCommerce to Odoo when activated.</p>
+            </li>
+            <li>
+              WooCommerce Auto Order Status Update From Odoo To Woo
+              <p>
+                It will automatically update the status of the orders from Odoo to WooCommerce when activated.
+              </p>
+              <div class="text-center mb-3">
+                <img src="assets/images/0022.png" class="img-fluid border">
+              </div>
+            </li>
+          </ol>
+          <h5>Active Schedulers</h5>
+          <p>
+            From here, you can create the active scheduler by clicking on the name of the instance above followed by
+            clicking on “Active Instance”. A confirmation message will pop up for instance activation.
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0023.png" class="img-fluid border">
+          </div>
+          <p>
+            Now that the instance is completely active, it can start syncing data from Odoo to WooCommerce & vice versa.
+          </p>
+          <p>
+            When you click on Instance from the menu at the top, you will get a Kanban view of the instance. It will
+            have two buttons called Specific Operation & Multiple Operation. Additionally, it will have Configuration
+            and Logs. Inside the Logs, you can see the successful logs and failed logs.
+          </p>
+          <p>
+            It also has a counter for Orders, Products, Coupons, and Customers. It will display the number of orders,
+            products, coupons, and customers present in the instance. All of these counters are clickable and on
+            clicking any of them, you will be redirected to its page.
+          </p>
+          <p>
+            There is also a drop-down menu. It shows the various details of Products, Sales, Delivery, and Invoices.
+            Each detail can be clicked(except Sales Gateway & Payment Gateway) and visited for further investigation.
+          </p>
+          <p class="font-weight-bold">Synchronization Process</p>
+          <h5>Specific Operation</h5>
+          <p>
+            To get specific data from WooCommerce to Odoo or export the data from Odoo to WooCommerce, you have to
+            select the Specific Operation.
+          </p>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 1 : </span> <span class="font-weight-normal">On clicking the Specific
+              Operation, the WooCommerce Operations section will pop up. -</span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0024.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 2 : </span> <span class="font-weight-normal">In the Instance field,
+              the current instance will be selected by default. However, you can also select extra instances if you
+              want. </span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0025.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 3 : </span> <span class="font-weight-normal">The Operations Flow
+              options allow you to select how the data will be synced- WooCommerce to Odoo or Odoo to
+              WooCommerce.</span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0026.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 4 : </span> <span class="font-weight-normal">Using the Import
+              Operation options, you can import the specific data segment that you require like Import Products, Import
+              Orders, Import Customers, etc.</span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0027.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 5 : </span> <span class="font-weight-normal">After selecting the
+              Import Operation, the Import With field will pop up. It has various filters that can be applied like
+              Import All, Date Filter and Specific Id Filter. </span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0028.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 6 : </span> <span class="font-weight-normal">For example, if you
+              select “Import Tags” from the Import Operation and choose “Specific Id Filter” from Import With, you can
+              fetch a tag with a specific WooCommerce id.</span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0029.png" class="img-fluid border">
+          </div>
+          <p class="font-weight-bold">
+            <em>Note:</em>
+            The date filter and specific Id filter is not supported by all domains. Thus, whenever there is an
+            unsupportable type, it will show that the filter is not supported.
+          </p>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 7 : </span> <span class="font-weight-normal">After setting up the
+              WooCommerce Operations, click on “Execute”. A confirmation message will pop up and all the data will be
+              added to the Queue Job. It will be processed automatically and the tags will be synced with the
+              site.</span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0030.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 8 : </span> <span class="font-weight-normal">Click on the Processes ->
+              Queue Jobs in the menu</span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0031.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 9 : </span> <span class="font-weight-normal">You can see the
+              categories, products, etc that you have added in the menu are visible here.</span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0032.png" class="img-fluid border">
+          </div>
+          <div class="text-center mb-3">
+            <img src="assets/images/0033.png" class="img-fluid border">
+          </div>
+
+        </section>
+
+        <section id="multipleOperations" class="py-4 mt-4 border-bottom">
+          <h4>Multiple Operations</h4>
+          <p>
+            Here, you can perform both operations at once- Woo to Odoo and Odoo to Woo.
+          </p>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 1 : </span> <span class="font-weight-normal">Click on the Multiple
+              Operations and the WooCommerce Operations page will pop up.</span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0034.png" class="img-fluid border w-100">
+          </div>
+          <div class="text-center mb-3">
+            <img src="assets/images/0035.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 2 : </span> <span class="font-weight-normal">Select the instance you
+              want to operate on, in the Instance field.</span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0036.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 3 : </span> <span class="font-weight-normal">In the Woo to Odoo
+              segment and Odoo to Woo segment, there are Product Operations, Order Operations, Customer Operations with
+              switch-boxes for multiple options. </span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0037.png" class="img-fluid border">
+          </div>
+          <div class="text-center mb-3">
+            <img src="assets/images/0038.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 4 : </span> <span class="font-weight-normal">[ Note: Both Woo to Odoo
+              and Odoo to Woo segments have a checkbox for “Want To Select All Operations”. If you check it, then all
+              the options will be selected at once. ]</span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0039.png" class="img-fluid border">
+          </div>
+          <div class="text-center mb-3">
+            <img src="assets/images/0040.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 5 : </span> <span class="font-weight-normal">After setting up the
+              operations, click on Execute. A confirmation message will pop up and all the data will be added to the
+              Queue Job.</span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0039.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 4 : </span> <span class="font-weight-normal">[ Note: Both Woo to Odoo
+              and Odoo to Woo segments have a checkbox for “Want To Select All Operations”. If you check it, then all
+              the options will be selected at once. ]</span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0039.png" class="img-fluid border">
+          </div>
+          <div class="text-center mb-3">
+            <img src="assets/images/0040.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 5 : </span> <span class="font-weight-normal">After setting up the
+              operations, click on Execute. A confirmation message will pop up and all the data will be added to the
+              Queue Job.</span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0041.png" class="img-fluid border">
+          </div>
+          <div class="text-center mb-3">
+            <img src="assets/images/0042.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 6 : </span> <span class="font-weight-normal">Click on the Processes ->
+              Queue Jobs in the menu</span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0043.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 7 : </span> <span class="font-weight-normal">You can see the
+              categories, products, etc that you have added in the menu are visible here.</span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0044.png" class="img-fluid border">
+          </div>
+        </section>
+
+        <section id="logs" class="py-4 mt-4 border-bottom">
+          <h4>Logs</h4>
+          <p>
+            If you click on the logs, you can select all the logs generated for successful/failed entries. If there is
+            any anomaly, you will get the details for the failed logs regarding the mismatch. If you want to directly
+            check the successful/failed logs, you can do it like this.
+          </p>
+          <p>Go to Processes -> Success Logs/ Failed Logs<span class="text-success">-059, 060,061, 062</span></p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0045.png" class="img-fluid border w-100">
+          </div>
+          <div class="text-center mb-3">
+            <img src="assets/images/0046.png" class="img-fluid border">
+          </div>
+          <div class="text-center mb-3">
+            <img src="assets/images/0047.png" class="img-fluid border">
+          </div>
+          <div class="text-center mb-3">
+            <img src="assets/images/0048.png" class="img-fluid border">
+          </div>
+          <div class="text-center mb-3">
+            <img src="assets/images/0049.png" class="img-fluid border">
+          </div>
+          <p>
+            In case you are syncing customers, the customer name will be shown in the left. If you click on the Odoo
+            Partner name, all the details regarding the customer will be visible. <span class="text-success">-065, 066,
+              067</span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0050.png" class="img-fluid border w-100">
+          </div>
+          <div class="text-center mb-3">
+            <img src="assets/images/0051.png" class="img-fluid border">
+          </div>
+          <div class="text-center mb-3">
+            <img src="assets/images/0052.png" class="img-fluid border">
+          </div>
+        </section>
+
+        <section id="reporting" class="py-4 mt-4 border-bottom">
+          <h4>Reporting</h4>
+          <p>
+            If you visit the Sales section under Reporting, the analysis for a particular sales order will be visible
+            here. There are Graph Views and Pivot Views. The Pivot View will display the data analysis of customers,
+            sales, etc. In the Graph view, various kinds of graphs are there to represent the analysis of a particular
+            sales order under a WooCommerce instance. <span class="text-success">-068, 069, 070</span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0053.png" class="img-fluid border">
+          </div>
+          <div class="text-center mb-3">
+            <img src="assets/images/0054.png" class="img-fluid border">
+          </div>
+          <div class="text-center mb-3">
+            <img src="assets/images/0055.png" class="img-fluid border">
+          </div>
+        </section>
+
+        <section id="configuration" class="py-4 mt-4 border-bottom">
+          <h4>Configuration</h4>
+          <p>
+            Inside Configuration,. by default there will be three options - Sales Workflow, Email Configuration, and
+            Meta Mapping and when the developer mode is enabled then all the layer model manuals are there <span
+              class="text-success">-071, 0072number here</span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0056.png" class="img-fluid border">
+          </div>
+          <div class="text-center mb-3">
+            <img src="assets/images/0057.png" class="img-fluid border">
+          </div>
+        </section>
+
+        <section id="salesWorkflow" class="py-4 mt-4 border-bottom">
+          <h4>Sales Workflow</h4>
+          <p>
+            In simple words, the operations that you define in the Sales Workflow and the related entries that you make
+            such as Payment Journal, Debit Method, Sales Journal, etc will be saved. And, these saved configurations
+            will then be automated for the order in the Sales Workflow.
+            Through orders or payment gateways, auto workflow can be implemented on sales orders.
+          </p>
+          <p>Click on Configurations -> Sales Workflow <span class="text-success">-073</span></p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0058.png" class="img-fluid border">
+          </div>
+          <p>
+            Let’s suppose an order has been imported from WooCommerce to Odoo. And, you want to set up some operation (say, validation) as soon as the order is imported. You just need to go to that particular order in the Sale Workflow and switch on the Validate Order. If you want an invoice to be created for that order, switch on the “Create Invoice”. Similarly, there are options for Register Payment, Force Invoice Date and Confirm Shipment. Based on these details, the data will be fetched from that particular order. <span class="text-success">-074, 075</span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0059.png" class="img-fluid border">
+          </div>
+          <div class="text-center mb-3">
+            <img src="assets/images/0060.png" class="img-fluid border">
+          </div>
+        </section>
+
+        <section id="emailConfiguration" class="py-4 mt-4 border-bottom">
+          <h4>Email Configuration</h4>
+          <p>
+            If you require emails for a particular instance regarding sales analysis, you can do it from email configuration. 
+          </p>
+          <p>Click on Configurations -> Email Configuration <span class="text-success">-076</span></p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0061.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 1 : </span> <span class="font-weight-normal">Click on “Create” Email Report Configuration <span class="text-success">-077</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0062.png" class="img-fluid border w-100">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 2 : </span> <span class="font-weight-normal">The Basic Configuration set-up page will open up. <span class="text-success">-078</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0063.png" class="img-fluid border w-100">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 3 : </span> <span class="font-weight-normal">Select the WooCommerce Instance and the pre-designated email ids for that instance will be displayed in the Email Ids field. <span class="text-success">-079</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0064.png" class="img-fluid border w-100">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 4 : </span> <span class="font-weight-normal">There are two fields: Email Subject and Email Body. If you want a custom subject and body attached with the pdf report in the mail, you can fill it from here. <span class="text-success">-080</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0065.png" class="img-fluid border w-100">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 5 : </span> <span class="font-weight-normal">Click on Save <span class="text-success">-081</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0066.png" class="img-fluid border w-100">
+          </div>
+          <p>
+            The emails will be sent automatically to the designated emails with the custom subject and body that you have entered on a daily basis after a 24 hours interval.
+          </p>
+        </section>
+        
+        <section id="metaMap" class="py-4 mt-4 border-bottom">
+          <h4>Meta Mapping</h4>
+          <p>
+            Let’s suppose a user has added an extra plugin in WooCommerce. The meta-mapping feature will be very handy for them. It will sync data for those extra plugins because the plugin data comes under metadata.
+          </p>
+          <p class="text-success">Go to Instance ->Configuration -200</p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0067.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 1 : </span> <span class="font-weight-normal">Turn on “Require Meta Mapping?” toggle button <span class="text-success">-201</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0068.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 2 : </span> <span class="font-weight-normal">Open Meta Mappings tab <span class="text-success">-202</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0069.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 3 : </span> <span class="font-weight-normal">Click on Edit button <span class="text-success">-203</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0070.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 4 : </span> <span class="font-weight-normal">Select  the Woo model <span class="text-success">-204</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0071.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 5 : </span> <span class="font-weight-normal">Enter the Woo Meta Key (retrieve it from the description of the particular plugin that you are utilizing) <span class="text-success">-205 </span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0072.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 6 : </span> <span class="font-weight-normal">Select the Meta Mapping Field where you want to store the value regarding the Meta Key. Let’s say you want to store it in the Tax ID. <span class="text-success">-206 </span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0073.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 7 : </span> <span class="font-weight-normal">Switch on the Active button <span class="text-success">-2007 </span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0074.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 8 : </span> <span class="font-weight-normal">Click on Save Button <span class="text-success">-208</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0075.png" class="img-fluid border">
+          </div>
+          <p>
+            You have successfully generated the meta-mapping for the particular instance now and the data will be stored in Tax Id.
+          </p>
+          <p>
+            If you want the data to be synced under the Tax ID of the customer for whom the data mapping has been turned on, it is possible to do so. 
+          </p>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 1 : </span> <span class="font-weight-normal">Go to the specific Instance.</span>
+          </p>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 2 : </span> <span class="font-weight-normal">Click on Specific Operations. <span class="text-success">-089</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0076.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 3 : </span> <span class="font-weight-normal">Select Import Customers under Import Operation. <span class="text-success">-090</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0077.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 4 : </span> <span class="font-weight-normal">Select Specific Id Filter from Import With.  <span class="text-success">-091</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0078.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 5 : </span> <span class="font-weight-normal">Enter the Record ID of the customer. <span class="text-success">-092</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0079.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 6 : </span> <span class="font-weight-normal">Click on Execute. <span class="text-success">-093</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0080.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 7 : </span> <span class="font-weight-normal">Now, Go to Processes -> Queue Jobs <span class="text-success">-094</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0081.png" class="img-fluid border">
+          </div>
+          <p>
+            Here, you will see the customer with his/her WooCommerce ID is being processed for data synchronization. Give it some time and the sync will be completed successfully.
+          </p>
+          <ol>
+            <li>Visit Dashboard</li>
+            <li>Click on Customer from the right panel.</li>
+            <li>You can see that the customer has been added to the list. Click on his name.</li>
+            <li>You will see that the Tax ID with its related metadata has been synced with the customer.</li>
+          </ol>
+          <p>
+            This is how you can sync the metadata of the plugins through Meta Mapping configuration.
+          </p>
+          <p>
+            [ Note: Meta mapping can also be done for products, orders in a similar way]
+          </p>
+        </section>
+        
+        <section id="push-pull-WooCommerce" class="py-4 mt-4 border-bottom">
+          <h4>Push To WooCommerce/Pull From WooCommerce</h4>
+          <p>
+            Believe it or not, synchronization can be done now in seconds! The days for multiple clicks, backend operations to synchronize Odoo & WooCommerce is over now. Utilizing the <strong> Push To WooCommerce and Pull From WooCommerce </strong> buttons, syncing is done with a single click.
+          </p>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 1 : </span> <span class="font-weight-normal">Click on the Inventory from the WooCommerce tiles present on the top left corner.  <span class="text-success">-095</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0082.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 2 : </span> <span class="font-weight-normal">Click on Products -> Products <span class="text-success">-096</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0083.png" class="img-fluid border w-100">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 3 : </span> <span class="font-weight-normal">Let’s suppose you want to create a new product on which you want to perform the operation. Click on the “Create” button. <span class="text-success">-097</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0084.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 4 : </span> <span class="font-weight-normal">The Products/New Page will open up. <span class="text-success">-098</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0085.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 5 : </span> <span class="font-weight-normal">Enter the product name (Let’s say Rest Product) <span class="text-success">-099</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0086.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 6 : </span> <span class="font-weight-normal">Select the Product Type and Product Category. <span class="text-success">-100</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0087.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 7 : </span> <span class="font-weight-normal">Enter the other details as per requirement. </span>
+          </p>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 8 : </span> <span class="font-weight-normal">Click on the Save button when done. <span class="text-success">-101</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0088.png" class="img-fluid border">
+          </div>
+          <p>
+            Now, if you want to sync the product, you can directly do it from here by clicking on Push To WooCommerce. With just one click, you can accomplish the task by eliminating the otherwise lengthy process.
+          </p>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 1 : </span> <span class="font-weight-normal">Click on Push To WooCommerce. <span class="text-success">-102</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0089.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 2 : </span> <span class="font-weight-normal">Select the Instance Ids. <span class="text-success">-103</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0090.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 3 : </span> <span class="font-weight-normal">Select the Website Status. <span class="text-success">-104</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0091.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 4 : </span> <span class="font-weight-normal">Check and set up the other details such as Set Price In Woo, Set Stock In Woo, etc. <span class="text-success">-105</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0092.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 5 : </span> <span class="font-weight-normal">Click on Execute when done. <span class="text-success">-106</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0093.png" class="img-fluid border">
+          </div>
+          <p>
+            Voila! The product will now be automatically synced with WooCommerce
+          </p>
+          <p>
+            In a similar fashion, you can also perform the Pull From WooCommerce operation. The product and the related data will be pulled from WooCommerce and synced with Odoo. <span class="text-success">-107</span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0094.png" class="img-fluid border">
+          </div>
+          <p>
+            [Note: Both the operations- Push From WooCommerce and Pull From WooCommerce can be done with Product Categories , Customers, Attributes, and multiple products] 
+          </p>
+        </section>
+
+        <section id="mapping" class="py-4 mt-4">
+          <h4>Mapping</h4>
+          <p>
+            Let’s suppose you have a product category. Ans, you want to map it with a particular WooCommerce category. Here’s how to do it:
+          </p>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 1 : </span> <span class="font-weight-normal">Get the WooCommerce ID from the Wordpress site.</span>
+          </p>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 2 : </span> <span class="font-weight-normal">Click on WooCommerce Tiles(on the top left corner) -> Inventory -> Configuration -> Product Categories in the Odoo WooCommerce connector. Then open the specific Product Category you want to map. <span class="text-success">-108,109, 110</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0095.png" class="img-fluid border">
+          </div>
+          <div class="text-center mb-3">
+            <img src="assets/images/0096.png" class="img-fluid border">
+          </div>
+          <div class="text-center mb-3">
+            <img src="assets/images/0097.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 3 : </span> <span class="font-weight-normal">Click on the Action button -> Map Existing Records <span class="text-success">-111</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0098.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 4 : </span> <span class="font-weight-normal">The Category Record Mapping Page will open up. <span class="text-success">-112</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/0099.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 5 : </span> <span class="font-weight-normal">You can either select Push To WooCommerce or Pull From WooCommerce under Sync Records To WooCommerce. <span class="text-success">-113</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/00100.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 6 : </span> <span class="font-weight-normal">Select an Instance Id if you want to fill a specific instance for all the records. <span class="text-success">-114</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/00101.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 7 : </span> <span class="font-weight-normal">If you want to select instances for each separate record, you can do so by entering the Woo Mapping Ids and their respective WooCommerce Instances below. <span class="text-success">-115</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/00102.png" class="img-fluid border">
+          </div>
+          <p class="d-flex align-items-start font-weight-bold">
+            <span class="flex-shrink-0 pr-1">Step 8 : </span> <span class="font-weight-normal">Click on the Confirm Mapping button when done.<span class="text-success">-116</span></span>
+          </p>
+          <div class="text-center mb-3">
+            <img src="assets/images/00103.png" class="img-fluid border">
+          </div>
+          <p>
+            The records will be mapped with the WooCommerce Instances accordingly. If you go to the Queue Jobs, you will see that the mapping has been added there.
+          </p>
+          <p>
+            [Note: You can map several records at once for mapping purposes in a similar way. You can also map Products, Customers, Categories, etc in a similar way]
+          </p>
+        </section> 
+
+      </div>
+    </div>
+  </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+<script>
+  // ------------------ Scrolling -----------------
+  // Cache selectors
+  var lastId,
+    topMenu = $(".ks-ug-menus-list"),
+    //topMenuHeight = topMenu.outerHeight(),
+    // All list items
+    menuItems = topMenu.find(".ks-ug-main-link a"),
+    // Anchors corresponding to menu items
+    scrollItems = menuItems.map(function () {
+      var item = $($(this).attr("href"));
+      if (item.length) {
+        return item;
+      }
+    });
+  // Bind to scroll
+  $('.ks-ug-content').scroll(function () {
+    // Get container scroll position
+    var fromTop = 32;
+
+    // Get id of current scroll item
+    var cur = scrollItems.map(function () {
+      if ($(this).offset().top < fromTop)
+        return this;
+    });
+    // Get the id of the current element
+    cur = cur[cur.length - 1];
+    var id = cur && cur.length ? cur[0].id : "";
+
+    if (lastId !== id) {
+      lastId = id;
+      // Set/remove active class
+      menuItems
+        .parent().removeClass("active")
+        .end().filter("[href='#" + id + "']").parent().addClass("active");
+    }
+  });
+    //scroll
+</script>
+
+</html>

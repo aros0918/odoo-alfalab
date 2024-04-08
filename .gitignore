@@ -1,0 +1,6 @@
+.inventory
+.DS_Store
+.local
+.env
+le
+__pycache__

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<!--Form View For Message Wizard-->
+		<record id="ks_message_wizard" model="ir.ui.view">
+			<field name="name">ks.message.wizard</field>
+			<field name="model">ks.message.wizard</field>
+			<field name="arch" type="xml">
+				<form string="Message">
+					<field name="name"/>
+					<footer>
+						<button string="Close" class="btn-primary" special="cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>
+	</data>
+</odoo>

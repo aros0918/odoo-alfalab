@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="increment_field_sequence_webhook" model="ir.sequence">
+        <field name="name">Field Increment</field>
+        <field name="code">increment_webhook_log_field</field>
+        <field name="prefix">LOG</field>
+        <field name="padding">3</field>
+    </record>
+
+    <record id="ks_woo_webhook_logs_form_view" model="ir.ui.view">
+        <field name="name">Webhook Logs</field>
+        <field name="model">ks.woo.webhook.logger</field>
+        <field name="arch" type="xml">
+            <form string="WebHook Logs" create="false" edit="false">
+                <sheet>
+                    <div class="alert alert-info" role="alert" style="margin-bottom:0px;">
+                        <h3>Fields and their uses :-</h3>
+                        <ul>
+                            <li>
+                                <b>Operation Performed</b>
+                                : Displays operation type which is performed
+                            </li>
+                            <li>
+                                <b>Created on</b>
+                                : Displays the created date
+                            </li>
+                            <li>
+                                <b>Operation Status</b>
+                                : Displays the status of the operation Success/Failed
+                            </li>
+                            <li>
+                                <b>Domain</b>
+                                : Shows name of the model
+                            </li>
+                            <li>
+                                <b>WooCommerce Instance</b>
+                                : Displays WooCommerce Instance Name
+                            </li>
+                            <li>
+                                <b>Summary</b>
+                                : Displays the Summary of the Logs
+                            </li>
+                        </ul>
+                    </div>
+                    <group>
+                        <group name="log_info" string="Basic Info">
+                            <field name="name"/>
+                            <field name="ks_operation_performed" widget="selection"
+                                   attrs="{'invisible':[('ks_operation_performed', 'in', [False,0])]}"/>
+                            <field name="create_date" attrs="{'invisible':[('create_date', 'in', [False,0])]}"/>
+                        </group>
+                        <group name="woo_info" string="WooCommerce Information" attrs="{'invisible':[('ks_type', 'in', [False,0]),
+                        ('ks_woo_instance', 'in', [False,0])]}">
+                            <field name="ks_type" widget="selection"
+                                   attrs="{'invisible':[('ks_type', 'in', [False,0])]}"/>
+                            <field name="ks_woo_instance" attrs="{'invisible':[('ks_woo_instance', 'in', [False,0])]}"/>
+                            <field name="ks_woo_id" attrs="{'invisible':[('ks_woo_id', 'in', [False,0])]}"/>
+                        </group>
+                    </group>
+                    <group name="msg" string="Summary" attrs="{'invisible':[('ks_message', 'in', [False,0])]}">
+                        <field name="ks_message" nolabel="1" attrs="{'invisible':[('ks_message', 'in', [False,0])]}"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="ks_woo_webhook_logs_tree_view" model="ir.ui.view">
+        <field name="name">Webhook Logs Tree</field>
+        <field name="model">ks.woo.webhook.logger</field>
+        <field name="arch" type="xml">
+            <tree string="Logs List" create="false" edit="false">
+<!--                <field name="ks_log_id"/>-->
+                <field name="ks_type"/>
+                <field name="ks_operation_performed"/>
+<!--                <field name="ks_status"/>-->
+                <field name="create_date"/>
+<!--                <field name="ks_woo_id" invisible="1"/>-->
+                <field name="ks_woo_instance"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="ks_woo_webhook_logs_action" model="ir.actions.act_window">
+        <field name="name">WebHook Logs</field>
+        <field name="res_model">ks.woo.webhook.logger</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                **All the Logs for WooCommerce Connector of WebHook will appear here.
+            </p>
+        </field>
+    </record>
+
+</odoo>

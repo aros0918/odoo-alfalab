@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Account Invoice Tempmplate -->
+    <template id="account_invoice_discount_2" inherit_id="account.report_invoice_document">
+        <xpath expr="///tbody[hasclass('invoice_tbody')]//tr" position="inside">
+            <t t-foreach="line.product_id" t-as="sub_line">
+                <t t-foreach="sub_line.sub_product_line_ids" t-as="sub_prodcut_line">
+                    <tr>
+                        <td>
+                            <ul style="list-style-type: square;">
+                                <li>
+                                    <t t-out="sub_prodcut_line.product_id.name"/>
+                                    (<span t-field="sub_prodcut_line.quantity"/>)
+                                </li>
+                            </ul>
+                        </td>
+                        <td t-if="not display_discount" colspan="4"></td>
+                        <td t-if="display_discount" colspan="5"></td>
+                    </tr>
+                </t>
+            </t>
+        </xpath>
+    </template>
+</odoo>

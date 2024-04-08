@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="increment_your_field_sequence" model="ir.sequence">
+        <field name="name">Field Incrementation</field>
+        <field name="code">increment_your_field</field>
+        <field name="prefix">LOG</field>
+        <field name="padding">4</field>
+    </record>
+    <record id="ks_woo_logs_kanban_view" model="ir.ui.view">
+        <field name="name">ks.woo.logs.kanban</field>
+        <field name="model">ks.woo.logger</field>
+        <field name="arch" type="xml">
+            <kanban create="false">
+                <field name="ks_log_id"/>
+                <field name="ks_status"/>
+                <field name="ks_operation_performed"/>
+                <field name="ks_woo_instance"/>
+                <field name="ks_operation_flow"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click"
+                             style="background-color:#DFDCE5FF;box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);border-radius: 10px;">
+                            <div class="o_dropdown_kanban dropdown">
+                                <a class="dropdown-toggle o-no-caret btn" role="button" data-toggle="dropdown"
+                                   data-display="static" href="#" aria-label="Dropdown menu" title="Dropdown menu">
+                                    <span class="fa fa-ellipsis-v"/>
+                                </a>
+                                <div class="dropdown-menu" role="menu">
+                                    <t t-if="widget.editable">
+                                        <a role="menuitem" type="edit" class="dropdown-item">Edit</a>
+                                    </t>
+                                    <t t-if="widget.deletable">
+                                        <a role="menuitem" type="delete" class="dropdown-item">Delete</a>
+                                    </t>
+                                </div>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <div class="o_kanban_details_wrapper">
+                                    <div class="o_kanban_record_title o_text_overflow" style="font-weight:bold;">
+                                        <field name="ks_log_id"/>
+                                    </div>
+                                    <div class="o_kanban_record_body">
+                                        <field name="ks_status" widget="label_selection"/>
+                                        <br></br>
+                                        <div style="color:#c4a400;">
+                                            <field name="ks_operation_performed"/>
+                                        </div>
+                                    </div>
+                                    <div class="o_kanban_record_bottom">
+                                        <div class="oe_kanban_bottom_left">
+                                            <field name="ks_woo_instance"/>
+                                        </div>
+                                        <div class="oe_kanban_bottom_right">
+                                            <field name="ks_operation_flow" widget="label_selection"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="ks_woo_logs_form_view" model="ir.ui.view">
+        <field name="name">Logs</field>
+        <field name="model">ks.woo.logger</field>
+        <field name="arch" type="xml">
+            <form string="Logs" create="false" edit="false">
+                <sheet>
+                    <widget name="web_ribbon" title="Success" bg_color="bg-success"
+                            attrs="{'invisible': [('ks_status', '!=', 'success')]}"/>
+                    <widget name="web_ribbon" title="Failed" bg_color="bg-danger"
+                            attrs="{'invisible': [('ks_status', '!=', 'failed')]}"/>
+                    <div class="alert alert-info" role="alert" style="margin-bottom:0px;">
+                        <h3>Fields and their uses :-</h3>
+                        <ul>
+                            <li>
+                                <b>Operation Performed</b>
+                                : Displays operation type which is performed
+                            </li>
+                            <li>
+                                <b>Created on</b>
+                                : Displays the created date
+                            </li>
+                            <li>
+                                <b>Operation Status</b>
+                                : Displays the status of the operation Success/Failed
+                            </li>
+                            <li>
+                                <b>Operation Flow</b>
+                                : Shows the flow of the operation either from WooCommerce to Odoo or Odoo to WooCommerce
+                            </li>
+                            <li>
+                                <b>Domain</b>
+                                : Shows name of the model
+                            </li>
+                            <li>
+                                <b>WooCommerce Instance</b>
+                                : Displays WooCommerce Instance Name
+                            </li>
+                            <li>
+                                <b>Layer Model Associated</b>
+                                : Displays the layer model which is associated
+                            </li>
+                            <li>
+                                <b>Odoo Model Associated</b>
+                                : Displays the odoo default model which is associated
+                            </li>
+                            <li>
+                                <b>Odoo Record ID</b>
+                                : Displays the odoo record ID
+                            </li>
+                            <li>
+                                <b>Summary</b>
+                                : Displays the Summary of the Logs
+                            </li>
+                        </ul>
+                    </div>
+                    <group>
+                        <field name="ks_log_id" nolabel="1" style="font-size:30px;"/>
+                        <field name="ks_company_id" invisible="1"/>
+                        <group name="log_info" string="Basic Info">
+                            <field name="ks_operation_performed" widget="selection"
+                                   attrs="{'invisible':[('ks_operation_performed', 'in', [False,0])]}"/>
+                            <field name="create_date" attrs="{'invisible':[('create_date', 'in', [False,0])]}"/>
+                        </group>
+                        <group name="status_info" string="Status">
+                            <field name="ks_status" widget="selection"/>
+                            <field name="ks_operation_flow" widget="selection"
+                                   attrs="{'invisible':[('ks_operation_flow', 'in', [False,0])]}"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group name="woo_info" string="WooCommerce Information" attrs="{'invisible':[('ks_type', 'in', [False,0]),
+                        ('ks_woo_instance', 'in', [False,0]), ('ks_woo_id', 'in', [False,0])]}">
+                            <field name="ks_type" widget="selection"
+                                   attrs="{'invisible':[('ks_type', 'in', [False,0])]}"/>
+                            <field name="ks_woo_instance" attrs="{'invisible':[('ks_woo_instance', 'in', [False,0])]}"/>
+                            <field name="ks_woo_id" attrs="{'invisible':[('ks_woo_id', 'in', [False,0])]}"/>
+                        </group>
+                        <group name="model_info" string="Model Info" attrs="{'invisible':[('ks_model', 'in', [False,0]),
+                        ('ks_layer_model', 'in', [False,0]),('ks_record_id', 'in', [False,0])]}">
+                            <field name="ks_model" attrs="{'invisible':[('ks_model', 'in', [False,0])]}"/>
+                            <field name="ks_layer_model" attrs="{'invisible':[('ks_layer_model', 'in', [False,0])]}"/>
+                            <field name="ks_record_id" attrs="{'invisible':[('ks_record_id', 'in', [False,0])]}"/>
+                            <field name="ks_product_id" attrs="{'invisible':[('ks_product_id', '=', False)]}"/>
+                            <field name="ks_product_variant_id" attrs="{'invisible':[('ks_product_variant_id', '=', False)]}"/>
+                            <field name="ks_product_attribute_id" attrs="{'invisible':[('ks_product_attribute_id', '=', False)]}"/>
+                            <field name="ks_product_category_id" attrs="{'invisible':[('ks_product_category_id', '=', False)]}"/>
+                            <field name="ks_product_tags_id" attrs="{'invisible':[('ks_product_tags_id', '=', False)]}"/>
+                            <field name="ks_payment_gateways_id" attrs="{'invisible':[('ks_payment_gateways_id', '=', False)]}"/>
+                            <field name="ks_sale_order_id" attrs="{'invisible':[('ks_sale_order_id', '=', False)]}"/>
+                            <field name="ks_coupon_id" attrs="{'invisible':[('ks_coupon_id', '=', False)]}"/>
+                            <field name="ks_product_attribute_value_id" attrs="{'invisible':[('ks_product_attribute_value_id', '=', False)]}"/>
+                            <field name="ks_contact_id" attrs="{'invisible':[('ks_contact_id', '=', False)]}"/>
+                        </group>
+                    </group>
+                    <group name="msg" string="Summary" class="ks-col-message" attrs="{'invisible':[('ks_message', 'in', [False,0])]}">
+                        <field name="ks_message" nolabel="1" attrs="{'invisible':[('ks_message', 'in', [False,0])]}"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="ks_woo_logs_tree_view" model="ir.ui.view">
+        <field name="name">Logs Tree</field>
+        <field name="model">ks.woo.logger</field>
+        <field name="arch" type="xml">
+            <tree decoration-success="ks_status=='success'" decoration-danger="ks_status=='failed'"
+                  string="Logs List" create="false" edit="false">
+                <field name="ks_log_id"/>
+<!--                <field name="ks_name" invisible="1"/>-->
+                <field name="ks_type"/>
+                <field name="ks_operation_performed"/>
+                <field name="ks_status"/>
+                <field name="ks_operation_flow"/>
+                <field name="create_date"/>
+                <field name="ks_record_id" invisible="1"/>
+                <field name="ks_woo_id" invisible="1"/>
+                <field name="ks_woo_instance"/>
+                <field name="ks_company_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="ks_woo_logs_search_view" model="ir.ui.view">
+        <field name="name">Logs Search</field>
+        <field name="model">ks.woo.logger</field>
+        <field name="arch" type="xml">
+            <search string="Search Logs">
+                <field name="ks_log_id" string="Log"/>
+                <field name="ks_woo_id"/>
+                <field name="ks_status"/>
+                <field name="ks_woo_instance" string="Instance with Name"
+                       filter_domain="[('ks_woo_instance', 'ilike', self)]"/>
+                <filter name="default_log_status" string="Success Status" domain="[('ks_status', '=', 'success')]"/>
+                <filter name="default_log_status_failed" string="Failed Status"
+                        domain="[('ks_status', '=', 'failed')]"/>
+                <filter name="log_status" string="Log Status" context="{'group_by':'ks_status'}"/>
+                <filter name="operation_flow" string="Log Operation Flow" context="{'group_by':'ks_operation_flow'}"/>
+                <filter name="date" string="Log Creation Date" context="{'group_by':'create_date'}"/>
+                <filter name="woo_instance" string="Woo Instance" context="{'group_by':'ks_woo_instance'}"/>
+                <filter name="woo_type" string="Woo Domain" context="{'group_by':'ks_type'}"/>
+                <group expand="0" string="Group By">
+                    <filter string="Woo Instance" name="ks_wc_instance"
+                            context="{'group_by':'ks_woo_instance'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="ks_woo_logs_graph_view" model="ir.ui.view">
+        <field name="name">Logs Graph View</field>
+        <field name="model">ks.woo.logger</field>
+        <field name="arch" type="xml">
+            <graph string="Logs">
+                <field name="create_date" interval="week"/>
+                <field name="ks_status"/>
+                <field name="ks_type"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="ks_woo_logs_action" model="ir.actions.act_window">
+        <field name="name">Logs</field>
+        <field name="res_model">ks.woo.logger</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                **All the Logs for WooCommerce Connector will appear here.
+            </p>
+        </field>
+    </record>
+
+    <record id="ks_woo_logs_success_action" model="ir.actions.act_window">
+        <field name="name">Success Logs</field>
+        <field name="res_model">ks.woo.logger</field>
+        <field name="view_mode">graph,tree,kanban,form</field>
+        <!--        <field name="domain">[('ks_status', '=', 'success')]</field>-->
+        <field name="context">{'search_default_default_log_status':1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                **All the Logs for WooCommerce Connector will appear here.
+            </p>
+        </field>
+    </record>
+
+    <record id="ks_woo_logs_failed_action" model="ir.actions.act_window">
+        <field name="name">Failed Logs</field>
+        <field name="res_model">ks.woo.logger</field>
+        <field name="view_mode">graph,tree,kanban,form</field>
+        <!--        <field name="domain">[('ks_status', '=', 'success')]</field>-->
+        <field name="context">{'search_default_default_log_status_failed':1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                **All the Logs for WooCommerce Connector will appear here.
+            </p>
+        </field>
+    </record>
+</odoo>

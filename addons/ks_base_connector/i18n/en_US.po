@@ -1,0 +1,435 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* ks_base_connector
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-28 15:12+0000\n"
+"PO-Revision-Date: 2021-04-28 15:12+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: ks_base_connector
+#: model_terms:ir.ui.view,arch_db:ks_base_connector.ks_view_product_template_volume
+msgid ""
+"<span style=\"padding-right: 27px;\"><b>Length</b></span>\n"
+"                        <span style=\"padding-right: 29px;\"><b>Width</b></span>\n"
+"                        <span><b>Height</b></span><br/>"
+msgstr ""
+
+#. module: ks_base_connector
+#: model_terms:ir.ui.view,arch_db:ks_base_connector.ks_product_product_volume_calculation_form_view
+msgid ""
+"<span style=\"padding-right: 27px;\"><b>Length</b></span>\n"
+"                    <span style=\"padding-right: 29px;\"><b>Width</b></span>\n"
+"                    <span><b>Height</b></span><br/>"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model,name:ks_base_connector.model_product_attribute_value
+msgid "Attribute Value"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,field_description:ks_base_connector.field_sale_order__ks_auto_workflow_id
+msgid "Auto Workflow Process"
+msgstr ""
+
+#. module: ks_base_connector
+#: code:addons/ks_base_connector/models/ks_common_product_image.py:0
+#: code:addons/ks_base_connector/models/ks_common_product_image.py:0
+#, python-format
+msgid ""
+"Can't find image.Please provide valid Image URL.\n"
+" URL: %s"
+msgstr ""
+
+#. module: ks_base_connector
+#: model_terms:ir.ui.view,arch_db:ks_base_connector.ks_message_wizard
+msgid "Close"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model,name:ks_base_connector.model_ks_common_product_images
+msgid "Common Gallery Product Images"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_sale_workflow_configuration__ks_confirm_shipment
+msgid "Confirm Shipment"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model,name:ks_base_connector.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_sale_workflow_configuration__ks_create_invoice
+msgid "Create Invoice"
+msgstr ""
+
+#. module: ks_base_connector
+#: model_terms:ir.ui.view,arch_db:ks_base_connector.ks_sale_auto_workflow_search
+msgid "Create Invoice Order"
+msgstr ""
+
+#. module: ks_base_connector
+#: model_terms:ir.actions.act_window,help:ks_base_connector.ks_sale_auto_workflow_action
+msgid "Create auto sale workflow here"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_common_product_images__create_uid
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_message_wizard__create_uid
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_sale_workflow_configuration__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_common_product_images__create_date
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_message_wizard__create_date
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_sale_workflow_configuration__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_sale_workflow_configuration__ks_inbound_payment_method_id
+msgid "Debit Method"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,field_description:ks_base_connector.field_account_move__display_name
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_common_product_images__display_name
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_message_wizard__display_name
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_sale_workflow_configuration__display_name
+#: model:ir.model.fields,field_description:ks_base_connector.field_product_attribute__display_name
+#: model:ir.model.fields,field_description:ks_base_connector.field_product_attribute_value__display_name
+#: model:ir.model.fields,field_description:ks_base_connector.field_product_category__display_name
+#: model:ir.model.fields,field_description:ks_base_connector.field_product_pricelist__display_name
+#: model:ir.model.fields,field_description:ks_base_connector.field_product_product__display_name
+#: model:ir.model.fields,field_description:ks_base_connector.field_product_template__display_name
+#: model:ir.model.fields,field_description:ks_base_connector.field_res_partner__display_name
+#: model:ir.model.fields,field_description:ks_base_connector.field_sale_order__display_name
+#: model:ir.model.fields,field_description:ks_base_connector.field_stock_inventory__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,help:ks_base_connector.field_ks_common_product_images__ks_url
+msgid "External URL of image"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_sale_workflow_configuration__ks_invoice_date_is_order_date
+msgid "Force Invoice Date"
+msgstr ""
+
+#. module: ks_base_connector
+#: model_terms:ir.ui.view,arch_db:ks_base_connector.ks_product_form_view_common_product_image
+#: model_terms:ir.ui.view,arch_db:ks_base_connector.ks_product_form_view_common_product_template_image
+msgid "Gallery Images"
+msgstr ""
+
+#. module: ks_base_connector
+#: model_terms:ir.ui.view,arch_db:ks_base_connector.ks_sale_auto_workflow_search
+msgid "Group By"
+msgstr ""
+
+#. module: ks_base_connector
+#: model_terms:ir.ui.view,arch_db:ks_base_connector.ks_product_product_volume_calculation_form_view
+#: model_terms:ir.ui.view,arch_db:ks_base_connector.ks_view_product_template_volume
+msgid "Height"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,field_description:ks_base_connector.field_account_move__id
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_common_product_images__id
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_message_wizard__id
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_sale_workflow_configuration__id
+#: model:ir.model.fields,field_description:ks_base_connector.field_product_attribute__id
+#: model:ir.model.fields,field_description:ks_base_connector.field_product_attribute_value__id
+#: model:ir.model.fields,field_description:ks_base_connector.field_product_category__id
+#: model:ir.model.fields,field_description:ks_base_connector.field_product_pricelist__id
+#: model:ir.model.fields,field_description:ks_base_connector.field_product_product__id
+#: model:ir.model.fields,field_description:ks_base_connector.field_product_template__id
+#: model:ir.model.fields,field_description:ks_base_connector.field_res_partner__id
+#: model:ir.model.fields,field_description:ks_base_connector.field_sale_order__id
+#: model:ir.model.fields,field_description:ks_base_connector.field_stock_inventory__id
+msgid "ID"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,help:ks_base_connector.field_ks_sale_workflow_configuration__ks_invoice_date_is_order_date
+msgid ""
+"If it's checked, then the invoice date will be the same as the order date"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_common_product_images__ks_image
+msgid "Image"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_common_product_images__ks_name
+#: model_terms:ir.ui.view,arch_db:ks_base_connector.ks_common_product_images_view_form
+msgid "Image Name"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_common_product_images__ks_url
+msgid "Image URL"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,field_description:ks_base_connector.field_product_product__ks_image_ids
+#: model:ir.model.fields,field_description:ks_base_connector.field_product_template__ks_image_ids
+#: model_terms:ir.ui.view,arch_db:ks_base_connector.ks_product_form_view_common_product_image
+#: model_terms:ir.ui.view,arch_db:ks_base_connector.ks_product_form_view_common_product_template_image
+msgid "Images"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model,name:ks_base_connector.model_stock_inventory
+msgid "Inventory"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model,name:ks_base_connector.model_account_move
+msgid "Journal Entry"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,field_description:ks_base_connector.field_product_product__ks_height
+#: model:ir.model.fields,field_description:ks_base_connector.field_product_template__ks_height
+msgid "Ks Height"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,field_description:ks_base_connector.field_product_product__ks_length
+#: model:ir.model.fields,field_description:ks_base_connector.field_product_template__ks_length
+msgid "Ks Length"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,field_description:ks_base_connector.field_product_product__ks_width
+#: model:ir.model.fields,field_description:ks_base_connector.field_product_template__ks_width
+msgid "Ks Width"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.actions.server,name:ks_base_connector.ks_ir_cron_automatic_workflow_job_ir_actions_server
+#: model:ir.cron,cron_name:ks_base_connector.ks_ir_cron_automatic_workflow_job
+#: model:ir.cron,name:ks_base_connector.ks_ir_cron_automatic_workflow_job
+msgid "Ksolves Connector: Auto Invoice Workflow Job"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,field_description:ks_base_connector.field_account_move____last_update
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_common_product_images____last_update
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_message_wizard____last_update
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_sale_workflow_configuration____last_update
+#: model:ir.model.fields,field_description:ks_base_connector.field_product_attribute____last_update
+#: model:ir.model.fields,field_description:ks_base_connector.field_product_attribute_value____last_update
+#: model:ir.model.fields,field_description:ks_base_connector.field_product_category____last_update
+#: model:ir.model.fields,field_description:ks_base_connector.field_product_pricelist____last_update
+#: model:ir.model.fields,field_description:ks_base_connector.field_product_product____last_update
+#: model:ir.model.fields,field_description:ks_base_connector.field_product_template____last_update
+#: model:ir.model.fields,field_description:ks_base_connector.field_res_partner____last_update
+#: model:ir.model.fields,field_description:ks_base_connector.field_sale_order____last_update
+#: model:ir.model.fields,field_description:ks_base_connector.field_stock_inventory____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_common_product_images__write_uid
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_message_wizard__write_uid
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_sale_workflow_configuration__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_common_product_images__write_date
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_message_wizard__write_date
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_sale_workflow_configuration__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: ks_base_connector
+#: model_terms:ir.ui.view,arch_db:ks_base_connector.ks_product_product_volume_calculation_form_view
+#: model_terms:ir.ui.view,arch_db:ks_base_connector.ks_view_product_template_volume
+msgid "Length"
+msgstr ""
+
+#. module: ks_base_connector
+#: model_terms:ir.ui.view,arch_db:ks_base_connector.ks_view_product_template_volume
+msgid "Logistics"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,help:ks_base_connector.field_ks_sale_workflow_configuration__ks_inbound_payment_method_id
+msgid ""
+"Means of payment for collecting money. Odoo modules offer variouspayments "
+"handling facilities, but you can always use the 'Manual'payment method in "
+"order to manage payments outside of thesoftware."
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_message_wizard__name
+#: model_terms:ir.ui.view,arch_db:ks_base_connector.ks_message_wizard
+msgid "Message"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model,name:ks_base_connector.model_ks_message_wizard
+msgid "Message wizard to display warnings, alert ,success messages"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_sale_workflow_configuration__name
+#: model_terms:ir.ui.view,arch_db:ks_base_connector.ks_sale_auto_workflow_search
+msgid "Name"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_sale_workflow_configuration__ks_journal_id
+msgid "Payment Journal"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model,name:ks_base_connector.model_product_pricelist
+msgid "Pricelist"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model,name:ks_base_connector.model_product_product
+#: model_terms:ir.ui.view,arch_db:ks_base_connector.ks_common_product_images_view_kanban
+msgid "Product"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model,name:ks_base_connector.model_product_attribute
+msgid "Product Attribute"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model,name:ks_base_connector.model_product_category
+msgid "Product Category"
+msgstr ""
+
+#. module: ks_base_connector
+#: model_terms:ir.ui.view,arch_db:ks_base_connector.ks_common_product_images_view_form
+#: model_terms:ir.ui.view,arch_db:ks_base_connector.ks_common_product_images_view_kanban
+msgid "Product Images"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model,name:ks_base_connector.model_product_template
+msgid "Product Template"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_common_product_images__ks_variant_id
+msgid "Product Variant"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_common_product_images__ks_template_id
+msgid "Product template"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,field_description:ks_base_connector.field_product_product__profile_image_id
+#: model:ir.model.fields,field_description:ks_base_connector.field_product_template__profile_image_id
+msgid "Profile Image"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_common_product_images__ks_profile_image
+msgid "Profile Image or not ?"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_sale_workflow_configuration__register_payment
+msgid "Register Payment"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.actions.act_window,name:ks_base_connector.ks_sale_auto_workflow_action
+#: model_terms:ir.ui.view,arch_db:ks_base_connector.ks_sale_auto_workflow_search
+msgid "Sale Auto Workflow"
+msgstr ""
+
+#. module: ks_base_connector
+#: model_terms:ir.ui.view,arch_db:ks_base_connector.ks_sale_auto_workflow_form
+msgid "Sale Auto Workflow Configuration"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model,name:ks_base_connector.model_ks_sale_workflow_configuration
+msgid "Sale WorkFlow Configuration"
+msgstr ""
+
+#. module: ks_base_connector
+#: model_terms:ir.ui.view,arch_db:ks_base_connector.ks_sale_auto_workflow_tree
+msgid "Sale auto workflow"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_sale_workflow_configuration__ks_sale_journal_id
+msgid "Sales Journal"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model,name:ks_base_connector.model_sale_order
+msgid "Sales Order"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_common_product_images__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,help:ks_base_connector.field_ks_common_product_images__sequence
+msgid "Sequence of images."
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_sale_workflow_configuration__ks_validate_invoice
+msgid "Validate Invoice"
+msgstr ""
+
+#. module: ks_base_connector
+#: model:ir.model.fields,field_description:ks_base_connector.field_ks_sale_workflow_configuration__val_order
+#: model_terms:ir.ui.view,arch_db:ks_base_connector.ks_sale_auto_workflow_search
+msgid "Validate Order"
+msgstr ""
+
+#. module: ks_base_connector
+#: model_terms:ir.ui.view,arch_db:ks_base_connector.ks_product_product_volume_calculation_form_view
+#: model_terms:ir.ui.view,arch_db:ks_base_connector.ks_view_product_template_volume
+msgid "Volume"
+msgstr ""
+
+#. module: ks_base_connector
+#: model_terms:ir.ui.view,arch_db:ks_base_connector.ks_product_product_volume_calculation_form_view
+msgid "Weights"
+msgstr ""
+
+#. module: ks_base_connector
+#: model_terms:ir.ui.view,arch_db:ks_base_connector.ks_product_product_volume_calculation_form_view
+#: model_terms:ir.ui.view,arch_db:ks_base_connector.ks_view_product_template_volume
+msgid "Width"
+msgstr ""
+
+#. module: ks_base_connector
+#: model_terms:ir.ui.view,arch_db:ks_base_connector.ks_sale_auto_workflow_form
+msgid "Workflow Option"
+msgstr ""

@@ -1,0 +1,16 @@
+FROM nginx:1.22.1
+
+RUN apt update \
+  # Install
+  && apt -y install certbot python3-certbot-nginx nano cron \
+  # Clean up
+  && apt-get autoremove -y \
+  && apt-get clean -y \
+  && rm -rf /var/lib/apt/lists/*
+
+RUN cron start
+
+COPY html/* /usr/share/nginx/html/
+COPY ssl/* /etc/ssl/
+
+CMD ["nginx", "-g", "daemon off;"]

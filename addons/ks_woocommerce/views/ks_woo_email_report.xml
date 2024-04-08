@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="increment_your_field_sequence" model="ir.sequence">
+        <field name="name">Field Incrementation</field>
+        <field name="code">increment_your_field</field>
+        <field name="prefix">EC</field>
+        <field name="padding">4</field>
+    </record>
+    <record id="ks_woo_email_report_form" model="ir.ui.view">
+        <field name="name">ks.woo.email.report.form</field>
+        <field name="model">ks.woo.email.report</field>
+        <field name="arch" type="xml">
+            <form string="Email Report Configuration">
+                <header>
+                    <button name="action_send_email" type="object" class="oe_highlight" string="Send Email"/>
+                </header>
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    <div class="oe_button_box" id="button_box">
+                            <button name="toggle_active" type="object"
+                                    class="oe_stat_button" icon="fa-check-square"
+                                    style="color:green; font-size:20px;"
+                                    string="Active" widget="boolean_button"
+                                    attrs="{'invisible':[('active', '=', True)]}"
+                            />
+                            <button name="toggle_archive" type="object"
+                                    class="oe_stat_button" icon="fa-exclamation-triangle"
+                                    style="color:red; font-size:20px;"
+                                    string="Archive" widget="boolean_button"
+                                    attrs="{'invisible':[('active', '=', False)]}"
+                            />
+                        </div>
+                    <div class="alert alert-info" role="alert" style="margin-bottom:0px;">
+                                <h3>Fields and their uses :-</h3>
+                                <ul>
+                                    <li>
+                                        <b>WooCommerce Instance</b>
+                                        : Displays WooCommerce Name
+                                    </li>
+                                    <li>
+                                        <b>Email IDs</b>
+                                        : Displays list of email ID's
+                                    </li>
+                                    <li>
+                                        <b>Email Templates</b>
+                                        : Displays Email Template name
+                                    </li>
+                                    <li>
+                                        <b>Email Subject</b>
+                                        : Display Subject of the Email
+                                    </li>
+                                    <li>
+                                        <b>Email Body</b>
+                                        : Display Body of the Email
+                                    </li>
+                                </ul>
+                            </div>
+                    <group name="basic" string="Basic Configuration">
+                        <group>
+                            <field name="ks_email_conf_id" nolabel="1" style="font-size:30px;"/>
+                            <field name="ks_wc_instance_ids" widget="many2many_tags"/>
+                        </group>
+                        <group>
+                            <field name="email_ids" widget="many2many_tags"/>
+                            <field name="email_template"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Email Subject &amp; Body">
+                            <group>
+                                <field name="subjects"/>
+                            </group>
+                            <group>
+                                <field name="body"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="ks_woo_email_report_tree" model="ir.ui.view">
+        <field name="name">ks.woo.email.report.tree</field>
+        <field name="model">ks.woo.email.report</field>
+        <field name="arch" type="xml">
+            <tree string="Email Report" decoration-success="active==True" decoration-danger="active==False">
+                <field name="ks_email_conf_id"/>
+                <field name="ks_wc_instance_ids"/>
+                <field name="email_ids"/>
+                <field name="email_template"/>
+                <field name="active" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="ks_woo_email_report_action" model="ir.actions.act_window">
+        <field name="name">Email Report Configuration</field>
+        <field name="res_model">ks.woo.email.report</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                You can set your email configurations here.
+            </p>
+        </field>
+    </record>
+</odoo>

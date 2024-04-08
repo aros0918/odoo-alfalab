@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="ks_product_form_view_common_product_template_image">
+        <field name="name">ks.product.common.template.image.view.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position='inside'>
+                <page string="Images" name="images">
+                    <group string="Gallery Images" colspan="4">
+                        <field name="profile_image_id" invisible="1"/>
+                        <field name="ks_image_ids"
+                               context="{'default_ks_name': name}"
+                               mode="kanban" options="{'create_text':'Add a Media'}" nolabel="1">
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="ks_view_product_template_volume" model="ir.ui.view">
+        <field name="name">ks.product.template.volume</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="stock.view_template_property_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='volume']" position="before">
+                <group string="" name="group_lots_and_weights"
+                       attrs="{'invisible':[('type', 'not in', ['product', 'consu'])]}">
+<!--                    <label for="weight"/>-->
+<!--                    <div class="o_row" name="weight">-->
+<!--                        <field name="weight"/>-->
+<!--                        <span><field name="weight_uom_name"/></span>-->
+<!--                    </div>-->
+<!--                    <label for="volume" style="padding-top: 45px;"/>-->
+                    <div name="volume">
+                        <span style="padding-right: 27px;" ><b>Length</b></span>
+                        <span style="padding-right: 29px;" ><b>Width</b></span>
+                        <span ><b>Height</b></span><br/>
+                        <div style="display:flex;">
+                        <field name="ks_length"  style="width:135px; margin-right: 5px;" placeholder="Length"/>
+                        <field name="ks_width"  style="width:135px; margin-right: 5px;" placeholder="Width"/>
+                        <field name="ks_height"  style="width:135px;" placeholder="Height"/><br/>
+                            </div>
+                    </div>
+                </group>
+            </xpath>
+<!--            <xpath expr="//group[@name='group_lots_and_weight']" position="attributes">-->
+<!--                <attribute name="invisible">1</attribute>-->
+<!--            </xpath>-->
+        </field>
+   </record>
+</odoo>

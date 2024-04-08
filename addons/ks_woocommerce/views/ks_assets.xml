@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+     <template id="assets_backend" name="Dashboard" inherit_id="web.assets_backend">
+        <xpath expr="link[last()]" position="after">
+            <link rel="stylesheet" href="/ks_woocommerce/static/src/css/dashboard.css"/>
+            <link rel="stylesheet" href="/ks_woocommerce/static/src/css/ks_graph_view.css"/>
+            <link rel="stylesheet" href="/ks_woocommerce/static/src/css/style.css"/>
+            <script type="text/javascript" src="/ks_woocommerce/static/src/js/ks_graph_widget.js"></script>
+<!--            <script type="text/javascript" src="/ks_woocommerce/static/src/js/ks_dashboard_button.js"></script>-->
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data noupdate="0">
+        <record id="ks_woo_dashboard_1" model="ks.woo.dashboard">
+            <field name="name">Ks WooCommerce Dashboard </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="ks_email_report_template" model="mail.template">
+            <field name="name">Woocommerce Email Report</field>
+            <field name="model_id" ref="model_ks_woo_email_report"/>
+            <field name="email_from">${object.user_id.email_formatted | safe}</field>
+            <field name="email_to">${object.get_emails()}</field>
+            <field name="subject">${object.get_subject()}</field>
+            <field name="body_html">
+                ${object.get_body()}
+            </field>
+            <field name="report_template" ref="ks_woocommerce_ks_report_id"/>
+            <field name="report_name">WooCommerce Daily Report</field>
+        </record>
+    </data>
+</odoo>

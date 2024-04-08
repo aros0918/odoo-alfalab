@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="ks_queue_job_form" model="ir.ui.view">
+        <field name="name">Queue Jobs</field>
+        <field name="model">ks.woo.queue.jobs</field>
+        <field name="arch" type="xml">
+            <form string="Queue Job Form" create="0" edit="0">
+                <header>
+                    <field name="state" widget="statusbar" nolabel="1" readonly="1"/>
+                    <button name="ks_process_queue_jobs" string="Process Record" type="object" states="new,failed"
+                            class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="ks_name" placeholder="Instance Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group name="instance_info" string="Instance Information">
+                            <field name="ks_model"/>
+                            <field name="ks_odoo_model" attrs="{'invisible':[('ks_type','!=','prepare')]}"/>
+                            <field name="ks_layer_model" attrs="{'invisible':[('ks_type','!=','prepare')]}"/>
+                            <field name="ks_woo_id"/>
+                            <field name="ks_record_id"/>
+                            <field name="ks_wc_instance"/>
+                        </group>
+                        <group name="other_info" string="Other Information">
+                            <field name="ks_operation"/>
+                            <field name="ks_operation_type"/>
+                            <field name="ks_type"/>
+                            <field name="create_date"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Data">
+                            <field name="ks_data"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="ks_queue_jobs_tree_view" model="ir.ui.view">
+        <field name="name">Queue Jobs</field>
+        <field name="model">ks.woo.queue.jobs</field>
+        <field name="arch" type="xml">
+            <tree decoration-success="state=='done'" decoration-info="state=='progress'"
+                  decoration-danger="state=='failed'" decoration-warning="state=='new'" create="0" edit="0">
+                <field name="ks_name"/>
+                <field name="ks_woo_id"/>
+                <field name="ks_model"/>
+                <field name="ks_operation"/>
+                <field name="ks_type"/>
+                <field name="ks_wc_instance"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="ks_queue_job_search_view" model="ir.ui.view">
+        <field name="name">Queue Job Search</field>
+        <field name="model">ks.woo.queue.jobs</field>
+        <field name="arch" type="xml">
+            <search string="Search Queue">
+                <field name="ks_name" string="Queue"/>
+                <field name="ks_woo_id"/>
+                <field name="ks_record_id"/>
+                <field name="ks_operation"/>
+                <field name="ks_wc_instance" string="Woo Instance Id"
+                       filter_domain="[('ks_wc_instance.id','=',self)]"/>
+                <field name="ks_wc_instance" string="Woo Instance Name"
+                       filter_domain="[('ks_wc_instance','ilike',self)]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="group_by_instance" string="Woo Instance"
+                            context="{'group_by':'ks_wc_instance'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="ks_queue_jobs_direct_action" model="ir.actions.act_window">
+        <field name="name">All Queue Jobs</field>
+        <field name="res_model">ks.woo.queue.jobs</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help">All the Queue Jobs in connector will be sequenced here.</field>
+    </record>
+</odoo>

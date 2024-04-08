@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem id="menu_ks_woo_base"
+              name="WooCommerce"
+              web_icon="ks_woocommerce,static/description/icon.png"
+              groups="ks_woocommerce.ks_woocommerce_group"
+    />
+
+    <!--    Action required here-->
+    <menuitem id="menu_sales_config_inherited"
+              parent='menu_ks_woo_base'
+              sequence="1"
+              name="Dashboard"
+              action="ks_woo_dashboard_action"
+    />
+    <!--    Action required here-->
+    <menuitem id="menu_ks_woo_instance"
+              name="Instance"
+              sequence="2"
+              parent="menu_ks_woo_base"
+              action="action_ks_woo_connector_instance"
+    />
+
+    <menuitem id="menu_ks_processes"
+              name="Processes"
+              sequence="5"
+              parent="menu_ks_woo_base"/>
+
+    <!--    Action required here-->
+
+
+<!--    <menuitem id="menu_ks_processes_operations"-->
+<!--              name="Perform Operations"-->
+<!--              sequence="2"-->
+<!--              parent="ks_woocommerce.menu_ks_processes"-->
+<!--    />-->
+
+<!--    &lt;!&ndash;    Action required here&ndash;&gt;-->
+<!--    <menuitem id="menu_ks_processes_specific_operations"-->
+<!--              name="Specific Operations"-->
+<!--              sequence="1"-->
+<!--              parent="ks_woocommerce.menu_ks_processes_operations"-->
+<!--              action = "ks_woo_specific_operations_action"-->
+<!--    />-->
+
+    <!--    Action required here-->
+<!--    <menuitem id="menu_ks_processes_multiple_operations"-->
+<!--              name="Multiple Operations"-->
+<!--              sequence="2"-->
+<!--              parent="ks_woocommerce.menu_ks_processes_operations"-->
+<!--              action="ks_woo_multiple_operations_action"-->
+<!--    />-->
+
+    <!--    Action required here-->
+    <menuitem id="menu_ks_processes_queue_jobs"
+              name="Queue Jobs"
+              sequence="3"
+              parent="ks_woocommerce.menu_ks_processes"
+              action="ks_queue_jobs_direct_action"
+    />
+    <menuitem id="menu_ks_woo_log_details"
+              name="Logs Detail"
+              sequence="4"
+
+              parent="ks_woocommerce.menu_ks_processes"/>
+
+    <!--    Action required here-->
+    <menuitem id="menu_ks_woo_success_log_details"
+              name="Success Logs"
+              sequence="1"
+              parent="menu_ks_woo_log_details"
+              action="ks_woo_logs_success_action"
+    />
+
+    <!--    Action required here-->
+    <menuitem id="menu_ks_woo_failed_log_details"
+              name="Failed Logs"
+              sequence="2"
+              parent="menu_ks_woo_log_details"
+              action="ks_woo_logs_failed_action"
+    />
+
+    <menuitem id="menu_ks_reporting"
+              name="Reporting"
+              sequence="6"
+
+              parent="menu_ks_woo_base"/>
+
+    <!--    Action required here-->
+    <menuitem id="menu_ks_sales_reporting"
+              name="Sales"
+              parent="menu_ks_reporting"
+              action="action_sales_report_all"
+    />
+
+    <!--    Action required here-->
+    <menuitem id="menu_ks_print_sales_report"
+              name="Sales Report"
+              parent="menu_ks_reporting"
+              action="action_sales_report_generate"
+    />
+
+    <menuitem id="menu_ks_woo_configuration"
+              name="Configuration"
+              parent="menu_ks_woo_base"/>
+
+    <menuitem id="menu_sale_workflow"
+              name="Sale Workflow"
+              parent="menu_ks_woo_configuration"
+              sequence="-1"
+              action="ks_base_connector.ks_sale_auto_workflow_action"
+    />
+    <menuitem id="menu_reverse_workflow"
+              name="Update Woo Status Workflow"
+              parent="menu_ks_woo_configuration"
+              sequence="-1"
+              action="ks_woo_reverse_workflow_action"
+    />
+
+    <!--    Action required here-->
+    <menuitem id="menu_email_report_conf"
+              name="Email Configuration"
+              sequence="-1"
+              parent="menu_ks_woo_configuration"
+              action="ks_woo_email_report_action"
+    />
+
+    <!--    Action required here-->  <!--  Menu Layer Model Sales  -->
+
+    <menuitem id="menu_ks_woo_layer"
+              name="Layer Model Sales"
+              sequence="0"
+              parent="ks_woocommerce.menu_ks_woo_configuration"/>
+
+    <menuitem id="menu_ks_woo_customers"
+              name="Customers"
+              sequence="2"
+              parent="ks_woocommerce.menu_ks_woo_layer"
+              action="action_ks_woo_partner"/>
+
+    <!--  Action required here  -->  <!--  Layer Model Order  -->
+
+    <menuitem id="menu_ks_woo_sale_orders"
+              name="Layer Model Orders"
+              sequence="1"
+              parent="ks_woocommerce.menu_ks_woo_configuration"/>
+
+    <menuitem id="menu_ks_woo_orders"
+              name="Orders"
+              sequence="2"
+              parent="ks_woocommerce.menu_ks_woo_sale_orders"
+              action="action_woocommerce_sale_order"/>
+
+    <menuitem id="menu_ks_woo_quotations"
+              name="Quotations"
+              sequence="3"
+              parent="menu_ks_woo_sale_orders"
+              action="action_woocommerce_sale_order_quote"/>
+
+    <!--    Action required here-->  <!--  Invoices Menu -->
+
+    <menuitem id="menu_ks_woo_invoices"
+              name="Model Invoices"
+              sequence="1"
+              parent="ks_woocommerce.menu_ks_woo_configuration"/>
+
+    <menuitem id="menu_ks_woo_all_invoices"
+              name="Invoices"
+              sequence="2"
+              parent="ks_woocommerce.menu_ks_woo_invoices"
+              action="action_woocommerce_invoices"/>
+
+    <menuitem id="menu_ks_woo_refund"
+              name="Refunds"
+              sequence="3"
+              parent="ks_woocommerce.menu_ks_woo_invoices"
+              action="action_woocommerce_refund"
+    />
+
+    <!--    Action required here-->  <!--  Layer Model Payments Menu -->
+
+    <menuitem id="menu_ks_woo_payment"
+              name="Payments"
+              sequence="1"
+              parent="ks_woocommerce.menu_ks_woo_configuration"/>
+
+    <menuitem id="menu_ks_woo_payment_gateway"
+              name="Payment Gateway"
+              sequence="2"
+              parent="ks_woocommerce.menu_ks_woo_payment"
+              action="action_woo_payment_gateway"/>
+
+    <!--    Action required here-->  <!--  Layer Model Transfer Menu -->
+
+    <menuitem id="menu_ks_woo_transfers"
+              name="Transfers"
+              sequence="1"
+              parent="ks_woocommerce.menu_ks_woo_configuration"/>
+
+    <menuitem id="menu_ks_woo_delivery_transfer"
+              name="Delivery Transfer"
+              sequence="2"
+              action="action_woocommerce_deliveries"
+              parent="ks_woocommerce.menu_ks_woo_transfers"/>
+
+    <!--    Action required here-->
+    <!--    <menuitem id="menu_ks_woo_tax"-->
+    <!--              name="Woocommerce Taxes"-->
+    <!--              sequence="1"-->
+    <!--              action="action_woocommerce_taxes"-->
+    <!--              parent="ks_woocommerce.menu_ks_taxes"-->
+    <!--    />-->
+
+    <!--    Action required here-->  <!--  Layer Model Products Menu -->
+
+    <menuitem id="menu_ks_woo_product"
+              name="Products"
+              sequence="1"
+              groups="base.group_no_one"
+              parent="ks_woocommerce.menu_ks_woo_configuration"/>
+
+    <menuitem id="menu_ks_woo_product_products"
+              name="Products"
+              sequence="2"
+              action="action_ks_woo_product_template_"
+              parent="ks_woocommerce.menu_ks_woo_product"/>
+
+    <menuitem id="menu_ks_woo_product_variants"
+              name="Product Variants"
+              sequence="3"
+              action="action_ks_woo_product_variants_"
+              parent="ks_woocommerce.menu_ks_woo_product"/>
+
+    <menuitem id="menu_ks_woo_coupons"
+              name="Coupons"
+              sequence="4"
+              action="action_ks_woo_coupon"
+              parent="ks_woocommerce.menu_ks_woo_product"/>
+
+    <!--    Action required here-->  <!--  Layer Model Catalogue Menu -->
+
+    <menuitem id="menu_ks_woo_catalogue"
+              name="Catalogues"
+              sequence="1"
+              parent="ks_woocommerce.menu_ks_woo_configuration"/>
+
+    <menuitem id="menu_ks_woo_tags"
+              name="Tags"
+              sequence="2"
+              parent="ks_woocommerce.menu_ks_woo_catalogue"
+              action="action_woo_product_tags"/>
+
+    <menuitem id="menu_ks_woo_categories"
+              name="Categories"
+              sequence="3"
+              parent="ks_woocommerce.menu_ks_woo_catalogue"
+              action="action_ks_woo_product_category"/>
+
+    <menuitem id="menu_ks_woo_attribute"
+              name="Attributes"
+              sequence="4"
+              action="action_ks_woo_product_attribute"
+              parent="ks_woocommerce.menu_ks_woo_catalogue"/>
+
+    <menuitem id="menu_ks_woo_attribute_terms"
+              name="Attribute Terms"
+              sequence="5"
+              action="action_ks_woo_product_attribute_value"
+              parent="ks_woocommerce.menu_ks_woo_catalogue"/>
+
+    <!--    Action required here-->  <!--  Inventory Adjustment Menu -->
+
+    <menuitem id="menu_ks_processes_inventory_adjustment"
+              name="Inventory Adjustments"
+              sequence="40"
+              parent="ks_woocommerce.menu_ks_woo_configuration"
+              action="action_woocommerce_inventory_adjustments"/>
+
+    />
+    <menuitem id="menu_ks_processes_shipping_methods"
+              name="Shipping Methods"
+              sequence="41"
+              parent="ks_woocommerce.menu_ks_woo_product"
+              action="action_ks_woo_delivery_carrier_"
+
+    />
+
+    <menuitem id="menu_ks_meta_mapping"
+              name="Woo Meta Mapping"
+              parent="menu_ks_woo_configuration"
+              sequence="-1"
+              action="ks_woo_meta_mapping_action"/>
+
+    <menuitem id="menu_ks_product_auto_sync"
+              name="Woo Product Mapping"
+              parent="menu_ks_woo_configuration"
+              sequence="-1"
+              action="ks_product_auto_sync_action"/>
+
+    <menuitem id="menu_ks_customer_auto_sync"
+              name="Woo Customer Mapping"
+              parent="menu_ks_woo_configuration"
+              sequence="-1"
+              action="ks_customer_sync_action"/>
+
+    <menuitem id="menu_ks_webhook_logs"
+              name="WebHook Logs"
+              sequence="1"
+              parent="ks_woocommerce.menu_ks_processes"
+              action="ks_woo_webhook_logs_action"
+    />
+</odoo>

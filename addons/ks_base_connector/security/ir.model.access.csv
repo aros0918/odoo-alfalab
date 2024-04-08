@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_config,access_sale_config,model_ks_sale_workflow_configuration,,1,1,1,1
+access_ks_common_product_images,access_ks_common_product_images,model_ks_common_product_images,,1,1,1,1
+access_message_wizard,access_message_wizard,model_ks_message_wizard,,1,1,1,1

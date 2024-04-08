@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="ks_odoo_update_payment_gateway" model="ir.actions.server">
+        <field name="name">Update Payment from WooCommerce</field>
+        <field name="model_id" ref="model_ks_woo_payment_gateway"/>
+        <field name="binding_model_id" ref="model_ks_woo_payment_gateway"/>
+        <field name="state">code</field>
+        <field name="code">
+            records.ks_woo_import_payment_gateway()
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_ks_woo_payment_gateway_form">
+        <field name="name">ks.payment.gateway.form</field>
+        <field name="model">ks.woo.payment.gateway</field>
+        <field name="arch" type="xml">
+            <form string="Woo Payment Gateway" create="false">
+                <sheet>
+                    <div class="alert alert-info" role="alert" style="margin-bottom:0px;">
+                        <h3>Fields and their uses :-</h3>
+                        <ul>
+                            <li>
+                                <b>Title</b>
+                                : Displays Payment Gateway Name
+                            </li>
+                            <li>
+                                <b>Payment code</b>
+                                : Displays Payment Gateway code
+                            </li>
+                            <li>
+                                <b>Instance</b>
+                                : Displays WooCommerce Instance Name
+                            </li>
+                        </ul>
+                    </div>
+                    <group name="payment_gateway_info" string="Payment Gateway Info">
+                        <group>
+                            <field name="ks_title"/>
+                            <field name="ks_woo_pg_id"/>
+                            <field name="ks_company_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="woo_other_info" string="Other Information">
+                            <group>
+                                <group>
+                                    <field name="ks_wc_instance"
+                                           options="{'no_create':True,'no_create_edit': True}"/>
+                                </group>
+                            </group>
+                            <group string="Description">
+                                <field name="ks_description" nolabel="1"
+                                       placeholder="This note will show up on product tag description"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_ks_woo_payment_gateway_tree">
+        <field name="name">ks.payment.gateway.tree</field>
+        <field name="model">ks.woo.payment.gateway</field>
+        <field name="arch" type="xml">
+            <tree string="Woo Payment Gateway" create="false">
+                <field name="ks_woo_pg_id"/>
+                <field name="ks_title"/>
+                <field name="ks_wc_instance"/>
+            </tree>
+        </field>
+    </record>
+    <record id="woo_payment_gateway_search_view" model="ir.ui.view">
+        <field name="name">ks.woo.payment.gateway.search</field>
+        <field name="model">ks.woo.payment.gateway</field>
+        <field name="arch" type="xml">
+            <search string="Payment Gateway">
+                <field name="ks_title" string="Payment Gateway" filter_domain="[('ks_title','ilike',self)]"/>
+                <field name="ks_woo_pg_id" string="Woo Id" filter_domain="[('ks_woo_pg_id','ilike',self)]"/>
+                <field name="ks_wc_instance" string="Woo Instance"
+                       filter_domain="[('ks_wc_instance','ilike',self)]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter string="Woo Instance Id" name="ks_wc_instance"
+                            context="{'group_by':'ks_wc_instance'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="action_woo_payment_gateway">
+        <field name="name">WooCommerce Payment Gateway</field>
+        <field name="res_model">ks.woo.payment.gateway</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                All the woocommerce imported payment gateway will be visible here.
+            </p>
+        </field>
+    </record>
+</odoo>

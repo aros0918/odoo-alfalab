@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="ks_map_attribute_action_server" model="ir.actions.server">
+        <field name="name">Map Existing Records</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="product.model_product_attribute"/>
+        <field name="binding_model_id" ref="product.model_product_attribute"/>
+        <field name="state">code</field>
+        <field name="code">
+            action=model.open_mapper()
+        </field>
+    </record>
+    <record id="ks_action_push_attribute" model="ir.actions.server">
+        <field name="name">Push Attribute to woocommerce</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="product.model_product_attribute"/>
+        <field name="binding_model_id" ref="product.model_product_attribute"/>
+        <field name="state">code</field>
+        <field name="code">
+            action=model.ks_push_to_woocommerce()
+        </field>
+    </record>
+
+    <record id="ks_action_pull_attribute" model="ir.actions.server">
+        <field name="name">Pull Attribute from woocommerce</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="product.model_product_attribute"/>
+        <field name="binding_model_id" ref="product.model_product_attribute"/>
+        <field name="state">code</field>
+        <field name="code">
+            action=model.ks_pull_from_woocommerce()
+        </field>
+    </record>
+
+    <record id="ks_woo_products_attribute_view_form" model="ir.ui.view">
+        <field name="name">ks.woo.product.attribute.view.form</field>
+        <field name="model">product.attribute</field>
+        <field name="inherit_id" ref="product.product_attribute_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/group[1]" position="before">
+                <div class="oe_button_box" name="button_box">
+                    <button name="action_woo_layer_attributes" title="WooCommerce Attributes" type="object" class="oe_stat_button" icon="fa-server icon">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_text">WooCommerce</span>
+                            <span class="o_stat_text">Attributes</span>
+                        </div>
+                    </button>
+                </div>
+            </xpath>
+            <xpath expr="/form/*" position="before">
+                <header>
+                    <button name="ks_push_to_woocommerce" type="object" class="oe_highlight"
+                            string="Push to Woocommerce" context="{'push_to_woo':True}"/>
+                    <button name="ks_pull_from_woocommerce" type="object" class="oe_highlight"
+                            string="Pull from Woocommerce" context="{'pull_from_woo':True}"/>
+                </header>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Update Sale Order Report to add tax amount  -->
+    <template id="tax_amount_report_saleorder_document" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//th[@name='th_taxes']" position="after">
+            <th name="th_taxes" class="text-end">Tax Amount</th>
+        </xpath>
+        <xpath expr="//td[@name='td_taxes']" position="after">
+            <td name="td_taxes" class="text-end">
+                <span t-out="line.price_tax" t-options="{'widget' : 'monetary', 'display_currency': line.currency_id}"/>
+            </td>
+        </xpath>
+    </template>
+
+    <!-- Update Purchase Order Report to add tax amount  -->
+    <template id="tax_amount_report_purchaseorder_document" inherit_id="purchase.report_purchaseorder_document">
+        <xpath expr="//th[@name='th_taxes']" position="after">
+            <th name="th_taxes" class="text-end">Tax Amount</th>
+        </xpath>
+        <xpath expr="//td[@name='td_taxes']" position="after">
+            <td name="td_taxes" class="text-end">
+                <span t-out="line.price_tax" t-options="{'widget' : 'monetary', 'display_currency': line.currency_id}"/>
+            </td>
+        </xpath>
+    </template>
+
+    <!-- Inherit Invoice Report to add tax amount  -->
+    <template id="tax_amount_report_invoice_document" inherit_id="account.report_invoice_document">
+        <xpath expr="//th[@name='th_taxes']" position="after">
+            <th name="th_taxes" class="text-end">Tax Amount</th>
+        </xpath>
+        <xpath expr="//td[hasclass('o_price_total')]" position="before">
+            <td name="td_taxes" class="text-end">
+                <span t-out="line.price_tax" t-options="{'widget' : 'monetary', 'display_currency': line.currency_id}"/>
+            </td>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="ks_woo_product_configuration_form_view" model="ir.ui.view">
+        <field name="name">ks.woo.product.configuration.wizard</field>
+        <field name="model">ks.woo.product.configuration</field>
+        <field name="arch" type="xml">
+            <form string="Update Product Configuration">
+                <group>
+                    <group>
+                        <field name="ks_update_details"/>
+                        <field name="ks_update_website_status"/>
+                    </group>
+                    <group>
+                        <field name="ks_update_price"/>
+                        <field name="ks_update_image"/>
+                        <field name="ks_update_stock"/>
+                    </group>
+                    <group>
+                        <field name="ks_export_image_variation"  attrs="{'invisible':[('ks_update_image', '=', False)]}"/>
+                    </group>
+                </group>
+                <footer>
+                    <button string="Execute" name="ks_update_product" type="object" class="btn-primary"
+                            context="{'server_action': True}"/>
+                    <button string="Close" class="btn-primary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
+

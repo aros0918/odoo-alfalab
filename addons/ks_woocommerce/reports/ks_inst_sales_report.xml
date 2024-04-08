@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="ks_inst_report_sale">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-foreach="docs" t-as="object">
+                    <h1 style="text-align:center; font-size:35px;">
+                        <u>Sales Report</u>
+                    </h1>
+                    <h3>
+                        Report Dated:-&#160;
+                        <span t-esc="object.get_today_date()"/>
+                    </h3>
+                    <br></br>
+                    <h2 style="text-align:center; font-size:25px;">Orders Count per Instance</h2>
+                    <table style="border:3px solid black !important; height:50%; width:100%;">
+                        <tr style="border:1px solid black !important;">
+                            <th style="text-align:center; font-size:15px; font-weight:400;">Instance Name</th>
+                            <th style="text-align:center; font-size:15px; font-weight:400;">Orders Count</th>
+                        </tr>
+                        <t t-foreach="docs.ks_wc_instance" t-as="doc">
+                            <tr style="border:1px solid black !important;">
+                                <td width="20%" style="border:1px solid black !important;">
+                                    <p style="padding:0; text-align:center;">
+                                        <span t-esc="doc.ks_instance_name"/>
+                                    </p>
+                                </td>
+                                <td width="30%" style="border:1px solid black !important;">
+                                    <p style="padding:0; text-align:center;">
+                                        <t t-esc="object.get_order_count_per_instance(doc.id)"/>
+                                    </p>
+                                </td>
+                            </tr>
+                        </t>
+                    </table>
+                    <p style="color:SlateBlue; font-size:20px;">Total Orders :- &#160;&#160;
+                        <t t-esc="object.get_total_orders()"/>
+                    </p>
+                    <br></br>
+                    <h2 style="text-align:center; font-size:25px;">Instance wise Orders</h2>
+                    <t t-foreach="docs.ks_wc_instance" t-as="doc_inst">
+                        <h3>Instance Name :-
+                            <t t-esc="doc_inst.ks_instance_name"/>
+                        </h3>
+                        <br></br>
+                        <table style="border:3px solid black !important; height:50%; width:100%;">
+                            <tr style="border:1px solid black !important;">
+                                <th style="text-align:center; font-size:15px; font-weight:400;">Order Name</th>
+                                <th style="text-align:center; font-size:15px; font-weight:400;">Sub Total</th>
+                                <th style="text-align:center; font-size:15px; font-weight:400;">Total Discount</th>
+                                <th style="text-align:center; font-size:15px; font-weight:400;">Total Tax</th>
+                                <th style="text-align:center; font-size:15px; font-weight:400;">Order Status</th>
+                                <th style="text-align:center; font-size:15px; font-weight:400;">Delivery Count</th>
+                                <th style="text-align:center; font-size:15px; font-weight:400;">Invoice Status</th>
+                            </tr>
+                            <t t-foreach="object.get_order_lines(doc_inst.id)" t-as="doc_order">
+                                <tr style="border:1px solid black !important;">
+                                    <td width="20%" style="border:1px solid black !important;">
+                                        <p style="padding:0; text-align:center;">
+                                            <t t-esc="doc_order['name']"/>
+                                        </p>
+                                    </td>
+                                    <td width="20%" style="border:1px solid black !important;">
+                                        <p style="padding:0; text-align:center;">
+                                            <t t-esc="doc_order['amount_total']"/>
+                                        </p>
+                                    </td>
+                                    <td width="20%" style="border:1px solid black !important;">
+                                        <p style="padding:0; text-align:center;">
+                                            <t t-esc="doc_order['amount_total']-doc_order['amount_undiscounted']"/>
+                                        </p>
+                                    </td>
+                                    <td width="20%" style="border:1px solid black !important;">
+                                        <p style="padding:0; text-align:center;">
+                                            <t t-esc="doc_order['amount_tax']"/>
+                                        </p>
+                                    </td>
+                                    <td width="20%" style="border:1px solid black !important;">
+                                        <p style="padding:0; text-align:center;">
+                                            <t t-esc="doc_order['state']"/>
+                                        </p>
+                                    </td>
+                                    <td width="20%" style="border:1px solid black !important;">
+                                        <p style="padding:0; text-align:center;">
+                                            <t t-esc="doc_order['delivery_count']"/>
+                                        </p>
+                                    </td>
+                                    <td width="20%" style="border:1px solid black !important;">
+                                        <p style="padding:0; text-align:center;">
+                                            <t t-esc="doc_order['invoice_status']"/>
+                                        </p>
+                                    </td>
+                                </tr>
+                            </t>
+                        </table>
+                        <br></br>
+                    </t>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

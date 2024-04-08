@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <t t-name="Graph_template" owl="1">
+        <div class="ks_graph_container">
+            <div class="ks_header">
+                <div class="m-auto">
+                    <h3 class="ks_header_part"></h3>
+                </div>
+                <div style="position: absolute; right: 0;">
+                    <span>
+                        <button class="btn btn-primary" title = "Bar Chart" id="ks_bar_chart" t-on-click="(ev) => this._ks_bar_chart(ev)" style="margin-right:3px"><i class="fa fa-bar-chart" /></button>
+                        <button class="btn btn-primary" title = "Line Chart" id="ks_line_chart" t-on-click="(ev) => this._ks_line_chart(ev)"><i class="fa fa-line-chart"/></button>
+                    </span>
+                </div>
+            </div>
+            <div class="ks_chart_container" style="width: 100%; height: 100%">
+<!--                <canvas id="canvas" style="width: 850px; height: 400px" ></canvas>-->
+
+            </div>
+        </div>
+    </t>
+</templates>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo noupdate="1">
+    <record id="ks_automatic_validation" model="ks.sale.workflow.configuration">
+        <field name="name">KS: Automatic Validation</field>
+        <field name="val_order" eval="0"/>
+        <field name="ks_create_invoice" eval="0"/>
+        <field name="ks_invoice_date_is_order_date" eval="0"/>
+        <field name="ks_sale_journal_id" model="account.journal"
+               eval="obj().search([('type', '=', 'sale'),('company_id', '=', obj().env.company.id)], limit=1).id"/>
+    </record>
+</odoo>

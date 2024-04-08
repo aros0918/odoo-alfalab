@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="s_action_ks_export_attribute" model="ir.actions.server">
+        <field name="name">Sync Attributes from WooCommerce</field>
+        <field name="model_id" ref="model_ks_woo_product_attribute"/>
+        <field name="binding_model_id" ref="model_ks_woo_product_attribute"/>
+        <field name="binding_view_types">form,list</field>
+        <field name="state">code</field>
+        <field name="code">
+            action = records.ks_action_sync_attributes_from_woo()
+        </field>
+    </record>
+    <record id="s_action_ks_update_attribute" model="ir.actions.server">
+        <field name="name">Sync Attributes to WooCommerce</field>
+        <field name="model_id" ref="model_ks_woo_product_attribute"/>
+        <field name="binding_model_id" ref="model_ks_woo_product_attribute"/>
+        <field name="state">code</field>
+        <field name="code">
+            action = records.ks_action_sync_attributes_to_woo()
+        </field>
+    </record>
+
+    <record id="ks_woo_product_attribute_view_form" model="ir.ui.view">
+        <field name="name">ks.woo.product.attribute.view.form</field>
+        <field name="model">ks.woo.product.attribute</field>
+        <field name="arch" type="xml">
+            <form create="false" edit="false">
+<!--                <header>-->
+<!--                    <button name="update_record_data_in_odoo" string="Update Data" type="object"-->
+<!--                                    class="oe_highlight" attrs="{'invisible': [('ks_need_update', '=', False)]}"/>-->
+<!--                </header>-->
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_woo_layer_attribute_terms" type="object" class="oe_stat_button" icon="fa-server icon">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">WooCommerce</span>
+                                <span class="o_stat_text">Attribute Terms</span>
+                            </div>
+                        </button>
+                        <field name="ks_sync_status" invisible="1"/>
+                        <button name="" class="oe_stat_button" disabled="True"
+                                attrs="{'invisible': [('ks_sync_status', '=', False)]}" icon="fa-check text-success">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">Synchronised</span>
+                                <span class="o_stat_text">With Woo</span>
+                            </div>
+                        </button>
+                        <button name="" class="oe_stat_button" disabled="True"
+                                attrs="{'invisible': [('ks_sync_status', '=', True )]}" icon="fa-times-circle text-danger">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">UnSynchronised</span>
+                                <span class="o_stat_text">With Woo</span>
+                            </div>
+                        </button>
+                    </div>
+                   <div class="alert alert-info" role="alert" style="margin-bottom:0px;">
+                                <h3>Fields and their uses :-</h3>
+                                <ul>
+                                    <li>
+                                        <b>Name</b>
+                                        : Displays WooCommerce Attribute Name
+                                    </li>
+                                    <li>
+                                        <b>Slug</b>
+                                        : Displays WooCommerce Attribute Slug Name
+                                    </li>
+                                    <li>
+                                        <b>Type</b>
+                                        : Displays Attribute Type Name
+                                    </li>
+                                    <li>
+                                        <b>Instance</b>
+                                        : Displays WooCommerce Instance Name
+                                    </li>
+                                    <li>
+                                        <b>Woo Attribute ID</b>
+                                        : Displays WooCommerce Attribute ID
+                                    </li>
+                                    <li>
+                                        <b>Odoo Product Attribute</b>
+                                        : Displays Odoo Product Attribute Reference
+                                    </li>
+                                    <li>
+                                        <b>Modified On</b>
+                                        : Displays date of modification
+                                    </li>
+                                    <li>
+                                        <b>Last Synced On</b>
+                                        : Displays Last Sync date with WooCommerce
+                            </li>
+                                </ul>
+                            </div>
+                    <group>
+                        <group>
+                            <field name="ks_name"/>
+                            <field name="ks_slug"/>
+                            <field name="ks_display_type"/>
+                            <field name="ks_product_attribute"/>
+                        </group>
+                        <group>
+                            <field name="ks_woo_attribute_id"/>
+                            <field name="ks_wc_instance"/>
+                            <field name="ks_sync_date"/>
+                            <field name="ks_last_exported_date"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="ks_woo_product_attribute_view_tree" model="ir.ui.view">
+        <field name="name">ks.woo.product.attribute.view.tree</field>
+        <field name="model">ks.woo.product.attribute</field>
+        <field name="arch" type="xml">
+            <tree create="false" edit="false" decoration-info="ks_mapped==True">
+                <field name="ks_woo_attribute_id"/>
+                <field name="ks_name"/>
+                <field name="ks_mapped" invisible="1"/>
+                <field name="ks_product_attribute"/>
+                <field name="ks_wc_instance"/>
+                <field name="ks_sync_status" widget="boolean_toggle" readonly="1"/>
+<!--                <button name="update_record_data_in_odoo" string="Update Data" type="object"-->
+<!--                                    class="oe_highlight" attrs="{'invisible': [('ks_need_update', '=', False)]}"/>-->
+            </tree>
+        </field>
+    </record>
+
+    <record id="ks_woo_product_attribute_view_search" model="ir.ui.view">
+        <field name="name">Search Attribute</field>
+        <field name="model">ks.woo.product.attribute</field>
+        <field name="arch" type="xml">
+            <search string="Search Attributes">
+                <field name="ks_name" string="Attribute"/>
+                <field name="ks_slug" string="Slug"/>
+                <field name="ks_woo_attribute_id" string="Woo Attribute ID"/>
+                <field name="ks_wc_instance" string="Woo Instance"
+                       filter_domain="[('ks_wc_instance','ilike',self)]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="groupby_instance" string="Woo Instance"
+                            context="{'group_by':'ks_wc_instance'}"/>
+                    <filter name="groupby_main_model" string="Odoo Model"
+                            context="{'group_by':'ks_product_attribute'}"/>
+<!--                    <filter string="Update Action Needed" name="ks_need_update"-->
+<!--                            domain="[('ks_need_update', '=', True)]"/>-->
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_ks_woo_product_attribute">
+        <field name="name">WooCommerce Product Attribute</field>
+        <field name="res_model">ks.woo.product.attribute</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                **All the Synced WooCommerce Product Attribute will appear here.
+            </p>
+        </field>
+    </record>
+</odoo>

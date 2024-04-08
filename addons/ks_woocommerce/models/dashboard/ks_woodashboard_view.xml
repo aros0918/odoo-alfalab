@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="ks_woo_dashboard_kanban_view" model="ir.ui.view">
+        <field name="name">ks.woo.dashboard.kanban.view</field>
+        <field name="model">ks.woo.dashboard</field>
+        <field name="arch" type="xml">
+            <kanban class="o_woo_dashboard_kanban" create="false">
+                <field name="name"/>
+                <field name="ks_chart_data"/>
+                <field name="ks_graph_view"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="ks_kanban_main w-100 d-flex no-gutters row">
+                            <div class="ks_kanban_sec col-sm-6 col-md-8 pr-md-4">
+                                <field name="ks_graph_view" widget="ks_graph_owl"/>
+                            </div>
+                            <div class="ks_kanban_slider_main col-sm-6 col-md-4 ">
+                                <div class="ks_kanban_slider">
+                                    <div class="ks_div_button w-100">
+                                        <div class="ks_div_icon">
+                                            <i class="fa fa-wordpress" title="woocommerce_instance"/>
+                                        </div>
+                                        <button class="ks_div_cont" name="get_ks_instances" type="object">
+                                            <div class="ks_div_count">
+                                                <field name="ks_instance_counts" widget="statinfo" nolabel="1"/>
+                                            </div>
+                                            <div class="ks_div_title">
+                                                <p class="ks_title">WooCommerce Instances</p>
+                                            </div>
+                                        </button>
+                                    </div>
+
+                                    <div class="ks_div_button">
+                                        <div class="ks_div_icon">
+                                            <i class="fa fa-shopping-bag" title="product"/>
+                                        </div>
+                                        <button class="ks_div_cont" name="get_ks_products" type="object">
+                                            <div class="ks_div_count">
+                                                <field name="ks_product_counts" widget="statinfo" nolabel="1"/>
+                                            </div>
+                                            <div class="ks_div_title">
+                                                <p class="ks_title">Products</p>
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <div class="ks_div_button">
+                                        <div class="ks_div_icon">
+                                            <i class="fa fa-code-fork" title="Variants"/>
+                                        </div>
+                                        <button class="ks_div_cont" name="get_ks_variants" type="object">
+                                            <div class="ks_div_count">
+                                                <field name="ks_variant_counts" widget="statinfo" nolabel="1"/>
+                                            </div>
+                                            <div class="ks_div_title">
+                                                <p class="ks_title">Variants</p>
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <div class="ks_div_button">
+                                        <div class="ks_div_icon">
+                                            <i class="fa fa-star" title="attribute"/>
+                                        </div>
+                                        <button class="ks_div_cont" name="get_ks_attributes" type="object">
+                                            <div class="ks_div_count">
+                                                <field name="ks_attribute_counts" widget="statinfo" nolabel="1"/>
+                                            </div>
+                                            <div class="ks_div_title">
+                                                <p class="ks_title">Attributes</p>
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <div class="ks_div_button">
+                                        <div class="ks_div_icon">
+                                            <i class="fa fa-list-alt" title="categories"/>
+                                        </div>
+                                        <button class="ks_div_cont" name="get_ks_categories" type="object">
+                                            <div class="ks_div_count">
+                                                <field name="ks_category_counts" widget="statinfo" nolabel="1"/>
+                                            </div>
+                                            <div class="ks_div_title">
+                                                <p class="ks_title">Categories</p>
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <div class="ks_div_button">
+                                        <div class="ks_div_icon">
+                                            <i class="fa fa-tags" title="tags"/>
+                                        </div>
+                                        <button class="ks_div_cont" name="get_ks_tags" type="object">
+                                            <div class="ks_div_count">
+                                                <field name="ks_tag_counts" widget="statinfo" nolabel="1"/>
+                                            </div>
+                                            <div class="ks_div_title">
+                                                <p class="ks_title">Tags</p>
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <div class="ks_div_button">
+                                        <div class="ks_div_icon">
+                                            <i class="fa fa-ticket" title="Coupons"/>
+                                        </div>
+                                        <button class="ks_div_cont" name="get_ks_coupons" type="object">
+                                            <div class="ks_div_count">
+                                                <field name="ks_coupon_counts" widget="statinfo" nolabel="1"/>
+                                            </div>
+                                            <div class="ks_div_title">
+                                                <p class="ks_title">Coupons</p>
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <div class="ks_div_button">
+                                        <div class="ks_div_icon">
+                                            <i class="fa fa-user" title="Customers"/>
+                                        </div>
+                                        <button class="ks_div_cont" name="get_ks_customers" type="object">
+                                            <div class="ks_div_count">
+                                                <field name="ks_customer_counts" widget="statinfo" nolabel="1"/>
+                                            </div>
+                                            <div class="ks_div_title">
+                                                <p class="ks_title">Customers</p>
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <div class="ks_div_button">
+                                        <div class="ks_div_icon">
+                                            <i class="fa fa-shopping-cart" title="Orders"/>
+                                        </div>
+                                        <button class="ks_div_cont" name="get_ks_orders" type="object">
+                                            <div class="ks_div_count">
+                                                <field name="ks_order_counts" widget="statinfo" nolabel="1"/>
+                                            </div>
+                                            <div class="ks_div_title">
+                                                <p class="ks_title">Orders</p>
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <div class="ks_div_button">
+                                        <div class="ks_div_icon">
+                                            <i class="fa fa-truck" title="Delivery"/>
+                                        </div>
+                                        <button class="ks_div_cont" name="get_ks_delivery" type="object">
+                                            <div class="ks_div_count">
+                                                <field name="ks_delivery_counts" widget="statinfo" nolabel="1"/>
+                                            </div>
+                                            <div class="ks_div_title">
+                                                <p class="ks_title">Delivery</p>
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <div class="ks_div_button">
+                                        <div class="ks_div_icon">
+                                            <i class="fa fa-file-text-o" title="Invoices"/>
+                                        </div>
+                                        <button class="ks_div_cont" name="get_ks_invoices" type="object">
+                                            <div class="ks_div_count">
+                                                <field name="ks_invoice_counts" widget="statinfo" nolabel="1"/>
+                                            </div>
+                                            <div class="ks_div_title">
+                                                <p class="ks_title">Invoices</p>
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <div class="ks_div_button">
+                                        <div class="ks_div_icon">
+                                            <i class="fa fa-star-o" title="attribute_value"/>
+                                        </div>
+                                        <button class="ks_div_cont" name="get_ks_refunds" type="object">
+                                            <div class="ks_div_count">
+                                                <field name="ks_refund_counts" widget="statinfo" nolabel="1"/>
+                                            </div>
+                                            <div class="ks_div_title">
+                                                <p class="ks_title" id="ks_attribute_value">Refunds</p>
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <div class="ks_div_button">
+                                        <div class="ks_div_icon">
+                                            <i class="fa fa-money" title="Gateways"/>
+                                        </div>
+                                        <button class="ks_div_cont" name="get_ks_payment_gateways" type="object">
+                                            <div class="ks_div_count">
+                                                 <field name="ks_gateway_counts" widget="statinfo" nolabel="1"/>
+                                            </div>
+                                            <div class="ks_div_title">
+                                                <p class="ks_title">Gateways</p>
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <div class="ks_div_button w-100">
+                                        <div class="ks_div_icon">
+                                            <i class="fa fa-dropbox" title="inventory_adjustment"/>
+                                        </div>
+                                        <button class="ks_div_cont" name="get_inventory" type="object">
+                                            <div class="ks_div_count">
+                                                <field name="ks_inventory_counts" widget="statinfo" nolabel="1"/>
+                                            </div>
+                                            <div class="ks_div_title">
+                                                <p class="ks_title">Inventory Adjustments</p>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="ks_woo_dashboard_form" model="ir.ui.view">
+        <field name="name">Dashboard</field>
+        <field name="model">ks.woo.dashboard</field>
+        <field name="arch" type="xml">
+            <form string="Dashboard" create="false">
+                <group>
+                    <field name="name"/>
+                    <field name="ks_chart_data"/>
+                    <field name="ks_graph_view"/>
+                    <field name="ks_wc_instance"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="ks_woo_dashboard_search_view_form" model="ir.ui.view">
+        <field name="name">ks.woo.dashboard.search.form</field>
+        <field name="model">ks.woo.dashboard</field>
+        <field name="arch" type="xml">
+           <search string="Tasks">
+                <field name="ks_wc_instance" string="Instance"/>
+                <separator/>
+                <filter name="filter_on_instances"
+                            string="WooCommerce Instance"
+                            domain="[('ks_wc_instance', 'ilike', '')]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="ks_woo_dashboard_action" model="ir.actions.act_window">
+        <field name="name">Dashboard</field>
+        <field name="res_model">ks.woo.dashboard</field>
+        <field name="view_mode">kanban</field>
+        <field name="context">{'search_default_filter_on_instances':1}</field>
+    </record>
+</odoo>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+   <t t-extend="ListView.buttons" t-name="export_selected_invoice_xlsx.buttons">
+       <t t-jquery="button.o_list_button_add" t-operation="after">
+           <button type="button" class="btn btn-secondary fa fa-download ml4 export_invoice_action" title="Export Invoice" aria-label="Export Invoice">
+               
+           </button>
+       </t>
+   </t>
+</templates>

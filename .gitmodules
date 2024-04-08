@@ -1,0 +1,6 @@
+[submodule "addons/odoo-alfalab-module"]
+	path = addons/odoo-alfalab-module
+	url = git@github.com:Odoo-Alfalab/odoo-alfalab-module.git
+[submodule "addons/sols_fiscal_print"]
+	path = addons/sols_fiscal_print
+	url = git@github.com:Odoo-Alfalab/sols_fiscal_print.git

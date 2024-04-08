@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="ks_woo_auto_sale_form" model="ir.ui.view">
+        <field name="name">ks.woo.auto.sale.workflow</field>
+        <field name="model">ks.woo.auto.sale.workflow.configuration</field>
+        <field name="arch" type="xml">
+            <form string="Auto Sale Workflow">
+                <sheet>
+                    <group>
+                        <group string="Basic Configurations">
+                            <field name="ks_wc_instance"/>
+                            <field name="ks_sale_workflow_id"/>
+                        </group>
+                        <group string="Other Configurations">
+                            <field name="ks_woo_payment_id"/>
+                            <field name="ks_woo_order_status"/>
+                            <field name="ks_order_import_type" invisible="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

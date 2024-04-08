@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="ks_woo_delivery_carrier_form_view" model="ir.ui.view">
+        <field name="name">ks.woo.delivery.carrier.view.form</field>
+        <field name="model">ks.woo.delivery.carrier</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+<!--                    <div name="button_box" class="oe_button_box">-->
+<!--                        <field name="ks_sync_status" invisible="1"/>-->
+<!--                        <button name="" class="oe_stat_button" readonly="True"-->
+<!--                                attrs="{'invisible': [('ks_sync_status', '=', False)]}" icon="fa-check text-success">-->
+<!--                            <div class="o_stat_info">-->
+<!--                                <span class="o_stat_text">Synchronised</span>-->
+<!--                                <span class="o_stat_text">With Woo</span>-->
+<!--                            </div>-->
+<!--                        </button>-->
+<!--                        <button name="" class="oe_stat_button" readonly="True"-->
+<!--                                attrs="{'invisible': [('ks_sync_status', '=', True )]}"-->
+<!--                                icon="fa-times-circle text-danger">-->
+<!--                            <div class="o_stat_info">-->
+<!--                                <span class="o_stat_text">UnSynchronised</span>-->
+<!--                                <span class="o_stat_text">With Woo</span>-->
+<!--                            </div>-->
+<!--                        </button>-->
+<!--                    </div>-->
+                    <div class="alert alert-info" role="alert" style="margin-bottom:0px;">
+                        <h3>Fields and their uses :-</h3>
+                        <ul>
+                            <li>
+                                <b>Shipping Method</b>
+                                : Displays Odoo Linked Product Shipping Method
+                            </li>
+                            <li>
+                                <b>Woo Shipping Method ID</b>
+                                : Displays WooCommerce ID
+                            </li>
+                            <li>
+                                <b>Description</b>
+                                : Displays WooCommerce ID
+                            </li>
+                            <li>
+                                <b>Instance</b>
+                                : Displays WooCommerce Instance Name
+                            </li>
+                        </ul>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="ks_delivery_carrier_id"/>
+                            <field name="ks_woo_id"/>
+                            <field name="ks_description"/>
+                            <field name="ks_wc_instance"/>
+                        </group>
+                        <group>
+                            <field name="ks_title"/>
+                            <field name="ks_date_created"/>
+                            <field name="ks_date_updated"/>
+
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_ks_woo_delivery_carrier_">
+        <field name="name">WooCommerce Shipping Methods</field>
+        <field name="res_model">ks.woo.delivery.carrier</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                **All the Synced WooCommerce Shipping Methods will appear here.
+            </p>
+        </field>
+    </record>
+
+    <record id="ks_woo_delivery_carrier_view_tree" model="ir.ui.view">
+        <field name="name">ks.woo.delivery.carrier.view.tree</field>
+        <field name="model">ks.woo.delivery.carrier</field>
+        <field name="arch" type="xml">
+            <tree create="false" edit="false">
+                <field name="ks_woo_id"/>
+                <field name="ks_delivery_carrier_id"/>
+                <field name="ks_wc_instance"/>
+                <field name="ks_date_created"/>
+                <field name="ks_date_updated"/>
+<!--                <field name="ks_sync_status" widget="boolean_toggle" readonly="1"/>-->
+            </tree>
+        </field>
+    </record>
+
+    <record id="ks_woo_delivery_carrier_view_search" model="ir.ui.view">
+        <field name="name">Shipping Method Search</field>
+        <field name="model">ks.woo.delivery.carrier</field>
+        <field name="arch" type="xml">
+            <search string="Shipping Method Search">
+                <field name="ks_wc_instance" string="Woo Instance"
+                       filter_domain="[('ks_wc_instance','ilike',self)]"/>
+                <separator/>
+                <filter string="Today Created Woo Shipping Methods" name="woo_created_today"
+                        domain="[('ks_date_created','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0))), ('ks_date_created','&lt;=', datetime.datetime.combine(context_today(), datetime.time(23,59,59)))]"/>
+                <filter string="Today Updated Woo Shipping Methods" name="woo_created_today"
+                        domain="[('ks_date_updated','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0))), ('ks_date_updated','&lt;=', datetime.datetime.combine(context_today(), datetime.time(23,59,59)))]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="groupby_instance" string="Woo Instance"
+                            context="{'group_by':'ks_wc_instance'}"/>
+                    <filter name="groupby_main_model" string="Odoo Model"
+                            context="{'group_by':'ks_delivery_carrier_id'}"/>
+<!--                    <filter string="Update Action Needed" name="ks_need_update"-->
+<!--                            domain="[('ks_need_update', '=', True)]"/>-->
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="ks_view_delivery_carrier_form" model="ir.ui.view">
+        <field name="name">ks.delivery.carrier.view.form</field>
+        <field name="model">delivery.carrier</field>
+        <field name="inherit_id" ref="delivery.view_delivery_carrier_form"/>
+        <field name="priority">60</field>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                <button name="action_woo_ship_layer_templates" title="Woocommerce Shipping Methods" type="object" class="oe_stat_button" icon="fa-server icon">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_text">Woo Shipping</span>
+                        <span class="o_stat_text">Methods</span>
+                    </div>
+                </button>
+            </xpath>
+<!--            <xpath expr="//field[@name='product_id']" position="attributes">-->
+<!--                <attribute name="attrs">{'required':False}</attribute>-->
+<!--            </xpath>-->
+        </field>
+    </record>
+</odoo>

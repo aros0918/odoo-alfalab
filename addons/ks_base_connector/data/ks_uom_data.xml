@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="product_uom_cubic_cm" model="uom.uom">
+        <field name="name">cm³</field>
+        <field name="category_id" ref="uom.product_uom_categ_vol"/>
+        <field name="factor_inv">28.3168</field>
+        <field name="uom_type">bigger</field>
+    </record>
+</odoo>

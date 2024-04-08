@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Odoo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+    <link href=https://apps.odoocdn.com/web/content/7247337-184ae0e/1/web.assets_frontend.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://apps.odoocdn.com/web/content/7297172-19e3d31/1/web.assets_frontend.css"/>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<style>
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .h1,
+    .h2,
+    .h3,
+    .h4,
+    .h5,
+    .h6 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+        line-height: 1.1;
+        color: #21272b;
+    }
+
+    ul {
+        color: #222020;
+    }
+
+    * {
+        font-family: "Montserrat", sans-serif;
+    }
+
+
+
+
+
+
+
+
+
+</style>
+<!-- odoo description page css -->
+
+<body>
+<div id="loempia_tabs" class="container">
+    <!-- Header -->
+    <div class="row justify-content-md-between justify-content-center border-bottom align-items-center py-2 mx-0">
+        <div class="text-center mr-lg-5 mb-3 mb-lg-0">
+            <a class="btn p-2">
+                <img src="images/ksolves-logo.png" alt="ksolves-logo" style="height:40px">
+            </a>
+        </div>
+        <div class="d-flex flex-wrap justify-content-center py-2">
+            <div class="text-center">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=ksolves" target="_blank"
+                   class="btn btn-sm mb-2 mb-lg-0 p-2"
+                   style="font-size: 13px;font-size: 14px; font-weight: 500;background-color: #203038;color:#fff;"><i
+                        class="fa fa-list-alt mr-1"></i> <span class="d-none d-sm-inline">Ksolves</span> All Apps</a>
+            </div>
+        </div>
+        <div class="mt-md-0 mt-4 mb-3 mb-lg-0">
+                <span class="btn btn-sm mb-2 mb-lg-0 p-2"
+                      style="font-size: 13px;font-size: 14px; font-weight: 500;background-color: #203038;color:#fff;"><i
+                        class="fa fa-check"></i> Community</span>
+            <span class="btn btn-sm mb-2 mb-lg-0 p-2"
+                  style="font-size: 13px;font-size: 14px; font-weight: 500;background-color: #203038;color:#fff;"><i
+                    class="fa fa-check"></i> Enterprise</span>
+        </div>
+    </div>
+    <div class="row align-items-center justify-content-center py-3 mx-0">
+        <div class="my-4">
+            <div class="text-center">
+                <h1 class="text-center d-inline-block mx-auto pb-2" style="padding: 0 20px 5px; border-bottom:1px solid;
+                           font-family: Montserrat;">
+                    Odoo Base Connector V16
+                </h1>
+            </div>
+            <p style="text-align:center;border-width: 3px;font-weight: 500;border-style: solid;border-image: linear-gradient( to bottom, #fa6100, rgba(0, 0, 0, 0) ) 1 100%;font-family:Roboto;"
+               class="  px-sm-4 p-2 pt-4">
+
+                Odoo Base connector is a module that handle all the odoo side operations of
+                the connector.
+                Base connector controls the management of the Odoo Base Handlings.
+
+            </p>
+            <p style="text-align:center;border-width: 3px;font-weight: 500;border-style: solid;border-image: linear-gradient( to bottom, #fa6100, rgba(0, 0, 0, 0) ) 1 100%;font-family:Roboto;"
+               class="  px-sm-4 p-2 pt-4">
+                Ksolves present you Base Connector V16 with all the latest reliable features which can lead your business
+                to a new height with all the automated and multi schema architecture with all the base controls in
+                generic hand.
+            </p>
+
+            <h4 class="font-weight-bold mb-3" style="font-size: 30px"><span style="color:#E13B34;">Hot</span> Features
+            </h4>
+            <ul class="list-unstyled">
+                <li class="mb-2">
+                    <i class="fa fa-free-code-camp" style="font-size:18px;color:#E13B34;"></i><span
+                        style="font-size:18px;font-weight: 500;" class="font-weight-bold ml-2">Sync Feature</span>
+                    <div style="padding-left: 31px;font-weight: 500;"> - Base Connector module to handle the base
+                        operations on odoo side.
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- <hr> -->
+    <div class="row mb-4 justify-content-center my-4 mb-md-5">
+        <div class="col-12 col-md-5 text-center mb-4 mb-md-0">
+            <span class="btn py-3 px-5"
+                  style="font-size: 20px; font-weight: 600;background-color: #203038;color:#fff;">DEMO AVAILABLE</span>
+        </div>
+        <div class="col-12 col-md-5 text-center text-md-right">
+            <span class="btn py-3 px-5"
+                  style="font-size: 20px; font-weight: 600;background-color: #203038;color:#fff;">FREE 90 DAYS SUPPORT</span>
+        </div>
+    </div>
+    <div class="text-center mb-4 mb-md-5">
+        <img src="./img/full-screen.jpg" alt="" class="img-fluid">
+    </div>
+    <div>
+        <div class="justify-content-center d-flex">
+            <!-- Nav pills -->
+            <ul class="nav o_tab_nav"
+                style="border: 1px solid #203038;  border-radius: 6px 6px;overflow:hidden;background-color:transparent">
+<!--                <li class="nav-item" style="border-radius: 6px 0 0 6px;">-->
+<!--                    <a class="nav-link active px-md-4 list-group-item-beta-dark list-group-item-action"-->
+<!--                       data-toggle="pill" href="#Setup"-->
+<!--                       style="border-radius: 6px 0 0 6px; border-right: 1px solid#203038;opacity: 1;padding:16px;">Setup</a>-->
+<!--                </li>-->
+                <li class="nav-item">
+                    <a class="nav-link px-md-4 list-group-item-beta-dark list-group-item-action" data-toggle="pill"
+                       href="#Release"
+                       style="border-radius: 0px; border-right: 1px solid #203038;opacity: 1;padding:16px;">Releases</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-md-4 list-group-item-beta-dark list-group-item-action" data-toggle="pill"
+                       href="#FAQ" style="border-radius: 0px;opacity: 1;padding:16px;">FAQ's</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Tab panes -->
+        <div class="tab-content py-5">
+            <div class="tab-pane fade" id="Release">
+                <section class="card mb-5" style="border: none;">
+                    <div class="card-body pb-5">
+                        <div class="text-center pb-5 pt-4">
+                            <h2 style="font-weight: 600; font-size: 2.5rem;">Our Releases</h2>
+                        </div>
+                        <div class="row justify-content-center active">
+                            <div class="col-sm-8 col-xl-6 mx-auto">
+                                <span style="background-color: #203038;width:4px;height:100%;top: 0;left: 55px;"></span>
+
+                                <div class="pb-3">
+                                    <div class=""
+                                         style="background-color: #203038;top: 50%;min-width: 65px; left: 0;box-sizing: border-box;padding: 10px;text-align: center; color: #fff;border-top-left-radius: 5px;border-bottom-left-radius: 5px;">
+                                        <span style="font-size: 20px; font-weight: 700;display: block;">01st</span>
+                                        <span style="display: block;font-size: 0.8em;text-transform: uppercase;">February, 2023 </span>
+                                    </div>
+                                    <div class="w-100"
+                                         style="padding: 1.5rem 2rem;border-top-right-radius: 10px;box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);background-color: #fff;border-bottom-right-radius: 10px;border: 1px solid#203038;">
+                                        <div class="timeline__content">
+                                            <h3 style="font-weight: 400; margin-bottom:20px">Latest Release
+                                                1.0.2</h3>
+                                            <p style="color:#666; margin-bottom: 10px;">
+                                                <span
+                                                        style="font-size:12px;position:relative;">■</span>
+                                                <b>Enhancement</b> - Visibility of Default Fields in the Inventory tab of product.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pb-3">
+                                    <div class=""
+                                         style="background-color: #203038;top: 50%;min-width: 65px; left: 0;box-sizing: border-box;padding: 10px;text-align: center; color: #fff;border-top-left-radius: 5px;border-bottom-left-radius: 5px;">
+                                        <span style="font-size: 20px; font-weight: 700;display: block;">16th</span>
+                                        <span style="display: block;font-size: 0.8em;text-transform: uppercase;">January, 2023 </span>
+                                    </div>
+                                    <div class="w-100"
+                                         style="padding: 1.5rem 2rem;border-top-right-radius: 10px;box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);background-color: #fff;border-bottom-right-radius: 10px;border: 1px solid#203038;">
+                                        <div class="timeline__content">
+                                            <h3 style="font-weight: 400; margin-bottom:20px">Release
+                                                1.0.1</h3>
+                                            <p style="color:#666; margin-bottom: 10px;">
+                                                <span
+                                                        style="font-size:12px;position:relative;">■</span>
+                                                <b>Enhancement</b> - Working of Sale Workflow
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pb-3">
+                                    <div class=""
+                                         style="background-color: #203038;top: 50%;min-width: 65px; left: 0;box-sizing: border-box;padding: 10px;text-align: center; color: #fff;border-top-left-radius: 5px;border-bottom-left-radius: 5px;">
+                                        <span style="font-size: 20px; font-weight: 700;display: block;">24th</span>
+                                        <span style="display: block;font-size: 0.8em;text-transform: uppercase;">November, 2022 </span>
+                                    </div>
+                                    <div class="w-100"
+                                         style="padding: 1.5rem 2rem;border-top-right-radius: 10px;box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);background-color: #fff;border-bottom-right-radius: 10px;border: 1px solid#203038;">
+                                        <div class="timeline__content">
+                                            <h3 style="font-weight: 400; margin-bottom:20px">Release
+                                                1.0.0</h3>
+                                            <p style="color:#666; margin-bottom: 10px;">
+                                                <span
+                                                        style="font-size:12px;position:relative;">■</span>
+                                                <b>New Version</b> - Latest Version 16 release of Base Connector
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!--            <div class="tab-pane fade" id="UserGuide">-->
+            <!--                User Guide-->
+            <!--            </div>-->
+            <div class="tab-pane fade" id="FAQ">
+                <div class="card-body p-0">
+                    <div class="text-center pb-5">
+                        <h2 style="color: #0b3b52; font-weight: 600; font-size: 2.5rem;">Frequently Asked Question</h2>
+                    </div>
+                    <div class="s_faq mx-2 mx-md-5 mb-5">
+                        <div id="accordion">
+                            <div class="card shadow mb-4" style="border: none; border-left: 10px solid #203038;">
+                                <div class="card-header py-4 pl-4 pr-5 bg-white position-relative d-flex justify-content-between"
+                                     style="border: none;">
+                                    <div class="pr-5" style="font-size: 1.6rem; font-weight: 600; color: #0b3b52;">Need
+                                        some customization in this app, whom to contact?
+                                    </div>
+                                    <a class="card-link" data-toggle="collapse" href="#faqOne" style="
+                                      width: 48px;
+                                      height: 40px;
+                                      line-height: 11px;
+                                      background-color: rgba(8, 101, 99, 0.1);
+                                      border-radius: 2px;
+                                      padding: 0;
+                                      font-size: 24px;"></a>
+                                </div>
+                                <div id="faqOne" class="collapse" data-parent="#accordion">
+                                    <div class="card-body pt-0 pl-4">
+                                        <div style="font-size: 1.4rem; color: #0b3b52;">
+                                            Please drop email at sales@ksolves.com or raise a ticket through Odoo store
+                                            itself.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card shadow mb-4" style="border: none; border-left: 10px solid #203038;">
+                                <div class="card-header py-4 pl-4 pr-5 bg-white position-relative d-flex justify-content-between"
+                                     style="border: none;">
+                                    <div class="pr-5" style="font-size: 1.6rem; font-weight: 600; color: #0b3b52;">Do
+                                        you provide any free support?
+                                    </div>
+                                    <a class="card-link collapsed" data-toggle="collapse" href="#faqTwo" style="
+                                      width: 48px;
+                                      height: 40px;
+                                      line-height: 11px;
+                                      background-color: rgba(8, 101, 99, 0.1);
+                                      border-radius: 2px;
+                                      padding: 0;
+                                      font-size: 24px;"></a>
+                                </div>
+                                <div id="faqTwo" class="collapse" data-parent="#accordion">
+                                    <div class="card-body pt-0 pl-4">
+                                        <div style="font-size: 1.4rem; color: #0b3b52;">
+                                            Yes, we do provide free support for 90 days for any queries or any bug/issue
+                                            fixing.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card shadow mb-4" style="border: none; border-left: 10px solid #203038;">
+                                <div class="card-header py-4 pl-4 pr-5 bg-white position-relative d-flex justify-content-between"
+                                     style="border: none;">
+                                    <div class="pr-5" style="font-size: 1.6rem; font-weight: 600; color: #0b3b52;">Is
+                                        this app compatible with Multi Currency?
+                                    </div>
+                                    <a class="card-link collapsed" data-toggle="collapse" href="#faqThree" style="
+                                      width: 48px;
+                                      height: 40px;
+                                      line-height: 11px;
+                                      background-color: rgba(8, 101, 99, 0.1);
+                                      border-radius: 2px;
+                                      padding: 0;
+                                      font-size: 24px;"></a>
+                                </div>
+                                <div id="faqThree" class="collapse" data-parent="#accordion">
+                                    <div class="card-body pt-0 pl-4">
+                                        <div style="font-size: 1.4rem; color: #0b3b52;">
+                                            Yes, our app supports Multi Currency.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card shadow mb-4" style="border: none; border-left: 10px solid #203038;">
+                                <div class="card-header py-4 pl-4 pr-5 bg-white position-relative d-flex justify-content-between"
+                                     style="border: none;">
+                                    <div class="pr-5" style="font-size: 1.6rem; font-weight: 600; color: #0b3b52;">Is
+                                        this app compatible with Odoo Enterprise?
+                                    </div>
+                                    <a class="card-link collapsed" data-toggle="collapse" href="#faqFour" style="
+                                      width: 48px;
+                                      height: 40px;
+                                      line-height: 11px;
+                                      background-color: rgba(8, 101, 99, 0.1);
+                                      border-radius: 2px;
+                                      padding: 0;
+                                      font-size: 24px;"></a>
+                                </div>
+                                <div id="faqFour" class="collapse" data-parent="#accordion">
+                                    <div class="card-body pt-0 pl-4">
+                                        <div style="font-size: 1.4rem; color: #0b3b52;">
+                                            Yes, our app works with Odoo Enterprise as well as Community.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+<!--                            <div class="card shadow mb-4" style="border: none; border-left: 10px solid #203038;">-->
+<!--                                <div class="card-header py-4 pl-4 pr-5 bg-white position-relative d-flex justify-content-between"-->
+<!--                                     style="border: none;">-->
+<!--                                    <div class="pr-5" style="font-size: 1.6rem; font-weight: 600; color: #0b3b52;">Do-->
+<!--                                        sync WooCommerce Coupons?-->
+<!--                                    </div>-->
+<!--                                    <a class="card-link collapsed" data-toggle="collapse" href="#faqFive" style="-->
+<!--                                      width: 48px;-->
+<!--                                      height: 40px;-->
+<!--                                      line-height: 11px;-->
+<!--                                      background-color: rgba(8, 101, 99, 0.1);-->
+<!--                                      border-radius: 2px;-->
+<!--                                      padding: 0;-->
+<!--                                      font-size: 24px;"></a>-->
+<!--                                </div>-->
+<!--                                <div id="faqFive" class="collapse" data-parent="#accordion">-->
+<!--                                    <div class="card-body pt-0 pl-4">-->
+<!--                                        <div style="font-size: 1.4rem; color: #0b3b52;">-->
+<!--                                            Yes, you can sync coupons data.-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="card shadow mb-4" style="border: none; border-left: 10px solid #203038;">-->
+<!--                                <div class="card-header py-4 pl-4 pr-5 bg-white position-relative d-flex justify-content-between"-->
+<!--                                     style="border: none;">-->
+<!--                                    <div class="pr-5" style="font-size: 1.6rem; font-weight: 600; color: #0b3b52;">Does-->
+<!--                                        it supports sub-sub-categories's import/export?-->
+<!--                                    </div>-->
+<!--                                    <a class="card-link collapsed" data-toggle="collapse" href="#faqSix" style="-->
+<!--                                      width: 48px;-->
+<!--                                      height: 40px;-->
+<!--                                      line-height: 11px;-->
+<!--                                      background-color: rgba(8, 101, 99, 0.1);-->
+<!--                                      border-radius: 2px;-->
+<!--                                      padding: 0;-->
+<!--                                      font-size: 24px;"></a>-->
+<!--                                </div>-->
+<!--                                <div id="faqSix" class="collapse" data-parent="#accordion">-->
+<!--                                    <div class="card-body pt-0 pl-4">-->
+<!--                                        <div style="font-size: 1.4rem; color: #0b3b52;">-->
+<!--                                            Yes, with this app you can move sub-sub-categories from Woo-Commerce to Odoo-->
+<!--                                            and vice-versa.</span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+                            <!--<div class="card shadow mb-4" style="border: none; border-left: 10px solid #203038;">
+                                <div class="card-header py-4 pl-4 pr-5 bg-white position-relative d-flex justify-content-between"
+                                     style="border: none;">
+                                    <div class="pr-5" style="font-size: 1.6rem; font-weight: 600; color: #0b3b52;">Do
+                                        this app supports weebhooks?
+                                    </div>
+                                    <a class="card-link collapsed" data-toggle="collapse" href="#faqSeven" style="
+                                      width: 48px;
+                                      height: 40px;
+                                      line-height: 11px;
+                                      background-color: rgba(8, 101, 99, 0.1);
+                                      border-radius: 2px;
+                                      padding: 0;
+                                      font-size: 24px;"></a>
+                                </div>
+                                <div id="faqSeven" class="collapse" data-parent="#accordion">
+                                    <div class="card-body pt-0 pl-4">
+                                        <div style="font-size: 1.4rem; color: #0b3b52;">
+                                            Yes, this app supports webhooks but only with single database.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- tab view / end -->
+    </div>
+
+
+    <section class="card shadow-sm mb-5">
+        <div class="text-center text-white  py-5"
+             style="background-color: #0b3b52;">
+            <div class="mb-4" style="font-size: 2rem;">FREE 90 DAYS SUPPORT</div>
+            <div class="px-md-4 px-md-5 mx-md-5">
+                <p>Ksolves will provide FREE 90 days support for any doubt, queries, and bug fixing (excluding data
+                    recovery) or any type of issues related to this module. This is applicable from the date of
+                    purchase.</p>
+            </div>
+        </div>
+    </section>
+    <section class="mb-5">
+        <div class="text-center p-2 d-flex justify-content-center align-items-center col-lg-9"
+             style="background-color: #0b3b52;
+            box-shadow: 1px 2px 11px rgba(0, 0, 0, 0), 1px 11px 12px rgba(0, 0, 0, 0.22);margin: auto;">
+            <h3 class="font-weight-bold mb-0 mr-3 text-light">Note: </h3>
+            <h5 class="mb-0 text-light" style="margin-top: 2px;">
+                Extensively Tested on Odoo Vanilla with Ubuntu OS
+            </h5>
+        </div>
+    </section>
+    <section class="card shadow-sm mb-5">
+        <div class="card-body">
+            <h2 class="my-3 w-100 text-center" style="color: #0b3b52; font-weight: 400;">Ksolves Suggested Apps</h2>
+            <div class="text-center w-100 mb-4">
+                <img alt="ksolves" src="images/line.png">
+            </div>
+            <div id="demo" class="carousel slide pb-5 col-12 col-lg-8 mx-auto" data-ride="carousel">
+                <!-- Indicators -->
+                <ul class="carousel-indicators">
+                    <li data-target="#demo" style="background-color: #0b3b52;" data-slide-to="0" class="active"></li>
+                    <li data-target="#demo" style="background-color: #0b3b52;" data-slide-to="1"></li>
+                </ul>
+                <!-- The slideshow -->
+                <div class="carousel-inner pt-4 pt-lg-5 ">
+                    <div class="carousel-item px-4 active" style="min-height: 354px;">
+                        <div class="row pb-sm-4 no-lg-gutters">
+                            <div class="col-6 col-sm-3 text-center">
+                                <a href="https://apps.odoo.com/apps/modules/14.0/ks_dashboard_ninja/" class="d-block"
+                                   target="_blank" style="text-decoration: none;">
+                                    <img src="images/app-logo/dashboard-ninja.png" alt="dashboard-ninja">
+                                    <div class="card-body text-center p-0 mt-3 mb-3 mb-lg-0">
+                                        <h5 class="card-text m-0" style="font-size: 16px; font-weight: 600">Dashboard
+                                            <br> Ninja</h5>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-6 col-sm-3 text-center">
+                                <a href="https://apps.odoo.com/apps/modules/14.0/ks_list_view_manager/" target="_blank"
+                                   style="text-decoration: none;">
+                                    <img src="images/app-logo/list-view-manager.png" alt="list-view-manager">
+                                    <div class="card-body text-center p-0 mt-3 mb-3 mb-lg-0">
+                                        <h5 class="card-text m-0" style="font-size: 16px; font-weight: 600">List View
+                                            <br> Manager</h5>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-6 col-sm-3 text-center">
+                                <a href="https://apps.odoo.com/apps/modules/14.0/ks_google_translator/" class="d-block"
+                                   target="_blank" style="text-decoration: none;">
+                                    <img src="images/app-logo/google-translator.png" alt="odoo-google-translator">
+                                    <div class="card-body text-center p-0 mt-3 mb-3 mb-lg-0">
+                                        <h5 class="card-text m-0" style="font-size: 16px; font-weight: 600">Odoo-Google<br>Translator</h5>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-6 col-sm-3 text-center">
+                                <a href="https://apps.odoo.com/apps/modules/14.0/ks_rma/"
+                                   target="_blank" style="text-decoration: none;">
+                                    <img src="images/app-logo/rma.png" alt="ks-rma">
+                                    <div class="card-body text-center p-0 mt-3 mb-3 mb-lg-0">
+                                        <h5 class="card-text m-0" style="font-size: 16px; font-weight: 600">RMA</h5>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row pt-3 pb-4 no-gutters">
+                            <div class="col-6 col-sm-3 text-center">
+                                <a href="https://apps.odoo.com/apps/modules/14.0/ks_account_dashboard/" target="_blank"
+                                   style="text-decoration: none;">
+                                    <img src="images/app-logo/account-dashboard.png" alt="ksolves-theme-base">
+                                    <div class="card-body text-center p-0 mt-3 mb-3 mb-lg-0">
+                                        <h5 class="card-text m-0" style="font-size: 16px; font-weight: 600">Account <br>Dashboard Ninja</h5>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-6 col-sm-3 text-center">
+                                <a href="https://apps.odoo.com/apps/modules/14.0/ks_pos_order_notes/" class="d-block"
+                                   target="_blank" style="text-decoration: none;">
+                                    <img src="images/app-logo/pos-per-item.png" alt="pos-per-item">
+                                    <div class="card-body text-center p-0 mt-3 mb-3 mb-lg-0">
+                                        <h5 class="card-text m-0" style="font-size: 16px; font-weight: 600">POS Per Item
+                                            <br>&amp; Order Note</h5>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-6 col-sm-3 text-center">
+                                <a href="https://apps.odoo.com/apps/modules/14.0/ks_pos_dashboard_ninja/"
+                                   target="_blank" style="text-decoration: none;">
+                                    <img src="images/app-logo/pos_dashboard_ninja.png" alt="pos_dashboard_ninja">
+                                    <div class="card-body text-center p-0 mt-3 mb-3 mb-lg-0">
+                                        <h5 class="card-text m-0" style="font-size: 16px; font-weight: 600">POS <br>Dashboard
+                                            Ninja</h5>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-6 col-sm-3 text-center">
+                                <a href="https://apps.odoo.com/apps/modules/14.0/web_listview_sticky_header/"
+                                   class="d-block" target="_blank" style="text-decoration: none;">
+                                    <img src="images/app-logo/listview_sticky_header.png" alt="listview_sticky_header">
+                                    <div class="card-body text-center p-0 mt-3 mb-3 mb-lg-0">
+                                        <h5 class="card-text m-0" style="font-size: 16px; font-weight: 600">List View
+                                            <br>Sticky Header</h5>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item px-4" style="min-height: 354px;">
+                        <div class="row pb-sm-4 no-gutters">
+                            <div class="col-6 col-sm-3 text-center">
+                                <a href="https://apps.odoo.com/apps/modules/14.0/ks_custom_report/"
+                                   target="_blank" style="text-decoration: none;">
+                                    <img src="images/app-logo/report-mate.png" alt="Report Mate">
+                                    <div class="card-body text-center p-0 mt-3 mb-3 mb-lg-0">
+                                        <h5 class="card-text m-0" style="font-size: 16px; font-weight: 600">Report Mate</h5>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-6 col-sm-3 text-center">
+                                <a href="https://apps.odoo.com/apps/modules/14.0/ks_dn_advance/" class="d-block"
+                                   target="_blank" style="text-decoration: none;">
+                                    <img src="images/app-logo/dashboard-ninja-advance.png" alt="Dashboard Ninja Advance">
+                                    <div class="card-body text-center p-0 mt-3 mb-3 mb-lg-0">
+                                        <h5 class="card-text m-0" style="font-size: 16px; font-weight: 600">
+                                            Dashboard<br>Ninja Advance</h5>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-6 col-sm-3 text-center">
+                                <a href="https://apps.odoo.com/apps/modules/14.0/ks_dynamic_financial_report/"
+                                   target="_blank" style="text-decoration: none;">
+                                    <img src="images/app-logo/dynamic-financial.png" alt="dynamic_financial_report">
+                                    <div class="card-body text-center p-0 mt-3 mb-3 mb-lg-0">
+                                        <h5 class="card-text m-0" style="font-size: 16px; font-weight: 600">Dynamic
+                                            <br>Financial Report</h5>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-6 col-sm-3 text-center">
+                                <a href="https://apps.odoo.com/apps/modules/14.0/ks_website_dashboard_ninja/" class="d-block"
+                                   target="_blank" style="text-decoration: none;">
+                                    <img src="images/app-logo/website-dashboard.png" alt="Website Dashboard Ninja">
+                                    <div class="card-body text-center p-0 mt-3 mb-3 mb-lg-0">
+                                        <h5 class="card-text m-0" style="font-size: 16px; font-weight: 600">Website
+                                            <br>Dashboard Ninja</h5>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row pt-3 pb-4 no-gutters">
+                            <div class="col-6 col-sm-3 text-center">
+                                <a href="https://apps.odoo.com/apps/modules/14.0/ks_sales_forecast/"
+                                   target="_blank" style="text-decoration: none;">
+                                    <img src="images/app-logo/sales-forecast.png" alt="Sales Forecast">
+                                    <div class="card-body text-center p-0 mt-3 mb-3 mb-lg-0">
+                                        <h5 class="card-text m-0" style="font-size: 16px; font-weight: 600">Sales <br>Forecast</h5>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-6 col-sm-3 text-center">
+                                <a href="https://apps.odoo.com/apps/modules/14.0/ks_gantt_view_project/" class="d-block"
+                                   target="_blank" style="text-decoration: none;">
+                                    <img src="images/app-logo/odoo-gantt.png" alt="toggle_switch">
+                                    <div class="card-body text-center p-0 mt-3 mb-3 mb-lg-0">
+                                        <h5 class="card-text m-0" style="font-size: 16px; font-weight: 600">Odoo Gantt <br>View Project
+                                        </h5>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-6 col-sm-3 text-center">
+                                <a href="https://apps.odoo.com/apps/modules/14.0/ks_sale_dashboard_ninja/" target="_blank"
+                                   style="text-decoration: none;">
+                                    <img src="images/app-logo/sales-dashboard.png" alt="Sales Dashboard Ninja">
+                                    <div class="card-body text-center p-0 mt-3 mb-3 mb-lg-0">
+                                        <h5 class="card-text m-0" style="font-size: 16px; font-weight: 600">Sales <br> Dashboard Ninja
+                                            </h5>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-6 col-sm-3 text-center">
+                                <a href="https://apps.odoo.com/apps/modules/14.0/ks_bulk_image_import_export_zip/" class="d-block"
+                                   target="_blank" style="text-decoration: none;">
+                                    <img src="images/app-logo/bulk-product.png" alt="Bulk Product">
+                                    <div class="card-body text-center p-0 mt-3 mb-3 mb-lg-0">
+                                        <h5 class="card-text m-0" style="font-size: 16px; font-weight: 600">Bulk Product Image<br>Export/Import Using Zip</h5>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Left and right controls -->
+                <a class="carousel-control-prev" href="#demo" data-slide="prev" style="left: -5%; width: 60px;">
+                    <i class="fa fa-angle-left" style="font-size: 5vw;color: #333;"></i>
+                </a>
+                <a class="carousel-control-next" href="#demo" data-slide="next" style="right: -5%; width: 60px;">
+                    <i class="fa fa-angle-right" style="font-size: 5vw;color: #333;"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="row pb-sm-5 px-1 pb-4">
+        <h2 class="w-100 text-center my-3" style="font-weight: 400;">Ksolves Odoo Services</h2>
+        <div class="text-center w-100 mb-4">
+            <img src="images/line.png" alt="ksolves">
+        </div>
+        <div class="col-12 col-sm-6 col-md-4" style="margin-bottom: 20px;">
+            <div class="card text-center bg-info" style="min-height: 90px;">
+                <div class="pt-4">
+                    <img src="images/support.png" alt="support">
+                </div>
+                <div class="card-body" style="background-color: transparent !important;">
+                    <h5 class="card-title text-white" style="font-size: 19px; font-weight: 400;">Odoo
+                        Implementation</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4" style="margin-bottom: 20px;">
+            <div class="card text-center" style="min-height: 90px; background-color: #2ebeb4">
+                <div class="pt-4">
+                    <img src="images/apps.png" alt="apps">
+                </div>
+                <div class="card-body" style="background-color: transparent !important;">
+                    <h5 class="card-title text-white" style="font-size: 19px; font-weight: 400;">Odoo Community
+                        Apps</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4" style="margin-bottom: 20px;">
+            <div class="card text-center"
+                 style="min-height: 90px;background-color: #00a393; background-color: #98b1c4; ">
+                <div class="pt-4">
+                    <img src="images/support2.png" alt="support2">
+                </div>
+                <div class="card-body" style="background-color: transparent !important;">
+                    <h5 class="card-title text-white" style="font-size: 19px; font-weight: 400;">Odoo Support &amp;
+                        Maintenance</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4" style="margin-bottom: 20px;">
+            <div class="card text-center" style="min-height: 90px; background-color: #2f4e6f;">
+                <div class="pt-4">
+                    <img src="images/custom.png" alt="custom">
+                </div>
+                <div class="card-body" style="background-color: transparent !important;">
+                    <h5 class="card-title text-white" style="font-size: 19px; font-weight: 400;">Odoo
+                        Customization</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4" style="margin-bottom: 20px;">
+            <div class="card text-center" style="min-height: 90px; background-color: #f89c24;">
+                <div class="pt-4">
+                    <img src="images/integrated.png" alt="integrated">
+                </div>
+                <div class="card-body" style="background-color: transparent !important;">
+                    <h5 class="card-title text-white" style="font-size: 19px; font-weight: 400;">Odoo Integration
+                        Services</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4" style="margin-bottom: 20px;">
+            <div class="card text-center bg-primary" style="min-height: 90px;">
+                <div class="pt-3" style="font-size: 11px;">
+                    <img src="images/develop.png" alt="integrated">
+                </div>
+                <div class="card-body" style="background-color: transparent !important;">
+                    <h5 class="card-title text-white" style="font-size: 19px; font-weight: 400;">Odoo Developer
+                        Outsourcing</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row no-gutters mx-0 justify-content-sm-between justify-content-center"
+         style="border-top: 1px solid black;">
+        <div class="mb-sm-0 mb-3 d-flex align-items-center">
+            <img src="images/letter.svg" style="width: 35px;height: 35px;margin-right: 20px">
+            <span style="font-size: 18px;">sales@ksolves.com</span>
+        </div>
+        <div class="d-flex align-items-center">
+            <span style="font-size: 18px;">+91 120-4299799‬</span>
+            <img src="images/smartphone.svg" style="width: 35px;height: 35px;margin-left: 20px;">
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record model="ir.actions.act_window" id="action_dashboard_woocommerce_instance">
+        <field name="name">WooCommerce Dashboard</field>
+        <field name="res_model">ks.woocommerce.instances</field>
+        <field name="view_mode">kanban</field>
+        <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Add a new WooCommerce Instance
+              </p><p>
+                You can create a new WooCommerce Instance, For that go into:
+              </p><p>
+                " WooCommerce > Configuration > Instances "
+              </p>
+            </field>
+    </record>
+
+
+    <menuitem id="menu_ks_woocomerce_dashboard"
+              name="Dashboard"
+              parent="menu_ks_woocomerce_base"
+              sequence="0"
+              groups="ks_woocommerce.ks_woocommerce_group"
+              action="action_dashboard_woocommerce_instance"/>
+
+    <record id="ks_woocommerce_kanban_view" model="ir.ui.view">
+        <field name="name">WooCommerce Dashboard</field>
+        <field name="model">ks.woocommerce.instances</field>
+        <field name="arch" type="xml">
+            <kanban create="false" class="oe_background_grey o_kanban_dashboard o_account_kanban">
+                <field name="color"/>
+                <field name="ks_name"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="o_kanban_record woo-box-width">
+                            <div class="woo-header-box">
+                                <img src="/ks_woocommerce/static/src/img/woocommerce-logo.png" alt="WooCommerce" class="ks_woo_img"/>
+                                <t t-value="record.ks_name" t-set="dashboard"/>
+                                <t t-call="WooTop"/>
+                            </div>
+                            <div class="container o_kanban_card_content w-100">
+                                <div class="row">
+                                    <t t-if="ks_name != '' || ks_name != ''">
+                                        <div class="col-6 o_kanban_primary_left dashboard_inner_section woo-inner-box h-unset">
+                                            <button name="open_form_action"
+                                                    class="btn btn-primary"
+                                                    type="object"
+                                                    style="padding:7px 15px;" string="Operation">
+                                                <span>Operation</span>
+                                            </button>
+                                        </div>
+                                        <div class="dashboard_inner_section_label h-unset">
+                                            <div>
+                                                <a type="object" name="ks_open_woo_configuration">
+                                                    Configuration
+                                                </a>
+                                            </div>
+                                            <div class="">
+                                                <a name="ks_open_instance_logs" type="object">
+                                                    Logs
+                                                </a>
+                                            </div>
+
+                                        </div>
+                                        <div class="o_kanban_primary_right dashboard_card_manager woo-footer-box">
+                                                <div class="o_kanban_card_manage_section o_kanban_manage_view d-flex justify-content-between dashboard_card_manager">
+                                                    <div class="dashboard_footer">
+                                                        <a name="ks_open_woo_orders" type="object">Orders</a>
+                                                        <span class="woo-record-count"><field name="ks_woo_count_orders"/></span>
+                                                    </div>
+                                                    <div class="dashboard_footer">
+                                                        <a name="ks_open_woo_products" type="object">Products</a>
+                                                        <span class="woo-record-count"><field name="ks_woo_count_products"/></span>
+                                                    </div>
+                                                    <div class="color-margin-top-new dashboard_footer">
+                                                        <a name="ks_open_woo_coupons" type="object">Coupons</a>
+                                                        <span class="woo-record-count"><field name="ks_woo_count_coupons" /></span>
+                                                    </div>
+                                                    <div class="dashboard_footer">
+                                                        <a name="ks_open_woo_customers" type="object">Customers</a>
+                                                        <span class="woo-record-count"><field name="ks_woo_count_customers"/></span>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </t>
+                                </div>
+
+                            </div>
+                        </div>
+                    </t>
+
+                    <t t-name="WooTop">
+                        <div t-attf-class="o_kanban_card_header">
+                            <div class="o_kanban_card_header_title">
+                                <div class="o_primary ks_name_style" t-att-title="dashboard.title">
+                                    <div><h3>
+                                        <span class="text-truncate d-block"><field name="ks_name"/></span></h3></div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+</odoo>

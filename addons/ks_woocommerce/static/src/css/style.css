@@ -1,0 +1,145 @@
+
+
+.o_list_view .o_list_table tbody > tr > td:not(.o_list_record_selector):not(.o_handle_cell):not(.o_list_button) {
+    max-width: 400px;
+}
+
+.o_kanban_view.o_kanban_dashboard.o_account_kanban.o_kanban_ungrouped .o_kanban_record {
+    width: 500px;
+}
+
+.c-width {
+    width:46%;
+}
+
+.o_kanban_view .oe_kanban_card .o_kanban_image + div, .o_kanban_view .o_kanban_record .o_kanban_image + div {
+    word-break: break-all;
+}
+
+/*
+.ks_woo_img{
+    width: 30%;
+}
+
+.ks_button{
+  width: 150px;
+   border: 0px solid #004B84;
+   background: red;
+   padding: 3px 21px;
+   -webkit-border-radius: 16px;
+   -moz-border-radius: 16px;
+   border-radius: 16px;
+   color: #ffffff;
+   font-size: 20px;
+   font-family: Questrial;
+   text-decoration: none;
+   vertical-align: middle;
+   letter-spacing: 2px;
+}
+
+.ks_name_style{
+    color: #7b7bad !important;
+    margin: 5px;
+    }
+
+.px-0 {
+    padding: 0  !important;
+}
+
+.instance_dashboard{
+    width: 47%;
+    min-height: 205px;
+    background: #f0f8ff;
+}
+
+.dashboard_content{
+    max-width: unset;
+    padding: 0;
+}
+
+.dashboard_inner_section{
+    height: 90px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    margin-left: 45px;
+}
+
+.dashboard_inner_section_label{
+    height: 90px;
+    align-items: center;
+    vertical-align: center;
+}
+
+.dashboard_card_manager{
+    width: 100%;
+}
+
+.dashboard_counts{
+    max-width: 112px;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.woo-inner-box {
+    display: block;
+}
+.woo-footer-box {
+    font-weight: 600;
+    margin-top: 20px;
+}
+.dashboard_footer {
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 18px;
+    padding-right: 15px !important;
+    width: 20%;
+    text-align: center;
+    padding: 5px 5px;
+    vertical-align: m;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+ }
+.o_kanban_view.o_kanban_dashboard.o_account_kanban.o_kanban_ungrouped .woo-box-width {
+    max-width: 407px !important;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+}
+.woo-header-box {
+    background: #e2e2e2;
+    padding: 1px 16px;
+    margin-bottom: 30px;
+}
+.h-unset {
+    height: unset;
+}
+.woo-record-count {
+    max-width: 62px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 400;
+    color: #444444;
+}*/
+.oe_kanban_global_click {
+    width: auto !important;
+}
+.o_kanban_renderer .o_kanban_record > div{
+width: auto !important;
+}
+.o_kanban_record.o_kanban_ghost.flex-grow-1.flex-md-shrink-1.flex-shrink-0.my-0:empty {
+    display: none;
+}
+.oe_kanban_global_click [style*="width: 10%"]{
+width: auto !important;
+}
+.o_kanban_renderer .o_kanban_record > div {
+  padding: var(--KanbanRecord-padding-v) var(--KanbanRecord-padding-h);
+  width: 100% !important;
+  height: 100%;
+}

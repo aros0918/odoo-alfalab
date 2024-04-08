@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="ks_specific_operations_form_view" model="ir.ui.view">
+        <field name="name">ks.operation.specific.wizard</field>
+        <field name="model">ks.woo.instance.operations</field>
+        <field name="arch" type="xml">
+            <form string="Operations">
+                <div class="alert alert-info" role="alert" style="margin-bottom:0px;">
+                    <h3>Fields and their uses :-</h3>
+                    <ul>
+                        <li>
+                            <b>Instance</b>
+                            : Displays WooCommerce Instance Name
+                        </li>
+                        <li>
+                            <b>Operation Flow</b>
+                            : Shows the flow of the operation either from WooCommerce to Odoo or Odoo to WooCommerce
+                        </li>
+                        <li>
+                            <b>Import/Export Operation</b>
+                            : It include the list of operation that can be performed for Import/Export Operation
+                        </li>
+                        <li>
+                            <b>Import With</b>
+                            : It include the list of types of import functionalities.
+                        </li>
+                        <li>
+                            <b>Record ID</b>
+                            : Displays the specific record id for the specific model selected
+                        </li>
+                        <li>
+                            <b>Date After</b>
+                            : Displays the date after
+                        </li>
+                        <li>
+                            <b>Date Before</b>
+                            : Displays the date before
+                        </li>
+                    </ul>
+                </div>
+                <group string="WooCommerce Product Configuration">
+                    <group>
+                        <field name="ks_update_details"
+                               attrs="{'invisible':['|', ('ks_operation_flow', 'in', ['woo_to_odoo', False]), ('ks_operation_woo', '!=', 'export_product')]}"/>
+                        <field name="ks_update_website_status"
+                               attrs="{'invisible':['|', ('ks_operation_flow', 'in', ['woo_to_odoo', False]), ('ks_operation_woo', '!=', 'export_product')]}"/>
+                        <field name="ks_export_image_variation"
+                               attrs="{'invisible':['|', ('ks_update_image', '=', False), ('ks_operation_woo', '!=', 'export_product')]}"/>
+                    </group>
+                    <group>
+                        <field name="ks_update_price"
+                               attrs="{'invisible':['|', ('ks_operation_flow', 'in', ['woo_to_odoo', False]), ('ks_operation_woo', '!=', 'export_product')]}"/>
+                        <field name="ks_update_image"
+                               attrs="{'invisible':['|', ('ks_operation_flow', 'in', ['woo_to_odoo', False]), ('ks_operation_woo', '!=', 'export_product')]}"/>
+                        <field name="ks_update_stocks"
+                               attrs="{'invisible':['|', ('ks_operation_flow', 'in', ['woo_to_odoo', False]), ('ks_operation_woo', '!=', 'export_product')]}"/>
+                    </group>
+                </group>
+                <group attrs="{'invisible':['|', ('ks_operation_flow', 'in', ['woo_to_odoo', False]),('ks_operation_woo', '=', False)]}">
+                    <field name="ks_exports_all" widget="boolean_toggle" invisible="True"/>
+                </group>
+                <group name="basic_config">
+                    <field name="ks_instances" widget="many2many_tags" options="{'create': False, 'edit':False}"/>
+                </group>
+                <group name="single_operation">
+                    <group>
+                        <field name="ks_operation_flow" widget="selection"/>
+                        <field name="ks_check_multi_operation" invisible="1"/>
+                    </group>
+                    <group>
+                        <field name="ks_operation_odoo" widget="selection"
+                               attrs="{'invisible':[('ks_operation_flow', 'in', ['odoo_to_woo', False])]}"/>
+                        <field name="ks_operation_woo" widget="selection"
+                               attrs="{'invisible':[('ks_operation_flow', 'in', ['woo_to_odoo', False])]}"/>
+                    </group>
+                </group>
+                <group attrs="{'invisible':['|', ('ks_operation_flow', 'in', ['odoo_to_woo', False]),('ks_operation_odoo', '=', False)]}">
+                    <field name="ks_get_specific_import_type" widget="selection"
+                           attrs="{'required':[('ks_operation_flow', 'not in', ['odoo_to_woo', False]), ('ks_operation_odoo', '!=', False)]}"/>
+                </group>
+                <group name="stock_product_names" string="Select Product to sync stock"
+                       attrs="{'invisible':['|', ('ks_operation_flow', '!=', 'odoo_to_woo'), ('ks_operation_woo', '!=', 'export_stocks')]}">
+                    <field name="ks_product_stock_selects" widget="many2many_tags"
+                           options="{'no_create': True, 'no_create_edit':True}"
+                           attrs="{'required':[('ks_operation_woo', '=', 'export_stocks')]}"
+                    />
+                </group>
+                <group name="specific_record" string="Import Specific Records"
+                       attrs="{'invisible':[('ks_get_specific_import_type', '!=', 'record_id')]}">
+                    <field name="ks_record_ids"/>
+                </group>
+                <div class="pt-3 ks_note pb-2"
+                     attrs="{'invisible':[('ks_get_specific_import_type', '!=', 'record_id')]}">
+                    <strong>Note:</strong>
+                    <span>
+                        For multiple record separate WooCommerce Id(s) using either
+                        <ul>
+                            <li>
+                                <strong>' , '  </strong>
+                                <i>For example: 111,222,333</i>
+                            </li>
+                            <li>
+                                <strong>' - '  </strong>
+                                <i>For example : 100-180</i>
+                            </li>
+                            <b>Imp :</b> There must be no spaces in either cases
+                        </ul>
+                    </span>
+                </div>
+                <group name="date_filter" string="Date Filters"
+                       attrs="{'invisible':['|', ('ks_get_specific_import_type', '!=', 'date_filter'), ('ks_operation_flow', '=', 'odoo_to_woo')]}">
+                    <group>
+                        <field name="ks_date_filter_after"/>
+                    </group>
+                    <group>
+                        <field name="ks_date_filter_before"/>
+                    </group>
+                </group>
+                <group attrs="{'invisible':['|', ('ks_operation_flow', 'in', ['woo_to_odoo', False]),('ks_operation_woo', '=', False)]}">
+                    <field name="ks_get_specific_export_type" widget="selection"
+                           attrs="{'required':[('ks_operation_flow', 'not in', ['woo_to_odoo', False]), ('ks_operation_woo', '!=', False)]}"/>
+                </group>
+                <group name="specific_record" string="Import Specific Records"
+                       attrs="{'invisible':[('ks_get_specific_export_type', '!=', 'record_id')]}">
+                    <field name="ks_record_ids"/>
+                </group>
+                <div class="pt-3 ks_note pb-2"
+                     attrs="{'invisible':[('ks_get_specific_export_type', '!=', 'record_id')]}">
+                    <strong>Note:</strong>
+                    <span>
+                        For multiple record separate Odoo Id(s) using <strong>' , '</strong>.
+                        <i>For example: 111,222,333</i>
+                    </span>
+                </div>
+                <group name="date_filter" string="Date Filters"
+                       attrs="{'invisible':['|', ('ks_get_specific_export_type', '!=', 'date_filter'), ('ks_operation_flow', '=', 'woo_to_odoo')]}">
+                    <group>
+                        <field name="ks_date_filter_after"/>
+                    </group>
+                    <group>
+                        <field name="ks_date_filter_before"/>
+                    </group>
+                </group>
+                <footer>
+                    <button string="Execute" name="ks_execute_operation" type="object" class="btn-primary"/>
+                    <button string="Close" class="btn-primary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="ks_multiple_operations_form_view" model="ir.ui.view">
+        <field name="name">ks.operation.multiple.wizard</field>
+        <field name="model">ks.woo.instance.operations</field>
+        <field name="arch" type="xml">
+            <form string="Operations">
+                <div class="alert alert-info" role="alert" style="margin-bottom:0px;">
+                    <h3>Fields and their uses :-</h3>
+                    <ul>
+                        <li>
+                            <b>Instance</b>
+                            : Displays WooCommerce Instance Name
+                        </li>
+                        <li>
+                            <b>Want to select all operations ?</b>
+                            : Checkbox allows you to select all the operation at one click
+                        </li>
+                    </ul>
+                </div>
+                <group name="basic_config">
+                    <field name="ks_instances" widget="many2many_tags" options="{'create': False, 'edit':False}"/>
+                </group>
+                <notebook>
+                    <page name="woo_too_odoo" string="Woo to Odoo">
+                        <group>
+                            <field name="ks_want_all"/>
+                            <field name="ks_check_multi_operation" invisible="1"/>
+                        </group>
+                        <group name='products' string="Products Operations">
+                            <group>
+                                <field name="ks_sync_products" widget="boolean_toggle"
+                                />
+                                <field name="ks_sync_attribute" widget="boolean_toggle"
+                                />
+                            </group>
+                            <group>
+                                <field name="ks_sync_tags" widget="boolean_toggle"
+                                />
+                                <field name="ks_sync_category" widget="boolean_toggle"
+                                />
+                                <field name="ks_stock" widget="boolean_toggle"
+                                />
+                            </group>
+                        </group>
+                        <group>
+                            <group name="order_operations" string="Order Operations">
+                                <field name="ks_sync_orders" widget="boolean_toggle"
+                                />
+                                <field name="ks_sync_coupons" widget="boolean_toggle"
+                                />
+                                <field name="ks_sync_payment_gateways" widget="boolean_toggle"
+                                />
+                            </group>
+                            <group name="customer_operations" string="Customer Operations">
+                                <field name="ks_sync_customers" widget="boolean_toggle"
+                                />
+                            </group>
+                        </group>
+                    </page>
+
+                    <page name="odoo_to_woo" string="Odoo to Woo">
+                        <group>
+                            <field name="ks_want_all_woo"/>
+                        </group>
+                        <group>
+                            <group name="product_operations_" string="Product Operations">
+                                <field name='ks_update_products' widget="boolean_toggle"/>
+                                <field name='ks_update_attributes' widget="boolean_toggle"/>
+                                <field name='ks_update_tags' widget="boolean_toggle"/>
+                                <field name='ks_update_category' widget="boolean_toggle"/>
+                                <field name='ks_update_stock' widget="boolean_toggle"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group name="customer_operations_" string="Customer Operations">
+                                <field name="ks_update_customers" widget="boolean_toggle"/>
+                            </group>
+                            <group name="order_operation_" string="Order Operations">
+                                <field name="ks_update_order" widget="boolean_toggle"/>
+                                <field name="ks_update_coupons" widget="boolean_toggle"/>
+                            </group>
+                        </group>
+                    </page>
+                </notebook>
+                <footer>
+                    <button string="Execute" name="ks_execute_operation" type="object" class="btn-primary"/>
+                    <button string="Close" class="btn-primary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="ks_woo_specific_operations_action" model="ir.actions.act_window">
+        <field name="name">Specific Operations</field>
+        <field name="res_model">ks.woo.instance.operations</field>
+        <field name="view_id" ref="ks_woocommerce.ks_specific_operations_form_view"/>
+        <field name="context">{"default_ks_check_multi_operation":False}</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="ks_woo_multiple_operations_action" model="ir.actions.act_window">
+        <field name="name">Multiple Operations</field>
+        <field name="res_model">ks.woo.instance.operations</field>
+        <field name="view_id" ref="ks_woocommerce.ks_multiple_operations_form_view"/>
+        <field name="context">{"default_ks_check_multi_operation":True}</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

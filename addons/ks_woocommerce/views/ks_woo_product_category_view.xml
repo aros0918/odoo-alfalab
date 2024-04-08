@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="ks_export_product_category" model="ir.actions.server">
+        <field name="name">Sync Category from Woocommerce</field>
+        <field name="model_id" ref="model_ks_woo_product_category"/>
+        <field name="binding_model_id" ref="model_ks_woo_product_category"/>
+        <field name="binding_view_types">form,list</field>
+        <field name="state">code</field>
+        <field name="code">
+            action = records.ks_woo_import_product_category()
+        </field>
+    </record>
+    <record id="s_action_ks_export_product_category" model="ir.actions.server">
+        <field name="name">Sync Category to Woocommerce</field>
+        <field name="model_id" ref="model_ks_woo_product_category"/>
+        <field name="binding_model_id" ref="model_ks_woo_product_category"/>
+        <field name="binding_view_types">form,list</field>
+        <field name="state">code</field>
+        <field name="code">
+            action = records.ks_woo_export_product_category()
+        </field>
+    </record>
+
+    <record id="ks_woo_product_category_view_form" model="ir.ui.view">
+        <field name="name">ks.woo.product.category.view.form</field>
+        <field name="model">ks.woo.product.category</field>
+        <field name="arch" type="xml">
+            <form create="false">
+<!--                <header>-->
+<!--                    <button name="update_record_data_in_odoo" string="Update Data" type="object"-->
+<!--                            class="oe_highlight" attrs="{'invisible': [('ks_need_update', '=', False)]}"/>-->
+<!--                </header>-->
+                <sheet>
+                    <div name="button_box" class="oe_button_box">
+                        <field name="ks_sync_status" invisible="1"/>
+                        <button name="" class="oe_stat_button" readonly="True" disabled="True"
+                                attrs="{'invisible': [('ks_sync_status', '=', False)]}" icon="fa-check text-success">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">Synchronised</span>
+                                <span class="o_stat_text">With Woo</span>
+                            </div>
+                        </button>
+                        <button name="" class="oe_stat_button" readonly="True" disabled="True"
+                                attrs="{'invisible': [('ks_sync_status', '=', True )]}" icon="fa-times-circle text-danger">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">UnSynchronised</span>
+                                <span class="o_stat_text">With Woo</span>
+                            </div>
+                        </button>
+                    </div>
+                     <div class="alert alert-info" role="alert" style="margin-bottom:0px;">
+                                <h3>Fields and their uses :-</h3>
+                                <ul>
+                                    <li>
+                                        <b>Instance</b>
+                                        : Displays WooCommerce Instance Name
+                                    </li>
+                                    <li>
+                                        <b>Woo Category ID</b>
+                                        : Displays WooCommerce Category ID
+                                    </li>
+                                    <li>
+                                        <b>Odoo Product Category</b>
+                                        : Displays Odoo Product Category Reference
+                                    </li>
+                                    <li>
+                                        <b>Slug</b>
+                                        : Displays WooCommerce Category Slug
+                                    </li>
+                                    <li>
+                                        <b>Modified On</b>
+                                        : Displays date of modification
+                                    </li>
+                                    <li>
+                                        <b>Last Synced On</b>
+                                        : Displays Last Sync date with WooCommerce
+                                    </li>
+                                </ul>
+                            </div>
+                    <group>
+                        <group>
+                            <field name="ks_wc_instance"/>
+                            <field name="ks_woo_category_id"/>
+
+                            <field name="ks_slug"/>
+                        </group>
+                        <group>
+                            <field name="ks_product_category"/>
+                            <field name="ks_date_created" invisible="1"/>
+                            <field name="ks_date_updated" invisible="1"/>
+                            <field name="ks_sync_date"/>
+                            <field name="ks_last_exported_date"/>
+                        </group>
+                    </group>
+                    <group string="Description">
+                        <field name="ks_description" nolabel="1"
+                               placeholder="This note will show up on product category description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="ks_woo_product_category_view_tree" model="ir.ui.view">
+        <field name="name">ks.woo.product.category.view.tree</field>
+        <field name="model">ks.woo.product.category</field>
+        <field name="arch" type="xml">
+            <tree create="false" edit="false" decoration-info="ks_mapped==True">
+                <field name="ks_woo_category_id"/>
+                <field name="ks_product_category"/>
+                <field name="ks_slug"/>
+                <field name="ks_wc_instance"/>
+                <field name="ks_date_created" invisible="1"/>
+                <field name="ks_date_updated" invisible="1"/>
+                <field name="ks_mapped" invisible="1"/>
+                <field name="ks_sync_status" widget="boolean_toggle" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="ks_woo_product_category_view_search" model="ir.ui.view">
+        <field name="name">Category Search</field>
+        <field name="model">ks.woo.product.category</field>
+        <field name="arch" type="xml">
+            <search string="Category Search">
+                <field name="ks_slug" string="Slug"/>
+                <field name="ks_woo_category_id" string="Woo Id"/>
+                <field name="ks_wc_instance" string="Woo Instance"
+                       filter_domain="[('ks_wc_instance','ilike',self)]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="groupby_instance" string="Woo Instance"
+                            context="{'group_by':'ks_wc_instance'}"/>
+                    <filter name="groupby_main_model" string="Odoo Model"
+                            context="{'group_by':'ks_product_category'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_ks_woo_product_category">
+        <field name="name">WooCommerce Product Category</field>
+        <field name="res_model">ks.woo.product.category</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                **All the Synced WooCommerce Product Category will appear here.
+            </p>
+        </field>
+    </record>
+</odoo>

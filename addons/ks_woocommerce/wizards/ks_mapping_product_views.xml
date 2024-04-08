@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="ks_product_wizard_form_view" model="ir.ui.view">
+        <field name="name">Map Products</field>
+        <field name="model">map.product.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="ks_wc_instance" widget="selection"/>
+                    </group>
+                    <group>
+                        <field name="ks_sync_operation" widget="radio"/>
+                    </group>
+                </group>
+                <field name="product_line_ids" widget="one2many_list">
+                    <tree string="Woo Product Layer Lines" editable="bottom" create="false">
+                        <field name="ks_record_id" force_save="True"/>
+                        <field name="ks_wc_instance" force_save="True" options="{'no_create': True, 'no_edit': True}"/>
+                        <field name="ks_id" readonly="True" force_save="True"/>
+                        <field name="name" readonly="True" force_save="True"/>
+                        <field name="ks_base_model_product" force_save="True"/>
+                        <field name="ks_base_model_product_variant" force_save="True"/>
+                    </tree>
+                </field>
+                <footer>
+                    <button name="map_product_records" string="Confirm Mapping" type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="btn btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

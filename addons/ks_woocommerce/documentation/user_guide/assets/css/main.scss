@@ -1,0 +1,146 @@
+* {
+    font-family: 'DM Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.ks-ug {
+
+    .view-100vh {
+        @media (min-width: 992px) {
+            height: 100vh;
+            overflow: auto;
+        }
+    }
+
+    &-menus {
+        .ks-logo-small {
+            width: 30px;
+        }
+
+        .navbar {
+            @media (max-width: 991px) {
+                position: fixed;
+                top: 0;
+                width: 100%;
+                left: 0;
+                z-index: 1; 
+                padding: 1rem !important;
+            }
+        }
+
+        .ks-logo-container {
+            @media (max-width: 991px) {
+                margin-top: 60px; 
+            }
+        }
+    }
+
+    &-main-link {
+        padding: 5px 8px;
+        transition: 0.2s ease-in-out;
+        border-radius: 8px;
+
+        &:hover {
+            background: #f9ebd2;
+        }
+
+        a {
+            color: black;
+            font-weight: bold;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+
+        &.active {
+            background: #f9ebd2;
+        }
+    }
+
+    &-collaspe-link {
+        padding: 5px;
+
+       > a {
+        font-weight: bold;
+
+            &[aria-expanded="true"] {
+                .ks-collapse-down {
+                    transform: rotate(180deg);        
+                }
+            }
+       }
+
+       .ks-collapse-down {
+           width: 10px;
+           height: 24px;
+           transition: 0.2s ease-in-out;
+       }
+    }
+
+    &-search {
+        &-img {
+            width: 15px;
+            margin-top: 6px;
+            margin-left: 6px;
+            opacity: 0.5;
+        }
+    }
+
+    &-input {
+        border-radius: 5px;
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &-scroll {
+        &::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        &::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: #FAB446;
+            outline: 1px solid slategrey;
+        }
+    }
+
+    &-logo-full {
+        height: 50px;
+    }
+
+    &-content {
+        scroll-behavior: smooth;
+        &-heading {
+            box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.12);
+        }
+    }
+}
+
+.cursor-poniter {
+    cursor: pointer;
+}
+
+.ks-right-arrow {
+    width: 15px;
+}
+
+section.border-bottom {
+    border-bottom: 3px solid #FAB446 !important;
+}
+.ks-shadow-none {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+section {
+    @media (max-width: 990px) {
+        padding-top: 100px !important;
+    }
+
+}

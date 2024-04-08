@@ -1,0 +1,18 @@
+.ks_kanban_main .ks_kanban_sec > .o_field_widget{
+    display: block;
+    height: 100%;
+    overflow: auto;
+}
+.ks_graph_container{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    padding: 20px;
+    box-sizing:border-box;
+    background: #fff;
+}
+
+.ks_header{
+    display: flex;
+    position: relative;
+    padding-bottom: 5px;
+}

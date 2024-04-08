@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_account_customer_invoice_exchange_rate" model="ir.ui.view">
+            <field name="name">view.account.customer.invoice.exchange.rate</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+	   	<xpath expr="//group[@class='oe_invoice_lines_tab']" position="before">
+  			<group name="right_button_group" col="6" class="mt-2 mt-md-0">
+                	        <group class="oe_subtotal_footer oe_right" colspan="2" name="show_exchange_rate_button">
+                        	        <button string="Exchange Rates" type="object" name="open_currency_form"/>
+                        	</group>
+                 		<div class="clearfix"/>
+                	 </group>
+ 		</xpath>
+             </field>
+        </record>
+    </data>
+</odoo>

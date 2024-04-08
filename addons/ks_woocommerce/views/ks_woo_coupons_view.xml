@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="action_ks_export_coupon_odoo_to_woo" model="ir.actions.server">
+        <field name="name">Sync Coupons from woocommerce</field>
+        <field name="model_id" ref="model_ks_woo_coupons"/>
+        <field name="binding_model_id" ref="model_ks_woo_coupons"/>
+        <field name="binding_view_types">form,list</field>
+        <field name="state">code</field>
+        <field name="code">
+            action = records.ks_action_sync_coupons_from_woo()
+        </field>
+    </record>
+
+    <record id="action_ks_update_coupon_odoo_to_woo" model="ir.actions.server">
+        <field name="name">Sync Coupons to woocommerce</field>
+        <field name="model_id" ref="model_ks_woo_coupons"/>
+        <field name="binding_model_id" ref="model_ks_woo_coupons"/>
+        <field name="binding_view_types">form,list</field>
+        <field name="state">code</field>
+        <field name="code">
+            action = records.ks_action_sync_coupons_to_woo()
+        </field>
+    </record>
+
+    <record id="ks_woo_coupon_view_form" model="ir.ui.view">
+        <field name="name">ks.woo.coupon.view.form</field>
+        <field name="model">ks.woo.coupons</field>
+        <field name="arch" type="xml">
+            <form string="WooCommerce Coupons">
+            	<sheet>
+                    <div name="button_box" class="oe_button_box">
+                        <field name="ks_sync_status" invisible="1"/>
+                        <button name="" class="oe_stat_button" disabled="True"
+                                attrs="{'invisible': [('ks_sync_status', '=', False)]}" icon="fa-check text-success">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">Synchronised</span>
+                                <span class="o_stat_text">With Woo</span>
+                            </div>
+                        </button>
+                        <button name="" class="oe_stat_button" disabled="True"
+                                attrs="{'invisible': [('ks_sync_status', '=', True )]}" icon="fa-times-circle text-danger">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">UnSynchronised</span>
+                                <span class="o_stat_text">With Woo</span>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="alert alert-info" role="alert" style="margin-bottom:0px;">
+                                <h3>Fields and their uses :-</h3>
+                                <ul>
+                                    <li>
+                                        <b>Coupon Code</b>
+                                        : Displays Woocommerce Coupon Code
+                                    </li>
+                                    <li>
+                                        <b>Woo Coupon ID</b>
+                                        : Displays WooCommerce ID
+                                    </li>
+                                    <li>
+                                        <b>Instance</b>
+                                        : Displays WooCommerce Instance Name
+                                    </li>
+                                    <li>
+                                        <b>Modified On</b>
+                                        : Displays date of modification
+                                    </li>
+                                    <li>
+                                        <b>Last Synced On</b>
+                                        : Displays Last Sync Date with Woocommerce
+                                    </li>
+                                </ul>
+                            </div>
+                	<group name="coupon_info">
+                		<group>
+                			<field name="ks_coupon_code" placeholder="Coupon Code"/>
+                		</group>
+                		<group>
+                			<field name="ks_wc_instance" options="{'no_create':True,'no_create_edit': True}" attrs="{'readonly':[('ks_woo_coupon_id','!=',0)]}"/>
+                			<field name="ks_woo_coupon_id" attrs="{'invisible':[('ks_woo_coupon_id','=',0)]}" />
+                		    <field name="ks_sync_date"/>
+                            <field name="ks_last_exported_date" attrs="{'invisible':[('ks_woo_coupon_id','=',0)]}"/>
+                        </group>
+                	</group>
+               		<label for="ks_description"/>
+	              	<field name="ks_description" placeholder="Description"/>
+	              	<field name="ks_company_id" invisible="1"/>
+	               	<notebook>
+	                	<page string="General">
+                            <div class="alert alert-info" role="alert" style="margin-bottom:0px;">
+                                <h3>Fields and their uses :-</h3>
+                                <ul>
+                                    <li>
+                                        <b>Discount Type</b>
+                                        : Displays Type of discount
+                                    </li>
+                                    <li>
+                                        <b>Amount</b>
+                                        : Displays amount of discount
+                                    </li>
+                                    <li>
+                                        <b>Allow Free Shipping</b>
+                                        : Enables/Disables the Free shipping
+                                    </li>
+                                    <li>
+                                        <b>Expiry Date</b>
+                                        : Displays Expiry Date of Coupon
+                                    </li>
+                                </ul>
+                            </div>
+	                		<group name="general">
+	                			<group>
+			                		<field name="ks_discount_type"/>
+			                		<field name="ks_amount"/>
+			                	</group>
+			                	<group>
+			                		<field name="ks_free_shipping"/>
+			                		<field name="ks_expiry_date"/>
+		                		</group>
+	                		</group>
+	           			</page>
+	           			<page string="Usage Restriction">
+                            <div class="alert alert-info" role="alert" style="margin-bottom:0px;">
+                                <h3>Fields and their uses :-</h3>
+                                <ul>
+                                    <li>
+                                        <b>Minimum Spend</b>
+                                        : Displays Minimum Spend Amount
+                                    </li>
+                                    <li>
+                                        <b>Maximum Spend</b>
+                                        : Displays Maximum Spend Amount
+                                    </li>
+                                    <li>
+                                        <b>Individual Use</b>
+                                        : Enables/Disable Individual Use of Coupons
+                                    </li>
+                                    <li>
+                                        <b>Exclude Sale Items</b>
+                                        : Enables/Disable Exclude Sale Items
+                                    </li>
+                                    <li>
+                                        <b>Allowed emails</b>
+                                        : Displays Allowed Emails with comma
+                                    </li>
+                                    <li>
+                                        <b>Products</b>
+                                        : Displays list of Included Product for Coupon
+                                    </li>
+                                    <li>
+                                        <b>Exclude Products</b>
+                                        : Displays list of Excluded Product for Coupon
+                                    </li>
+                                    <li>
+                                        <b>Product Categories</b>
+                                        : Displays list of Included Product Categories for Coupon
+                                    </li>
+                                    <li>
+                                        <b>Exclude Product Categories</b>
+                                        : Displays list of Excluded Product Categories for Coupon
+                                    </li>
+                                    <li>
+                                        <b>Include Product Variant</b>
+                                        : Displays list of Include Product Variant for Coupon
+                                    </li>
+                                    <li>
+                                        <b>Exclude Product Variant</b>
+                                        : Displays list of Exclude Product Variant for Coupon
+                                    </li>
+                                </ul>
+                            </div>
+	           				<group name="usage_restriction">
+		           				<group>
+		           					<field name="ks_minimum_amount"/>
+			                		<field name="ks_maximum_amount"/>
+			                		<field name="ks_individual_use"/>
+			                	</group>
+			                	<group>
+			                		<field name="ks_exclude_sale_items"/>
+		                			<field name="ks_allowed_email" placeholder="Separate email addresses with commas(,)"/>
+		                		</group>
+	                		</group>
+	                		<group name="product_usage_restriction">
+                                <group>
+                                    <field name="ks_include_product_template" widget="many2many_tags" options="{'no_create_edit': True, 'no_create': True}" attrs="{'readonly': [('ks_wc_instance', '=', False)]}"/>
+                                    <field name="ks_exclude_product_template" widget="many2many_tags" options="{'no_create_edit': True, 'no_create': True}}" attrs="{'readonly': [('ks_wc_instance', '=', False)]}"/>
+                                    <field name="ks_include_categories" widget="many2many_tags" options="{'no_create_edit': True, 'no_create': True}}" attrs="{'readonly': [('ks_wc_instance', '=', False)]}"/>
+                                    <field name="ks_exclude_categories" widget="many2many_tags" options="{'no_create_edit': True, 'no_create': True}}" attrs="{'readonly': [('ks_wc_instance', '=', False)]}"/>
+                                </group>
+                                <group>
+                                    <field name="ks_include_product_variant" widget="many2many_tags" options="{'no_create_edit': True, 'no_create': True}" attrs="{'readonly': [('ks_wc_instance', '=', False)]}"/>
+                                    <field name="ks_exclude_product_variant" widget="many2many_tags" options="{'no_create_edit': True, 'no_create': True}}" attrs="{'readonly': [('ks_wc_instance', '=', False)]}"/>
+                                </group>
+                            </group>
+	                	</page>
+	                	<page string="Usage Limits">
+                            <div class="alert alert-info" role="alert" style="margin-bottom:0px;">
+                                <h3>Fields and their uses :-</h3>
+                                <ul>
+                                    <li>
+                                        <b>Usage limit per coupon</b>
+                                        : Displays Usage limit per coupon
+                                    </li>
+                                    <li>
+                                        <b>Usage limit per user</b>
+                                        : Displays Usage limit per user for coupon
+                                    </li>
+                                </ul>
+                            </div>
+	                		<group name="usage_limits">
+	                			<group>
+		                			<field name="ks_usage_limit"/>
+		                			<field name="ks_limit_usage_to_x_items" attrs="{'invisible':[('ks_discount_type','in',['fixed_cart','percent'])]}"/>
+		                			<field name="ks_usage_limit_per_user"/>
+	                			</group>
+	                		</group>
+	                	</page>
+	                </notebook>
+	            </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="ks_woo_coupon_view_tree" model="ir.ui.view">
+        <field name="name">ks.woo.coupon.view.tree</field>
+        <field name="model">ks.woo.coupons</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="ks_woo_coupon_id"/>
+                <field name="ks_coupon_code"/>
+                <field name="ks_wc_instance"/>
+                <field name="ks_amount"/>
+                <field name="ks_discount_type"/>
+                <field name="ks_company_id"/>
+                <field name="ks_date_created"/>
+                <field name="ks_date_updated"/>
+                <field name="ks_need_update" invisible="1"/>
+                <field name="ks_sync_status" widget="boolean_toggle" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="ks_woo_coupon_view_search" model="ir.ui.view">
+        <field name="name">Coupon Search</field>
+        <field name="model">ks.woo.coupons</field>
+        <field name="arch" type="xml">
+            <search string="Search Coupons">
+                <field name="ks_coupon_code" string="Coupon code"/>
+                <field name="ks_woo_coupon_id" string="WooCommerce Id"/>
+                <field name="ks_wc_instance" string="Woo Instance" filter_domain="[('ks_wc_instance', 'ilike' self)]"/>
+                <separator/>
+                <filter string="Today Created Woo Coupons" name="woo_created_today"
+                        domain="[('ks_date_created','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0))), ('ks_date_created','&lt;=', datetime.datetime.combine(context_today(), datetime.time(23,59,59)))]"/>
+                <filter string="Today Updated Woo Coupons" name="woo_created_today"
+                        domain="[('ks_date_updated','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0))), ('ks_date_updated','&lt;=', datetime.datetime.combine(context_today(), datetime.time(23,59,59)))]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter string="Woo Instance Id" name="ks_wc_instance"
+                            context="{'group_by':'ks_wc_instance'}"/>
+                    <filter string="Update Action Needed" name="ks_need_update"
+                            domain="[('ks_need_update', '=', True)]"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="action_ks_woo_coupon">
+        <field name="name">WooCommerce Coupon</field>
+        <field name="res_model">ks.woo.coupons</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                **All the Synced WooCommerce Coupons will appear here.
+            </p>
+        </field>
+    </record>
+</odoo>

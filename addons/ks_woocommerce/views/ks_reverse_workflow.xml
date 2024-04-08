@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="ks_woo_reverse_workflow_form" model="ir.ui.view">
+        <field name="name">ks.woo.reverse.workflow.form</field>
+        <field name="model">ks.woo.reverse.workflow.configuration</field>
+        <field name="arch" type="xml">
+            <form string="Update Woo status workflow">
+                <div class="alert alert-info" role="alert" style="margin-bottom:0px;">
+                                <h3>Fields and their uses :-</h3>
+                                <ul>
+                                    <li>
+                                        <b>Sale Order Status</b>
+                                        : Displays status of Sale order, which when attained, will update the woo status to &quot;Complete&quot;
+                                    </li>
+                                    <li>
+                                        <b>Instance</b>
+                                        : Instance for which the above configuration is enabled
+                                    </li>
+                                </ul>
+                            </div>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="ks_wc_instance"/>
+                        </group>
+                        <group>
+                            <field name="ks_active"/>
+                            <field name="ks_odoo_order_status"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="ks_woo_reverse_workflow_tree" model="ir.ui.view">
+        <field name="name">ks.woo.reverse.workflow.tree</field>
+        <field name="model">ks.woo.reverse.workflow.configuration</field>
+        <field name="arch" type="xml">
+            <tree string="Update Woo status workflow">
+                <field name="name"/>
+                <field name="ks_odoo_order_status"/>
+                <field name="ks_wc_instance"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="ks_woo_reverse_workflow_search" model="ir.ui.view">
+        <field name="name">ks.woo.reverse.workflow.search</field>
+        <field name="model">ks.woo.reverse.workflow.configuration</field>
+        <field name="arch" type="xml">
+            <search string="Update Woo status workflow">
+                <field name="name" string="Name" filter_domain="[('name','ilike',self)]"/>
+<!--                <separator/>-->
+<!--                <group expand="0" string="Group By">-->
+<!--                    <filter string="Validate Order" name="val_order"-->
+<!--                            context="{'group_by':'val_order'}"/>-->
+<!--                    <filter string="Create Invoice Order" name="ks_create_invoice"-->
+<!--                            context="{'group_by':'ks_create_invoice'}"/>-->
+<!--                </group>-->
+            </search>
+        </field>
+    </record>
+
+    <record id="ks_woo_reverse_workflow_action" model="ir.actions.act_window">
+        <field name="name">Update Woo status workflow</field>
+        <field name="res_model">ks.woo.reverse.workflow.configuration</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create auto sale workflow here
+            </p>
+        </field>
+    </record>
+</odoo>
